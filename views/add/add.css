@@ -1,0 +1,85 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-color: #000000;
+    opacity: 1;
+    background-size: 50px 50px;
+    background-image: repeating-linear-gradient(to right, #444cf7, #444cf7 0.5px, #1f1f1f 1px, #181818);
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+form {
+    padding: 25%;
+    background-color: #181818;
+    box-shadow: 10px 10px 10px #000000;
+    border: 1px solid white;
+    border-radius: 10px;
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+input[type="password"] {
+    margin-bottom: 50%;
+    width: 100%;
+}
+
+form p {
+    color: yellow;
+}
+
+form input[type="file"] {
+    width: 100%;
+    background: #000000;
+    color: white;
+    padding: 5%;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    size: 60;
+}
+
+form input[type="submit"] {
+    color: rgb(255, 255, 255);
+    background: black;
+    transition: 0.5s;
+    padding: 5px;
+}
+
+form input[type="submit"]:hover {
+    color: yellow;
+    padding: 10px;
+}
+
+p {
+    color: rgb(163, 157, 255);
+}
+
+a {
+    margin: auto;
+    grid-column: 2/3;
+    grid-row: 3/4;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+img {
+    border: 1px solid white;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px #000000;
+    grid-row: 2/3;
+    grid-column: 3/4;
+    max-width: 80%;
+    max-height: 80%;
+    margin: auto;
+}

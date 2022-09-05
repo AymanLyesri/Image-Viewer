@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/views/add/add.css" />
+    <title>add</title>
+</head>
+
+<body>
+    <p id="credit">Powered and Maintained By AYMAN LYESRI</p>
+
+    <p>
+        <%= response %>
+    </p>
+
+    <form action="/add" method="post" enctype="multipart/form-data">
+        <input type="password" name="admin" placeholder="FOR ADMIN ONLY, LEAVE IT EMPTY" />
+        <br />
+        <input type="file" accept="image/*" name="image" id="image" multiple />
+        <p>Please COMPRESS before uploading</p>
+        <input type="submit" value="Upload" />
+    </form>
+
+    <img id="blah" src="#" alt="your image" />
+
+    <a href="/">Home</a>
+</body>
+
+<script src="/views/add/add.js"></script>
+
+</html>

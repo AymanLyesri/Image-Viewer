@@ -1,0 +1,80 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-color: #ffffff;
+    background-image: radial-gradient(#ff0000 2px, #1b1b1b 2px);
+    background-size: 40px 40px;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.2fr 1fr 1fr 1fr;
+}
+
+#credit {
+    color: #000000;
+    text-transform: uppercase;
+    grid-row: 1/2;
+    grid-column: 1/5;
+    text-align: center;
+    height: 10%;
+    transition: 0.5s;
+}
+
+#credit:hover {
+    color: yellow;
+}
+
+#tutorial {
+    color: yellow;
+}
+
+img {
+    max-width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    border: 1px black solid;
+    border-radius: 5px;
+    box-shadow: 10px 10px 10px #000000;
+    max-height: 50vh;
+    transition: 0.5s;
+}
+
+img:hover {
+    border: 1px yellow solid;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0);
+    transform: scale(1.5);
+}
+
+img:active {
+    border-radius: 1px;
+    border: 0px;
+    box-shadow: 15px 15px 10px #00000000;
+    transform: scale(7);
+    position: fixed;
+    /* or absolute */
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    max-width: 10vw;
+    max-height: 10vh;
+}
+
+figure {
+    margin: 0;
+}
+
+figcaption {
+    margin-top: 5%;
+    text-align: center;
+    transition: 0.5s;
+}
+
+figcaption:hover {
+    color: yellow;
+}

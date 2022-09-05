@@ -1,0 +1,72 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-color: #ff0000;
+    background-image: repeating-radial-gradient( circle at 0 0, transparent 0, #000000 75vw), repeating-linear-gradient( #444cf755, #191d79);
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+p {
+    color: #2b30c2;
+    grid-column: 2/3;
+    grid-row: 1/2;
+    height: 10%;
+    transition: 0.5s;
+}
+
+p:hover {
+    color: yellow;
+}
+
+div {
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+div a {
+    width: 50%;
+    border: 3px rgb(255, 0, 200) solid;
+    border-radius: 5px;
+    background: black;
+    color: white;
+    text-decoration: none;
+    transition: 0.5s;
+    padding: 5px;
+}
+
+div a:hover {
+    padding: 10px;
+}
+
+div form {
+    margin-top: 20%;
+}
+
+span input {
+    border-radius: 10px;
+    color: rgb(255, 0, 200);
+    background: #000000;
+    transition: 0.5s;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+span input:hover {
+    color: yellow;
+    text-decoration: solid;
+    text-transform: uppercase;
+    background: #000000;
+    padding: 3%;
+}
+
+span p {
+    color: rgb(255, 0, 200)
+}
