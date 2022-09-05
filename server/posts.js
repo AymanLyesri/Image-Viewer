@@ -1,14 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const Blog = require("../models/blogs");
-const Password = require("../models/password");
-const Pie = require("../models/pies");
 
 router.get("/", (req, res) => {
     Blog.find()
+        .limit(15)
         .then((result) => {
             res.render("../views/posts/posts.ejs", {
                 result: result,
+                offset: 0,
             });
         })
         .catch((err) => {
@@ -17,25 +17,22 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-    password = req.body.password;
+    let offset = parseInt(req.body.offset);
 
-    Password.find()
-        .then((key) => {
-            console.log("key : " + key[0].password + " || password : " + password);
-            if (key[0].password == password) {
-                Pie.find()
-                    .then((result) => {
-                        res.render("../views/posts/posts.ejs", {
-                            result: result,
-                        });
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                    });
-            } else {
-                console.log("password not good bruh");
-                res.render("../views/index/index.ejs");
-            }
+    if (req.body.next == "next") {
+        offset += 15;
+    }
+
+    console.log("offset : " + offset);
+
+    Blog.find()
+        .skip(offset)
+        .limit(15)
+        .then((result) => {
+            res.render("../views/posts/posts.ejs", {
+                result: result,
+                offset: offset,
+            });
         })
         .catch((err) => {
             console.log(err);

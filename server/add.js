@@ -69,7 +69,7 @@ router.post("/", upload.array("image"), (req, res) => {
                         console.log("image saved!!");
                     })
                     .catch((err) => {
-                        console.log(err);
+                        console.log("image : " + image.filename + " not uploaded");
                         if (res.headersSent !== true) {
                             res.render("../views/add/add.ejs", { response: err });
                         }

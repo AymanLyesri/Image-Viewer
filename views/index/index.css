@@ -13,6 +13,11 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+    transition: 0.5s;
+}
+
+h1 {
+    color: #ea00ff;
 }
 
 p {
@@ -62,7 +67,6 @@ span input {
 span input:hover {
     color: yellow;
     text-decoration: solid;
-    text-transform: uppercase;
     background: #000000;
     padding: 3%;
 }

@@ -46,7 +46,6 @@ img {
 }
 
 img:hover {
-    border: 1px yellow solid;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0);
     transform: scale(1.5);
 }
@@ -77,4 +76,39 @@ figcaption {
 
 figcaption:hover {
     color: yellow;
+}
+
+#next {
+    grid-column: 5/6;
+    grid-row: -1;
+    margin: auto;
+    margin-bottom: 0;
+}
+
+#next input[type="submit"] {
+    margin: 0;
+    margin-bottom: 0;
+    padding: 5%;
+    padding-right: 5vw;
+    padding-left: 5vw;
+    transition: 0.5s;
+}
+
+#next input[type="submit"]:hover {
+    padding-bottom: 10vh;
+}
+
+button {
+    grid-column: 1/2;
+    grid-row: -1;
+    margin: auto;
+    margin-bottom: 0;
+    padding: 5%;
+    padding-right: 5vw;
+    padding-left: 5vw;
+    transition: 0.5s;
+}
+
+button:hover {
+    padding-bottom: 10vh;
 }
