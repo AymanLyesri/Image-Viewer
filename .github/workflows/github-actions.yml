@@ -7,10 +7,8 @@ jobs:
   # uses: strumwolf/delete-deployment-environment@4ecf54b789989ab28201f3e5a7606aff114bc4d6
   uses: strumwolf/delete-deployment-environment@v2.2.0
   with:
-    # GitHub access token
-    token: 
     # Environment to be deleted
-    environment: 
+    environment: animefeet
     # Only remove deployments, keep the environment. Defaults to false
     onlyRemoveDeployments: # optional
     # Only inactive deployments, keep the environment and deployments. Defaults to false
