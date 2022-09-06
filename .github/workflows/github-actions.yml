@@ -1,9 +1,7 @@
 name: Delete Environment (default settings)
 
 on:
-  delete:
-    branches-ignore:
-      - main
+  deployment
 
 jobs:
   delete:
@@ -13,4 +11,4 @@ jobs:
         with:
           # ⚠️ The provided token needs permission for admin write:org
           token: ${{ secrets.GITHUB_TOKEN }}
-          environment: my-environment-name
+          environment: animefeet
