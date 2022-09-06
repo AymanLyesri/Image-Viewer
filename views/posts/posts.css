@@ -71,10 +71,15 @@ figure {
 figcaption {
     margin-top: 5%;
     text-align: center;
+}
+
+figcaption a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
     transition: 0.5s;
 }
 
-figcaption:hover {
+figcaption a:hover {
     color: yellow;
 }
 

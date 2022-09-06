@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -21,7 +23,12 @@ app.use("/posts", posts);
 app.use("/secret", secret);
 
 const dbUrl =
-    "mongodb+srv://ayman:avalid@pics.5yrtzme.mongodb.net/all?retryWrites=true&w=majority";
+    "mongodb+srv://" +
+    process.env.NAME +
+    ":" +
+    process.env.PASSWORD +
+    "@pics.5yrtzme.mongodb.net/all?retryWrites=true&w=majority";
+
 mongoose
     .connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
     .then((result) => {
