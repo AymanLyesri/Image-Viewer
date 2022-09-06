@@ -1,7 +1,7 @@
 on: 
   deployment
 
-jobs:
+job:
   - name: Delete Deployment Environment
   # You may pin to the exact commit or the version.
   # uses: strumwolf/delete-deployment-environment@4ecf54b789989ab28201f3e5a7606aff114bc4d6
