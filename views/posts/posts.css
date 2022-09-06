@@ -11,16 +11,11 @@ body {
     width: 100%;
     margin: 0;
     padding: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 0.2fr 1fr 1fr 1fr;
 }
 
 #credit {
     color: #000000;
     text-transform: uppercase;
-    grid-row: 1/2;
-    grid-column: 1/5;
     text-align: center;
     height: 10%;
     transition: 0.5s;
@@ -31,18 +26,29 @@ body {
 }
 
 #tutorial {
+    text-align: center;
     color: yellow;
+    border: 1px solid white;
+    border-radius: 10px;
+    background: #1b1b1b;
+    width: 50%;
+    margin-left: 25%;
+}
+
+#image-grid {
+    margin-top: 10vh;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
 }
 
 img {
     max-width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
     border: 1px black solid;
     border-radius: 5px;
     box-shadow: 10px 10px 10px #000000;
     max-height: 50vh;
     transition: 0.5s;
+    margin: 0 auto;
 }
 
 img:hover {
@@ -64,7 +70,16 @@ img:active {
     max-height: 10vh;
 }
 
+.image-wide {
+    grid-column: span 2/auto;
+}
+
+.image-tall {
+    grid-row: span 2/auto;
+}
+
 figure {
+    padding: 0;
     margin: 0;
 }
 
@@ -84,15 +99,12 @@ figcaption a:hover {
 }
 
 #next {
-    grid-column: 5/6;
-    grid-row: -1;
-    margin: auto;
-    margin-bottom: 0;
+    position: fixed;
+    bottom: 0%;
+    right: 0%;
 }
 
 #next input[type="submit"] {
-    margin: 0;
-    margin-bottom: 0;
     padding: 5%;
     padding-right: 5vw;
     padding-left: 5vw;
@@ -104,14 +116,13 @@ figcaption a:hover {
 }
 
 button {
-    grid-column: 1/2;
-    grid-row: -1;
-    margin: auto;
-    margin-bottom: 0;
-    padding: 5%;
+    padding: 1%;
     padding-right: 5vw;
     padding-left: 5vw;
     transition: 0.5s;
+    position: fixed;
+    bottom: 0%;
+    left: 0%;
 }
 
 button:hover {

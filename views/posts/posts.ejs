@@ -16,29 +16,33 @@
         <br /> --> Click for <strong>MORE ZOOM</strong> <br /><br /> --> Click the <strong>ID</strong> for download
     </p>
 
-    <% result.forEach(element => { %>
-        <figure>
-            <img src="data:<%= element.type %>;base64,<%= element.data %>" />
-            <figcaption>
-                <a href="data:<%= element.type %>;base64,<%= element.data %>" download="image_<%= element.id %>">
-          { _id : <%= element.id %> }
-        </a>
-            </figcaption>
-        </figure>
+    <div id="image-grid">
+        <% result.forEach(element => { %>
+            <figure>
+                <img src="data:<%= element.type %>;base64,<%= element.data %>" />
+                <figcaption>
+                    <a href="data:<%= element.type %>;base64,<%= element.data %>" download="image_<%= element.id %>">
+            { _id : <%= element.id %> }
+          </a>
+                </figcaption>
+            </figure>
 
-        <% }); %>
+            <% }); %>
+    </div>
 
-            <form id="next" action="/posts" method="POST">
-                <input type="hidden" name="offset" value="<%= offset %>" />
-                <input type="hidden" name="next" value="next" />
-                <input type="submit" value="next" />
-            </form>
+    <form id="next" action="/posts" method="POST">
+        <input type="hidden" name="offset" value="<%= offset %>" />
+        <input type="hidden" name="next" value="next" />
+        <input type="submit" value="next" />
+    </form>
 
-            <% if(offset>=15){ %>
+    <% if(offset>=15){ %>
 
-                <button onclick="history.back()">Go Back</button>
+        <button onclick="history.back()">Go Back</button>
 
-                <% } %>
+        <% } %>
 </body>
+
+<script src="/views/posts/posts.js"></script>
 
 </html>
