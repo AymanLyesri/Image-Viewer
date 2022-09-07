@@ -3,6 +3,9 @@
     "version": "1.0.0",
     "description": "an image uploader and viewer",
     "main": "index.js",
+    "engines": {
+        "node": "14.x"
+    },
     "scripts": {
         "start": "node server/index.js",
         "dev": "nodemon server/index.js"
