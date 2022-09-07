@@ -7,8 +7,8 @@
         "node": "14.x"
     },
     "scripts": {
-        "start": "node server/index.js",
-        "dev": "nodemon server/index.js"
+        "start": "node index.js",
+        "dev": "nodemon index.js"
     },
     "author": "ayman",
     "license": "ISC",

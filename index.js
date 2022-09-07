@@ -4,9 +4,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const compression = require("compression");
-const add = require("./add.js");
-const posts = require("./posts.js");
-const secret = require("./secret.js");
+const add = require("./server/add.js");
+const posts = require("./server/posts.js");
+const secret = require("./server/secret.js");
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -39,7 +39,7 @@ mongoose
 ///////////////////////////////////
 
 app.get("/", (req, res) => {
-    res.render("../views/index/index.ejs");
+    res.render("./views/index/index.ejs");
 });
 
 app.listen(port, () => console.log(`server started on port ${port}`));
