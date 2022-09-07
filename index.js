@@ -39,7 +39,7 @@ mongoose
 ///////////////////////////////////
 
 app.get("/", (req, res) => {
-    res.render("./views/index/index.ejs");
+    res.render("index.ejs");
 });
 
 app.listen(port, () => console.log(`server started on port ${port}`));
