@@ -1,0 +1,42 @@
+h1 {
+    color: white;
+}
+
+p {
+    font-size: small;
+    color: aliceblue;
+}
+
+.imageGrid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 200px);
+    grid-template-rows: repeat(auto-fill, 1fr);
+}
+
+@media screen and (max-width: 600px) {
+    .imageGrid {
+        grid-template-columns: 100%;
+    }
+}
+
+.imageGrid div {
+    height: 100%;
+}
+
+.imageGrid img {
+    width: 90%;
+    border-radius: 10px;
+}
+
+.imageGrid span {
+    color: white;
+}
+
+.image-wide {
+    grid-column: span 2/auto;
+}
+
+.image-tall {
+    grid-row: span 2/auto;
+}

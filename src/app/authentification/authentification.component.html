@@ -1,0 +1,14 @@
+<h1>login to post</h1>
+<hr />
+
+<form [formGroup]="form" (submit)="onSubmit()">
+    <mat-form-field>
+        <input matInput formControlName="name" placeholder="name" type="text" />
+        <mat-hint align="end">for admin only</mat-hint>
+        <mat-error *ngIf="name.invalid && name.touched">Empty Name</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput formControlName="password" placeholder="password" type="password" /> </mat-form-field><br />
+    <button mat-raised-button type="submit">login</button>
+    <p *ngIf="getResponse() == 'NO'">false login</p>
+</form>

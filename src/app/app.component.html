@@ -1,0 +1,3 @@
+<app-upload *ngIf="this.authentificationservice.getResponse() == 'OK'"></app-upload>
+<app-posts></app-posts>
+<app-authentification *ngIf="this.authentificationservice.getResponse() != 'OK'"></app-authentification>
