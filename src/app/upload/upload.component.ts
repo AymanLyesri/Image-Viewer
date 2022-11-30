@@ -4,6 +4,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Image } from '../models/Image';
 import { ImageService } from '../services/image.service';
 
+import { NgxImageCompressService } from 'ngx-image-compress';
+
 @Component({
   selector: 'app-upload',
   templateUrl: './upload.component.html',
@@ -11,10 +13,20 @@ import { ImageService } from '../services/image.service';
 })
 export class UploadComponent implements OnInit {
   form: FormGroup;
-  images: Image[] = [];
-  imageData: string[] = [];
+  compressedImages: { name: string; image: string }[] = [];
 
-  constructor(private imageservice: ImageService) {}
+  imgResultBeforeCompress: string[] = [];
+  imgResultAfterCompress: string[] = [];
+  imgResultMultiple: {
+    image: string;
+    fileName: string;
+    orientation: number;
+  }[] = [];
+
+  constructor(
+    private imageservice: ImageService,
+    private imageCompress: NgxImageCompressService
+  ) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -24,34 +36,74 @@ export class UploadComponent implements OnInit {
   }
 
   onSubmit() {
-    this.imageservice.addImages(this.form.value.name, this.form.value.images);
+    this.imageservice.addImages(this.compressedImages);
     this.form.reset();
-
-    console.log('form value after reset : ', this.form.value);
-
-    this.imageData.splice(0);
+    // this.imageData.splice(0);
   }
 
-  onFileSelect(event: Event) {
-    this.imageData.splice(0);
+  uploadMultipleFiles() {
+    return this.imageCompress
+      .uploadMultipleFiles()
+      .then(
+        (
+          filelist: { image: string; fileName: string; orientation: number }[]
+        ) => {
+          this.imgResultMultiple = filelist;
+          console.warn(`${filelist.length} files selected`);
 
-    const files = (event.target as HTMLInputElement).files;
+          filelist.forEach((file, index: number) => {
+            console.warn(
+              index,
+              'Size in bytes is now:',
+              this.imageCompress.byteCount(file.image)
+            );
 
-    console.log(files);
+            this.imgResultBeforeCompress.push(file.image);
 
-    this.form.patchValue({ images: files });
-    const allowedMimeTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+            this.imageCompress
+              .compressFile(file.image, file.orientation, 50, 50)
+              .then((result: string) => {
+                this.imgResultAfterCompress.push(result);
+                console.warn(
+                  `Compressed: ${result.substring(0, 50)}... (${
+                    result.length
+                  } characters)`
+                );
+                console.warn(
+                  index,
+                  'Size in bytes is now:',
+                  this.imageCompress.byteCount(result)
+                );
 
-    for (let index = 0; index < files.length; index++) {
-      if (files && allowedMimeTypes.includes(files[index].type)) {
-        const reader = new FileReader();
-        reader.onload = () => {
-          this.imageData[index] = reader.result as string;
-        };
-        reader.readAsDataURL(files[index]);
-      }
-    }
-
-    // (event.target as HTMLInputElement).value = '';
+                this.compressedImages.push({
+                  name: file.fileName,
+                  image: result,
+                });
+              });
+          });
+        }
+      );
   }
+  // onFileSelect(event: Event) {
+  //   this.imageData.splice(0);
+
+  //   const files = (event.target as HTMLInputElement).files;
+
+  //   console.log(files);
+
+  //   this.form.patchValue({ images: files });
+  //   const allowedMimeTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+
+  //   for (let index = 0; index < files.length; index++) {
+  //     if (files && allowedMimeTypes.includes(files[index].type)) {
+  //       const reader = new FileReader();
+  //       reader.onload = () => {
+  //         this.imageData[index] = reader.result as string;
+  //       };
+  //       reader.readAsDataURL(files[index]);
+  //     }
+  //   }
+
+  //   // (event.target as HTMLInputElement).value = '';
+  // }
 }

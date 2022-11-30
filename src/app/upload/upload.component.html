@@ -1,14 +1,14 @@
 <h1>Create image post</h1>
 <hr />
-<form [formGroup]="form" (submit)="onSubmit()">
-    <label for="name"><input formControlName="name" type="text" placeholder="enter name" />
-  </label>
-    <label for="file"><input (change)="onFileSelect($event)" type="file" multiple />
-  </label>
-    <div><button type="submit">upload image</button></div>
-</form>
-<div *ngIf="imageData" class="preview">
-    <img *ngFor="let data of imageData" src="{{ data }}" alt="form.value.name" />
+<div>
+    <button (click)="uploadMultipleFiles()">Upload images</button>
+    <div *ngIf="imgResultBeforeCompress.length >= 0" class="preview">
+        <img *ngFor="let data of imgResultBeforeCompress" src="{{ data }}" />
+    </div>
+    <div *ngIf="imgResultAfterCompress.length >= 0" class="preview">
+        <img *ngFor="let data of imgResultAfterCompress" src="{{ data }}" />
+    </div>
+    <button (click)="onSubmit()">upload image</button>
 </div>
 
 <p style="color: white">{{ form.value.name }}</p>

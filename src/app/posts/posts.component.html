@@ -3,7 +3,7 @@
 
 <div class="imageGrid" *ngIf="images.length > 0">
     <div *ngFor="let image of images">
-        <img #img [id]="image._id" src="data:image/jpeg;base64,{{ image.data }}" alt="{{ image.name }}" />
+        <img #img [id]="image._id" src="{{ image.data }}" alt="{{ image.name }}" />
         <p>{{ image.name }}</p>
         <p>{{ image._id }}</p>
         <button (click)="deleteImage(image._id)">delete</button>

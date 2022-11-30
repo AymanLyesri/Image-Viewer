@@ -5,9 +5,11 @@
         "ng": "ng",
         "start": "ng serve",
         "startprod": "ng serve --configuration production",
-        "build": "ng build --configuration production --base-href https://AymanLyesri.github.io/image-viewer/",
-        "deploy": "ngh --dir dist/hello-world"
-
+        "startfinal": "ng serve --configuration final",
+        "buildprod": "ng build --configuration production",
+        "buildfinal": "ng build --configuration final",
+        "buildghpages": "ng build --configuration production --base-href `https://AymanLyesri.github.io/Image-Viewer/`",
+        "deployghpages": "ngh --dir dist/app"
     },
     "private": true,
     "dependencies": {
@@ -21,6 +23,7 @@
         "@angular/platform-browser": "^14.2.0",
         "@angular/platform-browser-dynamic": "^14.2.0",
         "@angular/router": "^14.2.0",
+        "ngx-image-compress": "^13.1.13",
         "rxjs": "~7.5.0",
         "tslib": "^2.3.0",
         "zone.js": "~0.11.4"
@@ -30,6 +33,7 @@
         "@angular/cli": "~14.2.5",
         "@angular/compiler-cli": "^14.2.0",
         "@types/jasmine": "~4.0.0",
+        "angular-cli-ghpages": "^1.0.5",
         "jasmine-core": "~4.3.0",
         "karma": "~6.4.0",
         "karma-chrome-launcher": "~3.1.0",

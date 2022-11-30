@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { Image } from '../models/Image';
 
 @Injectable({
@@ -10,7 +11,7 @@ import { Image } from '../models/Image';
 export class ImageService {
   private images: Image[] = [];
   private images$ = new Subject<Image[]>(); //observable
-  readonly url = 'https://image-viewer-api-production.up.railway.app/api/';
+  readonly url = environment.URL + '/api/';
 
   constructor(private http: HttpClient) {}
 
@@ -32,16 +33,11 @@ export class ImageService {
     return this.images$.asObservable();
   }
 
-  addImages(name: string, images: FileList): void {
-    var imageData = new FormData();
-    imageData.append('name', name);
-
-    for (let i = 0; i < images.length; i++) {
-      imageData.append('images', images[i]);
-    }
+  addImages(images: { name: string; image: string }[]): void {
+    console.log(images);
 
     this.http
-      .post<{ image: Image[] }>(this.url + 'posts', imageData)
+      .post<{ image: Image[] }>(this.url + 'posts', { images: images })
       .subscribe((imageData) => {
         this.images = this.images.concat(imageData.image);
         this.images$.next(this.images);

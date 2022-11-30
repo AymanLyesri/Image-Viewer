@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { ResponseStatus } from '../models/response';
 
 @Injectable({
@@ -8,10 +9,10 @@ import { ResponseStatus } from '../models/response';
 export class AuthentificationService {
   constructor(private http: HttpClient) {}
 
-  readonly url = 'https://image-viewer-api-production.up.railway.app/api/login';
+  readonly url = environment.URL + '/api/login';
   private response: any;
 
-  authentify(name: string, password: string) {
+  login(name: string, password: string) {
     this.http
       .post<{ response: ResponseStatus }>(this.url, {
         name: name,

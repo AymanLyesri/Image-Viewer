@@ -1,3 +1,4 @@
-<app-upload *ngIf="this.authentificationservice.getResponse() == 'OK'"></app-upload>
+<app-upload></app-upload>
+<p>{{ getTitle() }}</p>
 <app-posts></app-posts>
-<app-authentification *ngIf="this.authentificationservice.getResponse() != 'OK'"></app-authentification>
+<!-- <app-authentification *ngIf="this.authentificationservice.getResponse() != 'OK'"></app-authentification> -->
