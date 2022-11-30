@@ -12,7 +12,6 @@ import { NgxImageCompressService } from 'ngx-image-compress';
   styleUrls: ['./upload.component.css'],
 })
 export class UploadComponent implements OnInit {
-  form: FormGroup;
   compressedImages: { name: string; image: string }[] = [];
 
   imgResultBeforeCompress: string[] = [];
@@ -23,22 +22,20 @@ export class UploadComponent implements OnInit {
     orientation: number;
   }[] = [];
 
+  ready: boolean = false;
+
   constructor(
     private imageservice: ImageService,
     private imageCompress: NgxImageCompressService
   ) {}
 
-  ngOnInit(): void {
-    this.form = new FormGroup({
-      name: new FormControl(null),
-      images: new FormControl(null),
-    });
-  }
+  ngOnInit(): void {}
 
   onSubmit() {
     this.imageservice.addImages(this.compressedImages);
-    this.form.reset();
     // this.imageData.splice(0);
+    this.imgResultBeforeCompress.splice(0);
+    this.imgResultAfterCompress.splice(0);
   }
 
   uploadMultipleFiles() {
@@ -54,7 +51,7 @@ export class UploadComponent implements OnInit {
           filelist.forEach((file, index: number) => {
             console.warn(
               index,
-              'Size in bytes is now:',
+              'Old Size in bytes:',
               this.imageCompress.byteCount(file.image)
             );
 
@@ -81,6 +78,7 @@ export class UploadComponent implements OnInit {
                 });
               });
           });
+          this.ready = true;
         }
       );
   }

@@ -1,14 +1,18 @@
 <h1>Create image post</h1>
 <hr />
-<div>
-    <button (click)="uploadMultipleFiles()">Upload images</button>
-    <div *ngIf="imgResultBeforeCompress.length >= 0" class="preview">
+<section>
+    <button class="compress" (click)="uploadMultipleFiles()">
+    compress images
+  </button>
+    <div *ngIf="imgResultBeforeCompress.length != 0" class="preview">
+        <p>ORIGINAL</p>
         <img *ngFor="let data of imgResultBeforeCompress" src="{{ data }}" />
     </div>
-    <div *ngIf="imgResultAfterCompress.length >= 0" class="preview">
+    <div *ngIf="imgResultAfterCompress.length != 0" class="preview">
+        <p>COMPRESSED</p>
         <img *ngFor="let data of imgResultAfterCompress" src="{{ data }}" />
     </div>
-    <button (click)="onSubmit()">upload image</button>
-</div>
-
-<p style="color: white">{{ form.value.name }}</p>
+    <button class="upload" *ngIf="ready == true" (click)="onSubmit()">
+    upload image
+  </button>
+</section>

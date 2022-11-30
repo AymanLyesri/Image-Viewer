@@ -5,18 +5,15 @@ h1 {
     color: rgb(255, 255, 255);
 }
 
-form {
-    height: 20%;
-    background-color: rgb(0, 0, 0);
-    border: 2px rgb(255, 255, 255) solid;
-    border-radius: 10px;
-    width: 70%;
-    padding: 10%;
-    margin: 5%;
+section {
+    text-align: center;
 }
 
-label {
-    display: block;
+p {
+    border-radius: 10px;
+    margin: auto;
+    border: 1px white solid;
+    color: aliceblue;
 }
 
 .preview {
