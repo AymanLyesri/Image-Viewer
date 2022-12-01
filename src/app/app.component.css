@@ -1,27 +1,8 @@
-app-upload {
-    grid-column: 2/4;
-    grid-row: 1/3;
-}
-
-app-posts {
-    text-align: center;
-    grid-column: 1/-1;
-    grid-row: 3;
-}
-
-app-authentification {
-    grid-column: 2/4;
-    grid-row: 1/3;
-}
-
-p {
-    color: aliceblue;
-}
-
+/* 
 @media screen and (max-width: 600px) {
     app-upload,
     app-authentification {
         grid-column: 1/auto;
         grid-row: 1/3;
     }
-}
+} */

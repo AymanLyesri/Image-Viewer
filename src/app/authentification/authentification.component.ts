@@ -31,6 +31,10 @@ export class AuthentificationComponent implements OnInit {
     return this.form.get('name');
   }
 
+  get password() {
+    return this.form.get('password');
+  }
+
   onSubmit() {
     console.log('in client ', this.form.value);
     this.authentificationservice.login(
@@ -41,6 +45,6 @@ export class AuthentificationComponent implements OnInit {
   }
 
   getResponse() {
-    return this.authentificationservice.getResponse();
+    return this.authentificationservice.isLoggedIn();
   }
 }

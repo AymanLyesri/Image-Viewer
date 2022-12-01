@@ -1,3 +1,8 @@
+:host {
+    background-image: linear-gradient(rgb(2, 2, 2), rgb(63, 63, 63));
+    background-color: black;
+}
+
 h1 {
     color: white;
 }

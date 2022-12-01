@@ -2,11 +2,9 @@
 
 html {
     margin: 0;
-    padding: 0;
     height: 100%;
     width: 100%;
-    background-image: url("./assets/ava7patterns_wallpaper_1920x1080_1336.png");
-    background-attachment: fixed;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -14,30 +12,15 @@ body {
     padding: 0;
     height: 100%;
     width: 100%;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 app-root {
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 25%));
-    grid-template-rows: repeat(auto-fill, 200px);
-    justify-content: center;
 }
 
-@media screen and (max-width: 600px) {
-    app-root {
-        grid-template-columns: 100%;
-        justify-content: unset;
-    }
-}
-
-html,
-body {
-    height: 100%;
-}
-
-body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+router-outlet {
+    display: none;
 }

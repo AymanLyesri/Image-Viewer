@@ -15,13 +15,18 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
+import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './home/home.component';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostsComponent,
     UploadComponent,
-    AuthentificationComponent
+    AuthentificationComponent,
+    HomeComponent,
+    NavComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,8 +39,9 @@ import { MatChipsModule } from '@angular/material/chips';
     MatButtonModule,
     MatCheckboxModule,
     MatChipsModule,
+    AppRoutingModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

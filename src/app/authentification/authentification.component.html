@@ -9,6 +9,8 @@
     </mat-form-field>
     <mat-form-field>
         <input matInput formControlName="password" placeholder="password" type="password" /> </mat-form-field><br />
-    <button mat-raised-button type="submit">login</button>
-    <p *ngIf="getResponse() == 'NO'">false login</p>
+    <button *ngIf="name.valid && password.valid" mat-raised-button type=" submit ">
+    login
+  </button>
+    <p *ngIf="!getResponse()">false login</p>
 </form>

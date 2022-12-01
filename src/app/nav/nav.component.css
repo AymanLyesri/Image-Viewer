@@ -1,0 +1,56 @@
+:host {
+    height: 3vh;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+}
+
+nav {
+    height: 100%;
+    margin-left: 25%;
+    width: 50%;
+    background-image: linear-gradient(to right, rgb(0, 0, 0), rgb(58, 58, 58), rgb(0, 0, 0));
+    border: 1px rgb(41, 41, 41) solid;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px;
+    display: flex;
+}
+
+.login {
+    margin-left: 10%;
+    height: 100%;
+}
+
+.login a {
+    height: 100%;
+    text-decoration: none;
+    display: flex;
+}
+
+.login a span {
+    height: 20px;
+    width: 20px;
+    display: block;
+    /* Other styles here */
+}
+
+.login a p {
+    color: yellow;
+}
+
+.home a {
+    height: 100%;
+    text-decoration: none;
+    display: flex;
+}
+
+.home a span {
+    height: 20px;
+    width: 20px;
+    display: block;
+    /* Other styles here */
+}
+
+.home a p {
+    color: yellow;
+}

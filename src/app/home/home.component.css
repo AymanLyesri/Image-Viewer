@@ -1,0 +1,28 @@
+:host {
+    width: 100%;
+    height: 100vh;
+    background-image: url("../../assets/ava7patterns_wallpaper_1920x1080_1336.png");
+    background-color: black;
+    background-attachment: fixed;
+}
+
+section {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+section div {
+    width: 200px;
+    height: 200px;
+    color: aliceblue;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -39px 0 0 -65px;
+}
+
+section div a {
+    text-decoration: none;
+    color: rgb(105, 176, 238);
+}
