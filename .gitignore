@@ -42,4 +42,4 @@ testem.log
 Thumbs.db
 
 #env variables
-/src/environments/
+src/environments/environment.final.ts

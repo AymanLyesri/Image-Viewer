@@ -8,7 +8,7 @@
         "startfinal": "ng serve --configuration final",
         "buildprod": "ng build --configuration production",
         "buildfinal": "ng build --configuration final",
-        "buildghpages": "ng build --configuration production --base-href `https://AymanLyesri.github.io/Image-Viewer/`",
+        "buildghpages": "ng build --configuration production --base-href 'https://AymanLyesri.github.io/Image-Viewer/'",
         "deployghpages": "ngh --dir dist/app"
     },
     "private": true,
