@@ -1,18 +1,20 @@
 :host {
-    height: 3vh;
-    width: 100%;
+    margin-top: 5%;
+    height: 5vh;
+    width: 100vw;
     position: fixed;
     z-index: 100;
 }
 
 nav {
+    color: black;
     height: 100%;
     margin-left: 25%;
     width: 50%;
-    background-image: linear-gradient(to right, rgb(0, 0, 0), rgb(58, 58, 58), rgb(0, 0, 0));
+    background-color: white;
     border: 1px rgb(41, 41, 41) solid;
     border-radius: 10px;
-    box-shadow: 10px 10px 10px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.479);
     display: flex;
 }
 
@@ -28,6 +30,9 @@ nav {
 }
 
 .login a span {
+    background-image: url("../../assets/user-solid-dark.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 20px;
     width: 20px;
     display: block;
@@ -35,7 +40,7 @@ nav {
 }
 
 .login a p {
-    color: yellow;
+    color: rgb(0, 0, 0);
 }
 
 .home a {
@@ -45,6 +50,9 @@ nav {
 }
 
 .home a span {
+    background-image: url("../../assets/house-solid-dark.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 20px;
     width: 20px;
     display: block;
@@ -52,5 +60,5 @@ nav {
 }
 
 .home a p {
-    color: yellow;
+    color: rgb(0, 0, 0);
 }

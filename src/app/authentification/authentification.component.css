@@ -1,14 +1,25 @@
 :host {
-    width: 100%;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
     height: 100vh;
-    background-image: url("../../assets/ava7patterns_wallpaper_1920x1080_1336.png");
-    background-color: black;
-    background-attachment: fixed;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 h1 {
     text-align: center;
-    margin-top: 10%;
+    margin-top: 20%;
     padding: 0;
     height: 10%;
     color: rgb(255, 255, 255);
@@ -19,7 +30,7 @@ hr {
 }
 
 form {
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
     border: 2px rgb(255, 255, 255) solid;
     border-radius: 10px;
     width: 50%;
@@ -34,7 +45,7 @@ form mat-form-field {
 }
 
 p {
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 input {

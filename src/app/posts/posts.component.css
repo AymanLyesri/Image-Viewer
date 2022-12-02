@@ -1,15 +1,23 @@
 :host {
-    background-image: linear-gradient(rgb(2, 2, 2), rgb(63, 63, 63));
-    background-color: black;
+    background-image: url("../../assets/fabric-texture-background.jpg");
+    background-size: cover;
 }
 
 h1 {
     color: white;
 }
 
-p {
-    font-size: small;
-    color: aliceblue;
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(20%);
+    transition: all 1s;
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
 }
 
 .imageGrid {
@@ -19,23 +27,19 @@ p {
     grid-template-rows: repeat(auto-fill, 1fr);
 }
 
-@media screen and (max-width: 600px) {
-    .imageGrid {
-        grid-template-columns: 100%;
-    }
-}
-
 .imageGrid div {
-    height: 100%;
+    margin: 5%;
 }
 
 .imageGrid img {
-    width: 90%;
+    width: 100%;
     border-radius: 10px;
 }
 
-.imageGrid span {
-    color: white;
+.imageGrid p {
+    text-align: center;
+    font-size: small;
+    color: aliceblue;
 }
 
 .image-wide {
@@ -44,4 +48,18 @@ p {
 
 .image-tall {
     grid-row: span 2/auto;
+}
+
+@media screen and (max-width: 600px) {
+    .image-wide,
+    .image-tall {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+    .imageGrid {
+        grid-template-columns: 100%;
+    }
+    .imageGrid img {
+        width: 100%;
+    }
 }

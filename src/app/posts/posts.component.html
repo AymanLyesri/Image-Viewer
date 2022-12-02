@@ -3,9 +3,11 @@
 
 <div class="imageGrid" *ngIf="images.length > 0">
     <div *ngFor="let image of images">
-        <img #img [id]="image._id" src="{{ image.data }}" alt="{{ image.name }}" />
+        <img #img #hidden class="hidden" [id]="image._id" src="{{ image.data }}" alt="{{ image.name }}" />
         <p>{{ image.name }}</p>
         <p>{{ image._id }}</p>
-        <button (click)="deleteImage(image._id)">delete</button>
+        <button *ngIf="isLoggedIn()" (click)="deleteImage(image._id)">
+      delete
+    </button>
     </div>
 </div>
