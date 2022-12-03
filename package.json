@@ -10,7 +10,7 @@
         "buildfinal": "ng build --configuration final",
         "buildghpages": "ng build --configuration production --base-href 'https://AymanLyesri.github.io/Image-Viewer/'",
         "deployghpages": "ngh --dir dist/app",
-        "firedeploy": "ng build --configuration final && firebase init"
+        "firedeploy": "ng build --configuration final && firebase deploy"
     },
     "private": true,
     "dependencies": {

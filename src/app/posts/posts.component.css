@@ -34,7 +34,8 @@ h1 {
 }
 
 .imageGrid {
-    width: 100%;
+    width: 90%;
+    margin-inline: 5%;
     display: grid;
     grid-template-columns: repeat(auto-fill, 200px);
     grid-template-rows: repeat(auto-fill, 1fr);
@@ -47,25 +48,29 @@ h1 {
 .imageGrid img {
     width: 100%;
     border-radius: 10px;
+    transition: transform .2s;
 }
 
 .imageGrid img:hover {
+    border: 1px white solid;
     position: relative;
     z-index: 500;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.541);
     transform: scale(1.5);
 }
 
 .imageGrid img:active {
     border-radius: 1px;
     box-shadow: 15px 15px 10px #00000000;
-    transform: scale(7);
+    transform: scale(4);
     position: absolute;
     z-index: 500;
-    margin: auto;
-    top: 50vh;
-    left: 50vw;
-    max-width: 10vw;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 10%;
+    object-fit: cover;
 }
 
 .imageGrid p {
