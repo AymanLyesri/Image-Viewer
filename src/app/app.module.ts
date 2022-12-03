@@ -23,6 +23,7 @@ import { ParallaxDirective } from './directives/parallax/parallax.directive';
 import { HiddenElementDirective } from './directives/hidden-element/hidden-element.directive';
 import { ImageRatioDirective } from './directives/image-ratio/image-ratio.directive';
 import { CursorDirective } from './directives/cursor/cursor.directive';
+import { NavScrollDirective } from './directives/nav-scroll/nav-scroll.directive';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { CursorDirective } from './directives/cursor/cursor.directive';
     HiddenElementDirective,
     ImageRatioDirective,
     CursorDirective,
+    NavScrollDirective,
   ],
   imports: [
     BrowserModule,
