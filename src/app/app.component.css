@@ -7,8 +7,20 @@
     }
 } */
 
+.all {
+    display: none;
+}
+
 span {
     height: 0.5em;
     width: 100%;
     background-color: black;
+}
+
+.cursor {
+    width: 3rem;
+    height: 3rem;
+    border: 2px solid black;
+    border-radius: 50%;
+    position: absolute;
 }

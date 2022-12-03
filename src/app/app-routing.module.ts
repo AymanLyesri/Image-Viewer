@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { UploadComponent } from './upload/upload.component';
 import { AuthGuard } from './services/auth/auth.guard';
+import { CursorDirective } from './directives/cursor/cursor.directive';
 
 const Routes: Routes = [
   {

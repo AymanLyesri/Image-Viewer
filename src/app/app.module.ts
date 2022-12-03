@@ -19,6 +19,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 
+import { ParallaxDirective } from './directives/parallax/parallax.directive';
+import { HiddenElementDirective } from './directives/hidden-element/hidden-element.directive';
+import { ImageRatioDirective } from './directives/image-ratio/image-ratio.directive';
+import { CursorDirective } from './directives/cursor/cursor.directive';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +32,10 @@ import { NavComponent } from './nav/nav.component';
     AuthentificationComponent,
     HomeComponent,
     NavComponent,
+    ParallaxDirective,
+    HiddenElementDirective,
+    ImageRatioDirective,
+    CursorDirective,
   ],
   imports: [
     BrowserModule,

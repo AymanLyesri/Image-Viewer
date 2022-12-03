@@ -1,6 +1,19 @@
 :host {
-    background-image: url("../../assets/fabric-texture-background.jpg");
-    background-size: cover;
+    background: linear-gradient(-45deg, #000000, #494949, #461b1b, #000000);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 h1 {

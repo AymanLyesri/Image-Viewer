@@ -1,6 +1,6 @@
+import { style } from '@angular/animations';
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { AuthentificationService } from './services/authentification.service';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +8,7 @@ import { AuthentificationService } from './services/authentification.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'app';
-
-  constructor(public authentificationservice: AuthentificationService) {}
+  constructor() {}
 
   getTitle() {
     return environment.NAME;

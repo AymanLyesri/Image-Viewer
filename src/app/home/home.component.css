@@ -1,7 +1,7 @@
 :host {
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
+    background-size: 200% 200%;
+    animation: gradient 10s ease infinite;
     height: 100vh;
 }
 
@@ -23,7 +23,7 @@ section {
     position: relative;
 }
 
-section div {
+.title {
     width: 200px;
     height: 200px;
     color: aliceblue;
@@ -33,7 +33,68 @@ section div {
     margin: -39px 0 0 -65px;
 }
 
-section div a {
+.title a {
     text-decoration: none;
     color: rgb(105, 176, 238);
+}
+
+.icons {
+    width: 5em;
+    height: 5em;
+    position: absolute;
+    top: 75%;
+    left: 50%;
+}
+
+.arrow1 {
+    background-image: url('../../assets/down-arrow-svgrepo-com.svg');
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    display: block;
+    position: absolute;
+    animation: arrow1 2s ease infinite;
+    animation-delay: 1.5s;
+}
+
+.arrow2 {
+    background-image: url('../../assets/down-arrow-svgrepo-com.svg');
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    display: block;
+    position: absolute;
+    animation: arrow1 2s ease infinite;
+    animation-delay: 0.5s;
+}
+
+
+/* 
+.arrow3 {
+    background-image: url('../../assets/down-arrow-svgrepo-com.svg');
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    display: block;
+    animation: arrow1 1s ease infinite;
+    animation-delay: 0.6s;
+} */
+
+@keyframes arrow1 {
+    0% {
+        margin-top: 0;
+        opacity: 0;
+    }
+    33% {
+        margin-top: 40px;
+        opacity: 1;
+    }
+    66% {
+        margin-top: 40px;
+        opacity: 1;
+    }
+    100% {
+        margin-top: 80px;
+        opacity: 0;
+    }
 }
