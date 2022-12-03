@@ -49,6 +49,25 @@ h1 {
     border-radius: 10px;
 }
 
+.imageGrid img:hover {
+    position: relative;
+    z-index: 500;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0);
+    transform: scale(1.5);
+}
+
+.imageGrid img:active {
+    border-radius: 1px;
+    box-shadow: 15px 15px 10px #00000000;
+    transform: scale(7);
+    position: absolute;
+    z-index: 500;
+    margin: auto;
+    top: 50vh;
+    left: 50vw;
+    max-width: 10vw;
+}
+
 .imageGrid p {
     text-align: center;
     font-size: small;
