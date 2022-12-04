@@ -47,3 +47,7 @@ src/environments/environment.final.ts
 
 #angular icon
 src/assets/favicon.ico
+
+.firebaserc
+
+firebase-debug.log
