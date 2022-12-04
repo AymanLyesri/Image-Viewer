@@ -44,3 +44,6 @@ Thumbs.db
 
 #env variables
 src/environments/environment.final.ts
+
+#angular icon
+src/final.png
