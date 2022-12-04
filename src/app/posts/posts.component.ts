@@ -69,6 +69,8 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
         });
 
       this.oldLastImg = (entries[0].target as any).toString(); //for not repeating
+    } else {
+      console.log('same');
     }
   });
 

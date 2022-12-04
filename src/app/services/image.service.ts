@@ -27,14 +27,18 @@ export class ImageService {
     return this.http
       .get<{ images: Image[] }>(this.url + 'posts', { params: params })
       .pipe(
-        map((imageData) => {
+        map((imageData: any) => {
           return imageData.images;
         })
       )
       .subscribe((images) => {
         this.spinnerService.requestEnded();
-        this.images = this.images.concat(images);
-        this.images$.next(this.images);
+        this.spinnerService.resetSpinner();
+
+        if (images) {
+          this.images = this.images.concat(images);
+          this.images$.next(this.images);
+        }
       });
   }
 

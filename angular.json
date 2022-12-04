@@ -83,6 +83,9 @@
                         "production": {
                             "browserTarget": "app:build:production"
                         },
+                        "final": {
+                            "browserTarget": "app:build:final"
+                        },
                         "development": {
                             "browserTarget": "app:build:development"
                         }
