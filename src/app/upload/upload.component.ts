@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
 
-import { Image } from '../models/Image';
 import { ImageService } from '../services/image.service';
 
 import { NgxImageCompressService } from 'ngx-image-compress';
@@ -84,26 +82,4 @@ export class UploadComponent implements OnInit {
         }
       );
   }
-  // onFileSelect(event: Event) {
-  //   this.imageData.splice(0);
-
-  //   const files = (event.target as HTMLInputElement).files;
-
-  //   console.log(files);
-
-  //   this.form.patchValue({ images: files });
-  //   const allowedMimeTypes = ['image/png', 'image/jpeg', 'image/jpg'];
-
-  //   for (let index = 0; index < files.length; index++) {
-  //     if (files && allowedMimeTypes.includes(files[index].type)) {
-  //       const reader = new FileReader();
-  //       reader.onload = () => {
-  //         this.imageData[index] = reader.result as string;
-  //       };
-  //       reader.readAsDataURL(files[index]);
-  //     }
-  //   }
-
-  //   // (event.target as HTMLInputElement).value = '';
-  // }
 }

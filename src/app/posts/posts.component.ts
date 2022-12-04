@@ -27,8 +27,8 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(
     private imageservice: ImageService,
-    private render: Renderer2,
-    private AuthService: AuthentificationService
+    private AuthService: AuthentificationService,
+    private render: Renderer2
   ) {}
 
   ngOnInit(): void {
@@ -57,6 +57,8 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
       entries[0].isIntersecting &&
       (entries[0].target as any) != this.oldLastImg
     ) {
+      console.log('not the same');
+
       this.offset += 10;
 
       this.imageservice.getPosts(this.offset);
@@ -66,9 +68,26 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
           this.images = images;
         });
 
-      this.oldLastImg = entries[0].target as any; //for not repeating
+      this.oldLastImg = (entries[0].target as any).toString(); //for not repeating
     }
   });
+
+  private idSubscribtion: Subscription;
+
+  deleteImage(id: string) {
+    this.imageservice.deleteImage(id);
+
+    this.idSubscribtion = this.imageservice.getId().subscribe((id: string) => {
+      console.log(id);
+      this.imgs.forEach((img) => {
+        if (img.nativeElement.id == id) {
+          console.log('lol img');
+          let parent = this.render.parentNode(img.nativeElement);
+          parent.remove();
+        }
+      });
+    });
+  }
 
   ngOnDestroy(): void {
     this.imageSubscribtion.unsubscribe();

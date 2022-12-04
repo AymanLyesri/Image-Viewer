@@ -17,6 +17,7 @@
 }
 
 h1 {
+    text-align: center;
     color: white;
 }
 
@@ -85,6 +86,11 @@ h1 {
 
 .image-tall {
     grid-row: span 2/auto;
+}
+
+.image-big {
+    grid-row: span 2/auto;
+    grid-column: span 2/auto;
 }
 
 @media screen and (max-width: 600px) {
