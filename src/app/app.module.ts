@@ -25,6 +25,7 @@ import { ImageRatioDirective } from './directives/image-ratio/image-ratio.direct
 import { CursorDirective } from './directives/cursor/cursor.directive';
 import { NavScrollDirective } from './directives/nav-scroll/nav-scroll.directive';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     ImageRatioDirective,
     CursorDirective,
     NavScrollDirective,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,

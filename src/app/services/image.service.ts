@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Image } from '../models/Image';
+import { SpinnerService } from './spinner/spinner.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,9 +14,14 @@ export class ImageService {
   private images$ = new Subject<Image[]>(); //observable
   readonly url = environment.URL + '/api/';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private spinnerService: SpinnerService
+  ) {}
 
   getPosts(offset: number) {
+    this.spinnerService.requestStarted();
+
     let params = new HttpParams().set('offset', offset);
 
     return this.http
@@ -26,6 +32,7 @@ export class ImageService {
         })
       )
       .subscribe((images) => {
+        this.spinnerService.requestEnded();
         this.images = this.images.concat(images);
         this.images$.next(this.images);
       });
