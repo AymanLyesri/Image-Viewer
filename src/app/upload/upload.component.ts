@@ -32,8 +32,10 @@ export class UploadComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() {
-    this.imageservice.addImages(this.compressedImages);
-    // this.imageData.splice(0);
+    this.compressedImages.forEach((compressedImage) => {
+      this.imageservice.addImage(compressedImage);
+    });
+
     this.imgResultBeforeCompress.splice(0);
     this.imgResultAfterCompress.splice(0);
   }

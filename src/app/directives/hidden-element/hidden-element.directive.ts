@@ -9,19 +9,11 @@ export class HiddenElementDirective {
     this.observer.observe(element.nativeElement);
   }
 
-  options = {
-    root: null as Element,
-    rootMargin: '0px',
-    threshold: 0.1,
-  };
-
-  observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('show');
-      } else {
-        entry.target.classList.remove('show');
-      }
-    });
-  }, this.options);
+  observer = new IntersectionObserver((entry) => {
+    if (entry[0].isIntersecting) {
+      entry[0].target.classList.add('show');
+    } else {
+      entry[0].target.classList.remove('show');
+    }
+  });
 }

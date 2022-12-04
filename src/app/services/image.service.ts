@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -15,16 +15,18 @@ export class ImageService {
 
   constructor(private http: HttpClient) {}
 
-  getPosts() {
+  getPosts(offset: number) {
+    let params = new HttpParams().set('offset', offset);
+
     return this.http
-      .get<{ images: Image[] }>(this.url + 'posts')
+      .get<{ images: Image[] }>(this.url + 'posts', { params: params })
       .pipe(
         map((imageData) => {
           return imageData.images;
         })
       )
       .subscribe((images) => {
-        this.images = images;
+        this.images = this.images.concat(images);
         this.images$.next(this.images);
       });
   }
@@ -33,11 +35,11 @@ export class ImageService {
     return this.images$.asObservable();
   }
 
-  addImages(images: { name: string; image: string }[]): void {
-    console.log(images);
+  addImage(image: { name: string; image: string }): void {
+    console.log(image);
 
     this.http
-      .post<{ image: Image[] }>(this.url + 'posts', { images: images })
+      .post<{ image: Image[] }>(this.url + 'posts', { image: image })
       .subscribe((imageData) => {
         this.images = this.images.concat(imageData.image);
         this.images$.next(this.images);

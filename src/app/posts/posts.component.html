@@ -3,7 +3,7 @@
 
 <div class="imageGrid" *ngIf="images.length > 0; else loading">
     <div *ngFor="let image of images">
-        <img appImageRatio appHiddenElement [id]="image._id" src="{{ image.data }}" alt="{{ image.name }}" />
+        <img #img appImageRatio appHiddenElement [id]="image._id" src="{{ image.data }}" alt="{{ image.name }}" />
         <p appHiddenElement>{{ image.name }}</p>
         <p appHiddenElement>{{ image._id }}</p>
         <button appHiddenElement *ngIf="isLoggedIn()">delete</button>

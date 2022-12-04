@@ -6,14 +6,12 @@ import {
   OnInit,
   QueryList,
   Renderer2,
-  ViewChild,
   ViewChildren,
 } from '@angular/core';
 import { ImageService } from '../services/image.service';
 import { Image } from '../models/Image';
-import { Subscription, timeout } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { AuthentificationService } from '../services/authentification.service';
-import { CursorDirective } from '../directives/cursor/cursor.directive';
 
 @Component({
   selector: 'app-posts',
@@ -21,6 +19,9 @@ import { CursorDirective } from '../directives/cursor/cursor.directive';
   styleUrls: ['./posts.component.css'],
 })
 export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
+  @ViewChildren('img') imgs: QueryList<ElementRef>;
+
+  private offset: number = 0;
   public images: Image[] = [];
   private imageSubscribtion: Subscription;
 
@@ -31,7 +32,7 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.imageservice.getPosts();
+    this.imageservice.getPosts(this.offset);
     this.imageSubscribtion = this.imageservice
       .getImagesStream()
       .subscribe((images: Image[]) => {
@@ -43,26 +44,31 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
     return this.AuthService.isLoggedIn();
   }
 
-  ngAfterViewInit(): void {}
+  oldLastImg: string;
 
-  // private idSubscribtion: Subscription;
+  ngAfterViewInit(): void {
+    this.imgs.changes.subscribe(() => {
+      this.observer.observe(this.imgs.last.nativeElement);
+    });
+  }
 
-  // deleteImage(id: string) {
-  //   this.imageservice.deleteImage(id);
+  private observer = new IntersectionObserver((entries) => {
+    if (
+      entries[0].isIntersecting &&
+      (entries[0].target as any) != this.oldLastImg
+    ) {
+      this.offset += 10;
 
-  //   this.idSubscribtion = this.imageservice.getId().subscribe((id: string) => {
-  //     console.log(id);
-  //     this.imgs.forEach((img) => {
-  //       if (img.nativeElement.id == id) {
-  //         console.log('lol img');
+      this.imageservice.getPosts(this.offset);
+      this.imageSubscribtion = this.imageservice
+        .getImagesStream()
+        .subscribe((images: Image[]) => {
+          this.images = images;
+        });
 
-  //         let parent = this.render.parentNode(img.nativeElement);
-
-  //         parent.remove();
-  //       }
-  //     });
-  //   });
-  // }
+      this.oldLastImg = entries[0].target as any; //for not repeating
+    }
+  });
 
   ngOnDestroy(): void {
     this.imageSubscribtion.unsubscribe();

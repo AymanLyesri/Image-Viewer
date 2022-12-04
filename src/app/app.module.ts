@@ -24,6 +24,7 @@ import { HiddenElementDirective } from './directives/hidden-element/hidden-eleme
 import { ImageRatioDirective } from './directives/image-ratio/image-ratio.directive';
 import { CursorDirective } from './directives/cursor/cursor.directive';
 import { NavScrollDirective } from './directives/nav-scroll/nav-scroll.directive';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,7 @@ import { NavScrollDirective } from './directives/nav-scroll/nav-scroll.directive
     MatChipsModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
