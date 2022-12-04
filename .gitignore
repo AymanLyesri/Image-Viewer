@@ -46,4 +46,4 @@ Thumbs.db
 src/environments/environment.final.ts
 
 #angular icon
-src/final.png
+src/assets/favicon.ico

@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   URL: 'http://localhost:5000',
   NAME: 'Image Viewer',
+  FAVICON: 'favicon.ico',
 };
 
 /*

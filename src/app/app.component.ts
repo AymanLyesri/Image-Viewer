@@ -1,5 +1,5 @@
 import { style } from '@angular/animations';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -7,10 +7,16 @@ import { environment } from 'src/environments/environment';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   constructor() {}
+
+  favicon: HTMLLinkElement = document.querySelector('#favicon');
 
   getTitle() {
     return environment.NAME;
+  }
+
+  ngOnInit(): void {
+    this.favicon.href = environment.FAVICON;
   }
 }
