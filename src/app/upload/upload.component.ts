@@ -57,26 +57,73 @@ export class UploadComponent implements OnInit {
 
             this.imgResultBeforeCompress.push(file.image);
 
-            this.imageCompress
-              .compressFile(file.image, file.orientation, 50, 50, 1000, 1000)
-              .then((result: string) => {
-                this.imgResultAfterCompress.push(result);
-                console.warn(
-                  `Compressed: ${result.substring(0, 50)}... (${
-                    result.length
-                  } characters)`
-                );
-                console.warn(
-                  index,
-                  'Size in bytes is now:',
-                  this.imageCompress.byteCount(result)
-                );
+            if (this.imageCompress.byteCount(file.image) > 10000000) {
+              this.imageCompress
+                .compressFile(file.image, file.orientation, 20, 20, 700, 700)
+                .then((result: string) => {
+                  this.imgResultAfterCompress.push(result);
+                  console.warn(
+                    `Compressed: ${result.substring(0, 50)}... (${
+                      result.length
+                    } characters)`
+                  );
+                  console.warn(
+                    index,
+                    'Size in bytes is now:',
+                    this.imageCompress.byteCount(result)
+                  );
 
-                this.compressedImages.push({
-                  name: file.fileName,
-                  image: result,
+                  this.compressedImages.push({
+                    name: file.fileName,
+                    image: result,
+                  });
                 });
-              });
+            } else if (
+              this.imageCompress.byteCount(file.image) > 1000000 &&
+              this.imageCompress.byteCount(file.image) < 10000000
+            ) {
+              this.imageCompress
+                .compressFile(file.image, file.orientation, 40, 40, 700, 700)
+                .then((result: string) => {
+                  this.imgResultAfterCompress.push(result);
+                  console.warn(
+                    `Compressed: ${result.substring(0, 50)}... (${
+                      result.length
+                    } characters)`
+                  );
+                  console.warn(
+                    index,
+                    'Size in bytes is now:',
+                    this.imageCompress.byteCount(result)
+                  );
+
+                  this.compressedImages.push({
+                    name: file.fileName,
+                    image: result,
+                  });
+                });
+            } else {
+              this.imageCompress
+                .compressFile(file.image, file.orientation, 50, 50, 700, 700)
+                .then((result: string) => {
+                  this.imgResultAfterCompress.push(result);
+                  console.warn(
+                    `Compressed: ${result.substring(0, 50)}... (${
+                      result.length
+                    } characters)`
+                  );
+                  console.warn(
+                    index,
+                    'Size in bytes is now:',
+                    this.imageCompress.byteCount(result)
+                  );
+
+                  this.compressedImages.push({
+                    name: file.fileName,
+                    image: result,
+                  });
+                });
+            }
           });
           this.ready = true;
         }
