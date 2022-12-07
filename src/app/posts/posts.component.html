@@ -6,6 +6,7 @@
         <img #img appImageRatio appHiddenElement [id]="image._id" src="{{ image.data }}" alt="{{ image.name }}" />
         <p appHiddenElement>{{ image.name }}</p>
         <p appHiddenElement>{{ image._id }}</p>
+        <p appHiddenElement>{{ getSize(image.data) }} kb</p>
         <button appHiddenElement *ngIf="isLoggedIn()" (click)="deleteImage(image._id)">
       delete
     </button>

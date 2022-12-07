@@ -40,6 +40,10 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
       });
   }
 
+  getSize(data: string) {
+    return new TextEncoder().encode(data).length * 0.001;
+  }
+
   isLoggedIn() {
     return this.AuthService.isLoggedIn();
   }
