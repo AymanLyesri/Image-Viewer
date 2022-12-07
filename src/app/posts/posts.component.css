@@ -1,5 +1,5 @@
 :host {
-    background: linear-gradient(-45deg, #000000, #494949, #461b1b, #000000);
+    background: linear-gradient(-45deg, #000000, #494949, #363636, #494949, #000000);
     background-size: 400% 400%;
     animation: gradient 10s ease infinite;
 }

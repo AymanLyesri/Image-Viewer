@@ -6,6 +6,7 @@ import { AuthentificationComponent } from './authentification/authentification.c
 import { UploadComponent } from './upload/upload.component';
 import { AuthGuard } from './services/auth/auth.guard';
 import { CursorDirective } from './directives/cursor/cursor.directive';
+import { DonationComponent } from './donation/donation.component';
 
 const Routes: Routes = [
   {
@@ -20,6 +21,10 @@ const Routes: Routes = [
   {
     path: 'login',
     component: AuthentificationComponent,
+  },
+  {
+    path: 'donation',
+    component: DonationComponent,
   },
   {
     path: 'upload',

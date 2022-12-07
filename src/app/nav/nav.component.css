@@ -7,6 +7,60 @@
     justify-content: center;
 }
 
+.donation {
+    text-align: center;
+    border-radius: 10px;
+    border: 1px white solid;
+    margin: 0;
+    color: white;
+    width: 20%;
+    background-color: black;
+    transition: all 1s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.donation:hover {
+    width: 50%;
+    background: linear-gradient(90deg, #09ff00, #ff0000, #0026ff, #ff00d4);
+    animation: gradient 1s ease infinite;
+    background-size: 400% 400%;
+}
+
+.donation span {
+    margin-inline: 5%;
+    background-image: url('../../assets/icons8-cup-96.png');
+    background-size: cover;
+    width: 2em;
+    height: 2em;
+}
+
+.donation:hover span {
+    animation: shaking 1s ease infinite;
+}
+
+@keyframes shaking {
+    0% {
+        transform: rotate(45deg);
+    }
+    50% {
+        transform: rotate(-45deg);
+    }
+    100% {
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 0%;
+    }
+}
+
 .nav-wide {
     margin-top: 5%;
     color: black;
@@ -40,11 +94,6 @@
     }
 }
 
-.github {
-    align-self: flex-end;
-    margin: auto;
-}
-
 .login {
     margin: auto;
     height: 100%;
@@ -65,6 +114,10 @@
     display: block;
     width: 1em;
     height: 1em;
+}
+
+.login:hover span {
+    animation: shaking 1s ease infinite;
 }
 
 .login a p {
@@ -95,8 +148,31 @@
     display: block;
 }
 
+.home:hover span {
+    animation: shaking 1s ease infinite;
+}
+
 .home a p {
     margin: 0;
     padding: 0;
     color: rgb(0, 0, 0);
+}
+
+.github {
+    align-self: flex-end;
+    margin: auto;
+    height: 100%;
+    z-index: 1000;
+}
+
+.github span {
+    background-image: url("../../assets/icons8-github.svg");
+    background-size: cover;
+    display: block;
+    height: 2em;
+    width: 2em;
+}
+
+.github:hover span {
+    animation: shaking 1s ease infinite;
 }

@@ -26,6 +26,7 @@ import { CursorDirective } from './directives/cursor/cursor.directive';
 import { NavScrollDirective } from './directives/nav-scroll/nav-scroll.directive';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { DonationComponent } from './donation/donation.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     CursorDirective,
     NavScrollDirective,
     SpinnerComponent,
+    DonationComponent,
   ],
   imports: [
     BrowserModule,

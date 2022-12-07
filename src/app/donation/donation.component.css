@@ -1,0 +1,44 @@
+:host {
+    background: linear-gradient(-45deg, #2600fd, #9a89fa, #7970f0, #00d9ff);
+    background-size: 200% 200%;
+    animation: gradient 10s ease infinite;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.paypal a {
+    padding-inline: 50%;
+    padding-block: 25%;
+    color: white;
+    border: 1px rgb(255, 255, 255) solid;
+    background-color: rgb(112, 80, 255);
+    text-decoration: none;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.paypal a:hover {
+    padding-block: 50%;
+    font-size: large;
+    text-decoration: underline;
+    text-decoration: overline;
+    color: rgb(255, 255, 0);
+    border: 1px rgb(255, 255, 255) solid;
+    background-color: rgb(91, 54, 253);
+    text-decoration: none;
+    border-radius: 25%;
+}
