@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { SpinnerService } from '../services/spinner/spinner.service';
 
 @Component({
@@ -23,5 +24,9 @@ export class SpinnerComponent implements OnInit {
       this.showSpinner = status === 'start';
       this.cdRef.detectChanges();
     });
+  }
+
+  getUrl() {
+    return environment.FAVICON;
   }
 }

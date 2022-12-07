@@ -9,7 +9,8 @@
         "buildprod": "ng build --configuration production",
         "buildfinal": "ng build --configuration final",
         "ghpages": "ng build --configuration production --base-href https://AymanLyesri.github.io/Image-Viewer/ && ngh --dir dist/app",
-        "firebase": "ng build --configuration final && firebase deploy"
+        "firebase": "ng build --configuration final && firebase deploy",
+        "toall": "ng build --configuration production --base-href https://AymanLyesri.github.io/Image-Viewer/ && ngh --dir dist/app && ng build --configuration final && firebase deploy"
     },
     "private": true,
     "dependencies": {

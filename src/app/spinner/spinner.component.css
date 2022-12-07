@@ -22,7 +22,6 @@
     height: 10em;
     position: fixed;
     z-index: 1009;
-    background-image: url("../../assets/favicon.ico");
     background-size: cover;
     animation: bouncing 0.4s cubic-bezier(0.1, 0.25, 0.1, 1) 0s infinite alternate both;
 }
