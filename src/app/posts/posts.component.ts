@@ -25,6 +25,7 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
   private offset: number = 0;
   public images: Image[] = [];
   private imageSubscribtion: Subscription;
+  private imgChanges: Subscription;
 
   constructor(
     private imageservice: ImageService,
@@ -49,34 +50,31 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
     return this.AuthService.isLoggedIn();
   }
 
-  oldLastImg: string;
-
   ngAfterViewInit(): void {
-    this.imgs.changes.subscribe(() => {
+    this.imgChanges = this.imgs.changes.subscribe(() => {
       this.observer.observe(this.imgs.last.nativeElement);
     });
   }
 
   private observer = new IntersectionObserver((entries) => {
-    if (
-      entries[0].isIntersecting &&
-      (entries[0].target.id as any) != this.oldLastImg
-    ) {
-      console.log('not the same');
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        this.offset += 10;
 
-      this.offset += 10;
-
-      this.imageservice.getPosts(this.offset);
-      this.imageSubscribtion = this.imageservice
-        .getImagesStream()
-        .subscribe((images: Image[]) => {
-          this.images = images;
+        this.imageservice.getPosts(this.offset);
+        this.imageservice.getImagesStream().subscribe((images: Image[]) => {
+          if (this.images == images) {
+            return;
+          } else {
+            this.images = images;
+          }
         });
 
-      this.oldLastImg = (entries[0].target.id as any).toString(); //for not repeating
-    } else {
-      console.log('same offset:', this.offset);
-    }
+        entries.forEach((entry) => {
+          this.observer.unobserve(entry.target);
+        });
+      }
+    });
   });
 
   private idSubscribtion: Subscription;
@@ -91,6 +89,7 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
           console.log('lol img');
           let parent = this.render.parentNode(img.nativeElement);
           parent.remove();
+          this.idSubscribtion.unsubscribe();
         }
       });
     });
