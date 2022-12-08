@@ -38,6 +38,10 @@ export class UploadComponent implements OnInit {
     this.imgResultAfterCompress.splice(0);
   }
 
+  getSize(data: string) {
+    return new TextEncoder().encode(data).length * 0.001;
+  }
+
   uploadMultipleFiles() {
     return this.imageCompress
       .uploadMultipleFiles()
@@ -51,13 +55,13 @@ export class UploadComponent implements OnInit {
           filelist.forEach((file, index: number) => {
             console.warn(
               index,
-              'Old Size in bytes:',
-              this.imageCompress.byteCount(file.image)
+              'Old Size in kbytes:',
+              this.getSize(file.image)
             );
 
             this.imgResultBeforeCompress.push(file.image);
 
-            if (this.imageCompress.byteCount(file.image) > 10000000) {
+            if (this.getSize(file.image) > 1000) {
               this.imageCompress
                 .compressFile(file.image, file.orientation, 20, 20, 700, 700)
                 .then((result: string) => {
@@ -69,8 +73,8 @@ export class UploadComponent implements OnInit {
                   );
                   console.warn(
                     index,
-                    'Size in bytes is now:',
-                    this.imageCompress.byteCount(result)
+                    'Size in kbytes is now:',
+                    this.getSize(result)
                   );
 
                   this.compressedImages.push({
@@ -79,8 +83,8 @@ export class UploadComponent implements OnInit {
                   });
                 });
             } else if (
-              this.imageCompress.byteCount(file.image) > 1000000 &&
-              this.imageCompress.byteCount(file.image) < 10000000
+              this.getSize(file.image) > 200 &&
+              this.getSize(file.image) < 1000
             ) {
               this.imageCompress
                 .compressFile(file.image, file.orientation, 40, 40, 700, 700)
@@ -93,8 +97,8 @@ export class UploadComponent implements OnInit {
                   );
                   console.warn(
                     index,
-                    'Size in bytes is now:',
-                    this.imageCompress.byteCount(result)
+                    'Size in kbytes is now:',
+                    this.getSize(result)
                   );
 
                   this.compressedImages.push({
@@ -104,7 +108,7 @@ export class UploadComponent implements OnInit {
                 });
             } else {
               this.imageCompress
-                .compressFile(file.image, file.orientation, 50, 50, 700, 700)
+                .compressFile(file.image, file.orientation, 100, 70, 700, 700)
                 .then((result: string) => {
                   this.imgResultAfterCompress.push(result);
                   console.warn(
@@ -115,7 +119,7 @@ export class UploadComponent implements OnInit {
                   console.warn(
                     index,
                     'Size in bytes is now:',
-                    this.imageCompress.byteCount(result)
+                    this.getSize(result)
                   );
 
                   this.compressedImages.push({

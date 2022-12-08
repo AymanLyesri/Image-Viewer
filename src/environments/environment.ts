@@ -7,6 +7,8 @@ export const environment = {
   URL: 'http://localhost:5000',
   NAME: 'Image Viewer',
   FAVICON: 'favicon.ico',
+  HELPICON: '../assets/gmail.png',
+  HELPURL: 'https://lyesri99@gmail.com',
 };
 
 /*

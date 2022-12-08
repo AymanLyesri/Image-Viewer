@@ -6,6 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthentificationService } from '../services/authentification.service';
+import { User } from '../models/User';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-authentification',
@@ -25,6 +27,19 @@ export class AuthentificationComponent implements OnInit {
       name: ['', [Validators.required]],
       password: ['' /** default value */, [Validators.required]],
     });
+    this.autoLogin();
+  }
+
+  autoLogin() {
+    let userData: { name: string; password: string } = JSON.parse(
+      localStorage.getItem('userData')
+    );
+    if (!userData) {
+      console.log('no userdata');
+      return;
+    }
+    let user: User = { name: userData.name, password: userData.password };
+    this.authentificationservice.login(user.name, user.password);
   }
 
   get name() {
@@ -41,10 +56,16 @@ export class AuthentificationComponent implements OnInit {
       this.form.value.name,
       this.form.value.password
     );
-    this.form.reset();
   }
 
   getResponse() {
     return this.authentificationservice.isLoggedIn();
+  }
+
+  getLink() {
+    return environment.HELPURL;
+  }
+  getIcon() {
+    return "background-image:url('" + environment.HELPICON + "')";
   }
 }

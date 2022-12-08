@@ -42,13 +42,16 @@
 
 @keyframes shaking {
     0% {
-        transform: rotate(45deg);
+        transform: rotate(0deg);
     }
-    50% {
+    33% {
         transform: rotate(-45deg);
     }
-    100% {
+    66% {
         transform: rotate(45deg);
+    }
+    100% {
+        transform: rotate(0deg);
     }
 }
 

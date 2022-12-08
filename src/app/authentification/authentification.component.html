@@ -1,4 +1,10 @@
-<h1>login to post</h1>
+<h1>login to post *For Admin Only*</h1>
+<section class="help">
+    <a [href]="getLink()" target="_blank">
+        <h2>DM me your best pics ^^</h2>
+        <span [style]="getIcon()"> </span>
+    </a>
+</section>
 <hr />
 
 <form [formGroup]="form" (submit)="onSubmit()">

@@ -21,6 +21,10 @@ h1 {
     color: white;
 }
 
+hr {
+    width: 80%;
+}
+
 .hidden {
     opacity: 0;
     filter: blur(5px);
@@ -43,6 +47,7 @@ h1 {
 }
 
 .imageGrid div {
+    margin-top: 10%;
     margin: 5%;
 }
 

@@ -27,6 +27,6 @@ export class SpinnerComponent implements OnInit {
   }
 
   getUrl() {
-    return environment.FAVICON;
+    return "background-image:url('" + environment.FAVICON + "');";
   }
 }

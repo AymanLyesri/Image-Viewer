@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { UploadComponent } from './upload/upload.component';
 import { AuthGuard } from './services/auth/auth.guard';
-import { CursorDirective } from './directives/cursor/cursor.directive';
+
 import { DonationComponent } from './donation/donation.component';
 
 const Routes: Routes = [
@@ -34,7 +34,7 @@ const Routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(Routes)],
+  imports: [RouterModule.forRoot(Routes, { scrollPositionRestoration: 'top' })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

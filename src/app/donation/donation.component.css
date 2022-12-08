@@ -20,12 +20,17 @@
     }
 }
 
+.paypal {
+    display: flex;
+    flex-direction: column;
+}
+
 .paypal a {
-    padding-inline: 50%;
+    text-align: center;
     padding-block: 25%;
     color: white;
     border: 1px rgb(255, 255, 255) solid;
-    background-color: rgb(112, 80, 255);
+    background-color: rgb(142, 181, 255);
     text-decoration: none;
     border-radius: 10px;
     transition: 0.5s;
@@ -36,9 +41,9 @@
     font-size: large;
     text-decoration: underline;
     text-decoration: overline;
-    color: rgb(255, 255, 0);
+    color: rgb(0, 26, 255);
     border: 1px rgb(255, 255, 255) solid;
-    background-color: rgb(91, 54, 253);
+    background-color: rgb(157, 188, 255);
     text-decoration: none;
     border-radius: 25%;
 }

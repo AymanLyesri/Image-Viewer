@@ -5,7 +5,7 @@ import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
 })
 export class NavScrollDirective {
   @HostListener('window:scroll', ['$event'])
-  scollListen(event: UIEvent): void {
+  scrollListen(event: UIEvent): void {
     if (window.pageYOffset > 100) {
       this.render.addClass(this.element.nativeElement, 'nav-narrow');
     } else {

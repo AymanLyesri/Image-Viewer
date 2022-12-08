@@ -6,6 +6,7 @@ import {
   OnInit,
   QueryList,
   Renderer2,
+  ViewChild,
   ViewChildren,
 } from '@angular/core';
 import { ImageService } from '../services/image.service';

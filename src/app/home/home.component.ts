@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -7,6 +7,8 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  @ViewChild('window:scroll') scroll: ElementRef;
+
   constructor() {}
 
   ngOnInit(): void {}
