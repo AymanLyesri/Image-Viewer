@@ -19,8 +19,7 @@
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "tsconfig.app.json",
                         "assets": [
-                            "src/faviconOG.ico",
-                            "src/favicon.ico",
+                            "src/assets/favicon.ico",
                             "src/assets"
                         ],
                         "styles": [
@@ -46,7 +45,13 @@
                                 "replace": "src/environments/environment.ts",
                                 "with": "src/environments/environment.prod.ts"
                             }],
-                            "outputHashing": "all"
+                            "outputHashing": "all",
+                            "assets": [{
+                                "glob": "**/*",
+                                "input": "src/assets",
+                                "ignore": ["**/favicon.ico"],
+                                "output": "/assets"
+                            }]
                         },
                         "final": {
                             "budgets": [{
@@ -65,6 +70,7 @@
                                 "with": "src/environments/environment.final.ts"
                             }],
                             "outputHashing": "all"
+
                         },
                         "development": {
                             "buildOptimizer": false,

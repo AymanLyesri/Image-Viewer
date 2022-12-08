@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   URL: 'http://localhost:5000',
   NAME: 'Image Viewer',
-  FAVICON: 'favicon.ico',
+  FAVICON: '../assets/faviconbasic.ico',
   HELPICON: '../assets/gmail.png',
   HELPURL: 'https://lyesri99@gmail.com',
 };
