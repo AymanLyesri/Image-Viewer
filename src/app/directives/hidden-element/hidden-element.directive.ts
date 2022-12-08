@@ -9,11 +9,12 @@ export class HiddenElementDirective {
     this.observer.observe(element.nativeElement);
   }
 
-  observer = new IntersectionObserver((entry) => {
-    if (entry[0].isIntersecting) {
-      entry[0].target.classList.add('show');
-    } else {
-      entry[0].target.classList.remove('show');
+  observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      entries[0].target.classList.add('show');
+      entries.forEach((entry) => {
+        this.observer.unobserve(entry.target);
+      });
     }
   });
 }

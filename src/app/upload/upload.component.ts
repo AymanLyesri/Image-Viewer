@@ -49,6 +49,7 @@ export class UploadComponent implements OnInit {
         (
           filelist: { image: string; fileName: string; orientation: number }[]
         ) => {
+          this.compressedImages.splice(0);
           this.imgResultMultiple = filelist;
           console.warn(`${filelist.length} files selected`);
 
@@ -61,49 +62,30 @@ export class UploadComponent implements OnInit {
 
             this.imgResultBeforeCompress.push(file.image);
 
-            if (this.getSize(file.image) >= 1000) {
-              this.imageCompress
-                .compressFile(file.image, file.orientation, 40, 40, 600, 600)
-                .then((result: string) => {
-                  this.imgResultAfterCompress.push(result);
-                  console.warn(
-                    `Compressed: ${result.substring(0, 50)}... (${
-                      result.length
-                    } characters)`
-                  );
-                  console.warn(
-                    index,
-                    'Size in kbytes is now:',
-                    this.getSize(result)
-                  );
+            let quality: number = 100 - this.getSize(file.image) / 25;
 
-                  this.compressedImages.push({
-                    name: file.fileName,
-                    image: result,
-                  });
-                });
-            } else {
-              this.imageCompress
-                .compressFile(file.image, file.orientation, 70, 70, 700, 700)
-                .then((result: string) => {
-                  this.imgResultAfterCompress.push(result);
-                  console.warn(
-                    `Compressed: ${result.substring(0, 50)}... (${
-                      result.length
-                    } characters)`
-                  );
-                  console.warn(
-                    index,
-                    'Size in bytes is now:',
-                    this.getSize(result)
-                  );
+            if (quality <= 50 && file.image.substring(11, 14) != 'png')
+              //if not png
+              quality = 50;
 
-                  this.compressedImages.push({
-                    name: file.fileName,
-                    image: result,
-                  });
+            console.log('quality : ', quality);
+
+            this.imageCompress
+              .compressFile(file.image, file.orientation, 50, quality, 600, 600)
+              .then((result: string) => {
+                this.imgResultAfterCompress.push(result);
+
+                console.warn(
+                  index,
+                  'Size in kbytes is now:',
+                  this.getSize(result)
+                );
+
+                this.compressedImages.push({
+                  name: file.fileName,
+                  image: result,
                 });
-            }
+              });
           });
           this.ready = true;
         }
