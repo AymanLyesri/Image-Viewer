@@ -56,7 +56,7 @@ export class UploadComponent implements OnInit {
           filelist.forEach((file, index: number) => {
             console.warn(
               index,
-              'Old Size in kbytes:',
+              'Old Size in kbytes: ',
               this.getSize(file.image)
             );
 
