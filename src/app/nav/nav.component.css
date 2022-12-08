@@ -40,21 +40,6 @@
     animation: shaking 1s ease infinite;
 }
 
-@keyframes shaking {
-    0% {
-        transform: rotate(0deg);
-    }
-    33% {
-        transform: rotate(-45deg);
-    }
-    66% {
-        transform: rotate(45deg);
-    }
-    100% {
-        transform: rotate(0deg);
-    }
-}
-
 @keyframes gradient {
     0% {
         background-position: 0% 0%;
@@ -64,16 +49,19 @@
     }
 }
 
+nav {
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.479);
+    display: flex;
+    border: 1px rgb(41, 41, 41) solid;
+    background-color: white;
+}
+
 .nav-wide {
     margin-top: 5%;
     color: black;
     height: 100%;
     width: 90%;
-    background-color: white;
-    border: 1px rgb(41, 41, 41) solid;
-    border-radius: 10px;
-    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.479);
-    display: flex;
     transition: all 1s ease;
     justify-content: center;
 }
@@ -82,10 +70,6 @@
     margin-top: 1%;
     height: 80%;
     width: 50%;
-    background-color: white;
-    border: 1px rgb(41, 41, 41) solid;
-    border-radius: 10px;
-    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.479);
 }
 
 @media screen and (max-width: 600px) {

@@ -60,7 +60,7 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
   private observer = new IntersectionObserver((entries) => {
     if (
       entries[0].isIntersecting &&
-      (entries[0].target as any) != this.oldLastImg
+      (entries[0].target.id as any) != this.oldLastImg
     ) {
       console.log('not the same');
 
@@ -73,9 +73,9 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
           this.images = images;
         });
 
-      this.oldLastImg = (entries[0].target as any).toString(); //for not repeating
+      this.oldLastImg = (entries[0].target.id as any).toString(); //for not repeating
     } else {
-      console.log('same');
+      console.log('same offset:', this.offset);
     }
   });
 

@@ -50,3 +50,18 @@ app-root {
 router-outlet {
     display: none;
 }
+
+@keyframes shaking {
+    0% {
+        transform: rotate(0deg);
+    }
+    33% {
+        transform: rotate(-45deg);
+    }
+    66% {
+        transform: rotate(45deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
