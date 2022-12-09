@@ -15,6 +15,7 @@ export class HiddenElementDirective {
       entries.forEach((entry) => {
         this.observer.unobserve(entry.target);
       });
+      this.observer.disconnect();
     }
   });
 }

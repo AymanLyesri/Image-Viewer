@@ -19,11 +19,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 
-import { ParallaxDirective } from './directives/parallax/parallax.directive';
 import { HiddenElementDirective } from './directives/hidden-element/hidden-element.directive';
 import { ImageRatioDirective } from './directives/image-ratio/image-ratio.directive';
-import { CursorDirective } from './directives/cursor/cursor.directive';
-import { NavScrollDirective } from './directives/nav-scroll/nav-scroll.directive';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { DonationComponent } from './donation/donation.component';
@@ -36,11 +33,8 @@ import { DonationComponent } from './donation/donation.component';
     AuthentificationComponent,
     HomeComponent,
     NavComponent,
-    ParallaxDirective,
     HiddenElementDirective,
     ImageRatioDirective,
-    CursorDirective,
-    NavScrollDirective,
     SpinnerComponent,
     DonationComponent,
   ],
