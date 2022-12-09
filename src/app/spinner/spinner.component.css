@@ -3,19 +3,11 @@
         top: 40%;
     }
     100% {
-        top: 30%;
+        top: 37%;
     }
 }
 
-.page-overlay-wrapper {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.479);
-}
-
-.bee-spinner {
+.spinner {
     margin: 0;
     padding: 0;
     width: 10em;

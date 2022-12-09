@@ -1,6 +1,7 @@
 import { style } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { VisitesService } from './services/visites/visites.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  constructor() {}
+  constructor(private visitsService: VisitesService) {}
 
   favicon: HTMLLinkElement = document.querySelector('#favicon');
 
@@ -18,5 +19,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.favicon.href = environment.FAVICON;
+    this.visitsService.updateVisitors();
   }
 }

@@ -72,7 +72,14 @@ export class UploadComponent implements OnInit {
             console.log(index, ' quality : ', quality);
 
             this.imageCompress
-              .compressFile(file.image, file.orientation, quality, 600, 600)
+              .compressFile(
+                file.image,
+                file.orientation,
+                100,
+                quality,
+                600,
+                600
+              )
               .then((result: string) => {
                 this.imgResultAfterCompress.push(result);
 

@@ -48,6 +48,6 @@ src/environments/environment.final.ts
 #angular icon
 src/assets/favicon.ico
 
+#firebase nonsense
 .firebaserc
-
 firebase-debug.log

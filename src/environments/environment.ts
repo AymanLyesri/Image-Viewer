@@ -9,6 +9,7 @@ export const environment = {
   FAVICON: '../assets/faviconbasic.ico',
   HELPICON: '../assets/gmail.png',
   HELPURL: 'https://lyesri99@gmail.com',
+  COUNTKEY: 'image-viewer.web.app',
 };
 
 /*

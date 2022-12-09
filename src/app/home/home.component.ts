@@ -1,5 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { VisitesService } from '../services/visites/visites.service';
 
 @Component({
   selector: 'app-home',
@@ -7,13 +8,17 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  @ViewChild('window:scroll') scroll: ElementRef;
+  visitors: number;
 
-  constructor() {}
+  constructor(private visitsService: VisitesService) {}
 
   ngOnInit(): void {}
 
   getTitle() {
     return environment.NAME;
+  }
+
+  getVisits() {
+    return this.visitsService.getVisitors();
   }
 }
