@@ -1,6 +1,7 @@
 :host {
-    background: linear-gradient(-45deg, #000000, #494949, #363636, #494949, #000000);
+    background: linear-gradient(-45deg, #000000, #494949, #000000, #494949, #000000);
     background-size: 400% 400%;
+    background-attachment: fixed;
     animation: gradient 10s ease infinite;
 }
 
@@ -42,7 +43,7 @@ hr {
     width: 90%;
     margin-inline: 5%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 200px);
+    grid-template-columns: repeat(auto-fit, 200px);
     grid-template-rows: repeat(auto-fill, 1fr);
 }
 
@@ -52,31 +53,20 @@ hr {
 }
 
 .imageGrid img {
+    border: 1px white solid;
     width: 100%;
     border-radius: 10px;
     transition: transform .2s;
 }
 
-.imageGrid img:hover {
-    border: 1px white solid;
-    position: relative;
-    z-index: 500;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.541);
-    transform: scale(1.5);
-}
-
-.imageGrid img:active {
-    border-radius: 1px;
-    box-shadow: 15px 15px 10px #00000000;
-    transform: scale(4);
-    position: absolute;
-    z-index: 500;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 10%;
-    object-fit: cover;
+@media screen and (min-width:600px) {
+    .imageGrid img:hover {
+        border: 1px white solid;
+        position: relative;
+        z-index: 500;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.541);
+        transform: scale(1.5);
+    }
 }
 
 .imageGrid p {
@@ -94,11 +84,6 @@ hr {
     grid-row: span 2/auto;
 }
 
-.image-big {
-    grid-row: span 2/auto;
-    grid-column: span 2/auto;
-}
-
 @media screen and (max-width: 600px) {
     .image-wide,
     .image-tall {
@@ -108,11 +93,12 @@ hr {
     .imageGrid {
         grid-template-columns: 100%;
         width: 100%;
-        margin-inline: 0;
+        margin: 0;
     }
     .imageGrid img,
     .imageGrid div {
         width: 100%;
         margin: 0;
+        border: none;
     }
 }
