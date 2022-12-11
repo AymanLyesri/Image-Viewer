@@ -59,7 +59,7 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
   private observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        this.offset += 10;
+        this.offset += 20;
 
         this.imageservice.getPosts(this.offset);
         this.imageservice.getImagesStream().subscribe((images: Image[]) => {

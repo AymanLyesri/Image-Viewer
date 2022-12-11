@@ -4,6 +4,16 @@
     z-index: 100;
     display: flex;
     justify-content: center;
+    animation: intro 1s ease;
+}
+
+@keyframes intro {
+    0% {
+        margin-top: 30vh;
+    }
+    100% {
+        margin-top: 0;
+    }
 }
 
 nav {
@@ -64,22 +74,6 @@ nav {
         background-position: 100% 0%;
     }
 }
-
-
-/* .nav-wide {
-    margin-top: 5%;
-    color: black;
-    height: 100%;
-    width: 90%;
-    transition: all 1s ease;
-    justify-content: center;
-}
-
-.nav-narrow {
-    margin-top: 1%;
-    height: 80%;
-    width: 50%;
-} */
 
 .login {
     margin: auto;
