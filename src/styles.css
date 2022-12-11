@@ -31,16 +31,20 @@ html {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    width: 100vw;
+    height: 100%;
 }
 
 body {
+    width: 100vw;
+    height: 100%;
     margin: 0;
     padding: 0;
     font-family: 'JetBrains Mono', monospace;
 }
 
 app-root {
-    width: 100%;
+    width: 100vw;
     height: 100%;
     display: grid;
 }
