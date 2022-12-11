@@ -8,7 +8,7 @@
 /* scroll bar */
 
 ::-webkit-scrollbar {
-    width: 1vw;
+    position: fixed;
 }
 
 ::-webkit-scrollbar-track {
@@ -29,15 +29,13 @@
 html {
     scroll-behavior: smooth;
     margin: 0;
-    height: 100%;
-    width: 100%;
+    padding: 0;
+    overflow-x: hidden;
 }
 
 body {
     margin: 0;
     padding: 0;
-    height: 100%;
-    width: 100%;
     font-family: 'JetBrains Mono', monospace;
 }
 

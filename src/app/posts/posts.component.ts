@@ -6,13 +6,12 @@ import {
   OnInit,
   QueryList,
   Renderer2,
-  ViewChild,
   ViewChildren,
 } from '@angular/core';
 import { ImageService } from '../services/image.service';
 import { Image } from '../models/Image';
-import { Subscription } from 'rxjs';
 import { AuthentificationService } from '../services/authentification.service';
+import { Subscription } from 'rxjs/internal/Subscription';
 
 @Component({
   selector: 'app-posts',
@@ -39,6 +38,7 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
       .getImagesStream()
       .subscribe((images: Image[]) => {
         this.images = images;
+        console.log(images[0].url);
       });
   }
 
@@ -97,5 +97,6 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnDestroy(): void {
     this.imageSubscribtion.unsubscribe();
+    this.imgChanges.unsubscribe();
   }
 }

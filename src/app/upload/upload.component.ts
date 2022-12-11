@@ -51,7 +51,6 @@ export class UploadComponent implements OnInit {
         ) => {
           this.compressedImages.splice(0);
           this.imgResultMultiple = fileList;
-          console.warn(`${fileList.length} files selected`);
 
           fileList.forEach((file, index: number) => {
             console.warn(
@@ -62,23 +61,19 @@ export class UploadComponent implements OnInit {
 
             this.imgResultBeforeCompress.push(file.image);
 
-            let quality: number = 100 - this.getSize(file.image) / 25;
+            let quality: number = 80;
 
             if (file.image.substring(11, 14) == 'png')
               file.image = file.image.replace('png', 'jpeg');
-
-            if (quality <= 70) quality = 70;
-
-            console.log(index, ' quality : ', quality);
 
             this.imageCompress
               .compressFile(
                 file.image,
                 file.orientation,
-                100,
+                50,
                 quality,
-                600,
-                600
+                2000,
+                2000
               )
               .then((result: string) => {
                 this.imgResultAfterCompress.push(result);

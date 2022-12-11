@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject } from 'rxjs/internal/Subject';
+
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Image } from '../models/Image';
@@ -50,11 +51,21 @@ export class ImageService {
     console.log(image);
 
     this.http
-      .post<{ image: Image[] }>(this.url + 'posts', { image: image })
-      .subscribe((imageData) => {
-        this.images = this.images.concat(imageData.image);
-        this.images$.next(this.images);
-      });
+      .post<{ image: Image }>(this.url + 'posts', {
+        image: image,
+      })
+      .subscribe(
+        (imageData) => {
+          console.log('data:', imageData);
+
+          this.images.unshift(imageData.image);
+          this.images$.next(this.images);
+        },
+        (error: { message: string }) => {
+          console.log(error.message);
+          window.alert(error.message);
+        }
+      );
   }
 
   private id: string;
