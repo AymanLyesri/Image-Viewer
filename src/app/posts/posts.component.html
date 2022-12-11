@@ -1,10 +1,9 @@
 <h1>all posts</h1>
 <hr />
 
-<div class="imageGrid" *ngIf="images.length > 0; else loading">
+<div class="imageGrid" *ngIf="images.length > 0">
     <div *ngFor="let image of images" appHiddenElement>
         <img #img appImageRatio [id]="image._id" [src]="image.url" [alt]="image.name" />
-
         <p>{{ image.name }}</p>
         <p>{{ image.createdAt }}</p>
         <p>{{ image.size / 1000 }}kb</p>
@@ -13,7 +12,3 @@
     </button>
     </div>
 </div>
-<ng-template #loading>
-    <!-- <div *ngFor="let 1 of images ">
-    </div> -->
-</ng-template>

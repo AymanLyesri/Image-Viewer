@@ -70,7 +70,7 @@ export class UploadComponent implements OnInit {
               .compressFile(
                 file.image,
                 file.orientation,
-                50,
+                100,
                 quality,
                 2000,
                 2000

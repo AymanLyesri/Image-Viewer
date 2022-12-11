@@ -1,7 +1,8 @@
 :host {
     background: linear-gradient(-45deg, #000000, #494949, #000000, #494949, #000000);
     background-attachment: fixed;
-    width: 100%;
+    background-size: 200% 200%;
+    width: 100vw;
     animation: gradient 10s ease infinite;
 }
 
@@ -48,22 +49,28 @@ hr {
 .imageGrid div {
     margin-top: 10%;
     margin: 5%;
+    transition: all .2s;
 }
 
 .imageGrid img {
+    margin-top: 0%;
     border: 1px white solid;
     width: 100%;
     border-radius: 10px;
-    transition: transform .2s;
+    transition: all 1s;
 }
 
 @media screen and (min-width:600px) {
-    .imageGrid img:hover {
+    .imageGrid div:hover {
         border: 1px white solid;
-        position: relative;
-        z-index: 500;
+        border-radius: 10px;
+        background-color: #00000090;
+        z-index: 1000;
         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.541);
         transform: scale(1.5);
+    }
+    .imageGrid div:hover img {
+        margin-top: 20%;
     }
 }
 
