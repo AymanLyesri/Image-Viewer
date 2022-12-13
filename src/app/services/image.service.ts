@@ -28,19 +28,22 @@ export class ImageService {
     return this.http
       .get<{ images: Image[] }>(this.url + 'posts', { params: params })
       .pipe(
-        map((imageData: any) => {
+        map((imageData) => {
           return imageData.images;
         })
       )
       .subscribe((images) => {
         this.spinnerService.requestEnded();
-        this.spinnerService.resetSpinner();
 
         if (images) {
           this.images = this.images.concat(images);
           this.images$.next(this.images);
         }
       });
+  }
+
+  refresh() {
+    this.images.splice(0);
   }
 
   getImagesStream() {
@@ -74,16 +77,16 @@ export class ImageService {
   deleteImage(id: string) {
     console.log('deleting image', id);
 
-    this.http.post<any>(this.url + 'delete', { id: id }).subscribe((id) => {
-      console.log('image deleted : ', id.id);
-      this.id = id.id;
-      this.id$.next(this.id);
-    });
+    this.http
+      .post<{ id: string }>(this.url + 'delete', { id: id })
+      .subscribe((response) => {
+        console.log('image deleted : ', response.id);
+        this.id = response.id;
+        this.id$.next(this.id);
+      });
   }
 
-  getId() {
-    console.log(this.id$);
-
+  getIdStream() {
     return this.id$.asObservable();
   }
 }

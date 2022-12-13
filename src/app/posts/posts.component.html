@@ -1,5 +1,6 @@
 <h1>all posts</h1>
 <hr />
+<a #top></a>
 
 <div class="imageGrid" *ngIf="images.length > 0">
     <div *ngFor="let image of images">
@@ -12,3 +13,8 @@
     </button>
     </div>
 </div>
+
+<button class="previous" *ngIf="showPrevious()" (click)="Page(top, false)">
+  previous
+</button>
+<button class="next" *ngIf="showNext()" (click)="Page(top, true)">next</button>

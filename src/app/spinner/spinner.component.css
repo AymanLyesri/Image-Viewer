@@ -1,19 +1,30 @@
-@keyframes bouncing {
-    0% {
-        top: 40%;
-    }
-    100% {
-        top: 37%;
-    }
-}
-
 .spinner {
     margin: 0;
     padding: 0;
-    width: 10em;
-    height: 10em;
+    top: 50%;
+    width: 5em;
+    height: 5em;
     position: fixed;
-    z-index: 1009;
+    z-index: 1010;
     background-size: cover;
-    animation: bouncing 0.4s cubic-bezier(0.1, 0.25, 0.1, 1) 0s infinite alternate both;
+    background-color: aliceblue;
+    border-radius: 50%;
+    animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+@keyframes lds-circle {
+    0%,
+    100% {
+        animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+    }
+    0% {
+        transform: rotateY(0deg);
+    }
+    50% {
+        transform: rotateY(1800deg);
+        animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+    }
+    100% {
+        transform: rotateY(3600deg);
+    }
 }

@@ -29,12 +29,10 @@ hr {
 
 .hidden {
     opacity: 0;
-    filter: blur(5px);
 }
 
 .show {
     opacity: 1;
-    filter: blur(0);
     transition: all 1.5s;
 }
 
@@ -110,4 +108,44 @@ hr {
         margin: 0;
         border: none;
     }
+}
+
+.previous {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    border-radius: 10px;
+    background-color: #000000;
+    border: 1px white solid;
+    color: white;
+    height: 25vh;
+    width: 5vw;
+    transition: all 1s;
+}
+
+.previous:hover {
+    height: 30vh;
+    background-color: #ffbb00;
+    color: rgb(0, 0, 0);
+}
+
+.next {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    border-radius: 10px;
+    background-color: #000000;
+    border: 1px white solid;
+    color: white;
+    height: 25vh;
+    width: 5vw;
+    transition: all 1s;
+}
+
+.next:hover {
+    height: 30vh;
+    background-color: #ffbb00;
+    color: rgb(0, 0, 0);
 }

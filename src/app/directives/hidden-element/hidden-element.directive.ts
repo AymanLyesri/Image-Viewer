@@ -9,10 +9,11 @@ export class HiddenElementDirective {
   }
 
   observer = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) {
-      entries[0].target.classList.add('hidden');
-      setTimeout(() => entries[0].target.classList.add('show'), 100);
-      this.observer.disconnect();
-    }
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        this.render.addClass(entry.target, 'show');
+        this.observer.disconnect();
+      }
+    });
   });
 }
