@@ -149,3 +149,20 @@ hr {
     background-color: #ffbb00;
     color: rgb(0, 0, 0);
 }
+
+@media screen and (max-width:600px) {
+    .previous {
+        top: unset;
+        bottom: 0;
+        transform: none;
+        height: 5vh;
+        width: 50vw;
+    }
+    .next {
+        top: unset;
+        bottom: 0;
+        transform: none;
+        height: 5vh;
+        width: 50vw;
+    }
+}

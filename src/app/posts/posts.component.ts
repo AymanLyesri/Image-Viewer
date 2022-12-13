@@ -64,7 +64,7 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
         }
       });
     },
-    { rootMargin: '50%' }
+    { rootMargin: '500px' }
   );
 
   Page(element: HTMLElement, to: boolean) {
