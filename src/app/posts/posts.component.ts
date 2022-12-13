@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { ImageService } from '../services/image.service';
 import { Image } from '../models/Image';
-import { AuthentificationService } from '../services/authentification.service';
+import { AuthenticationService } from '../services/authentication.service';
 import { Subscription } from 'rxjs/internal/Subscription';
 
 @Component({
@@ -24,28 +24,24 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
   private offset: number = 0;
   private limit: number = 60;
   public images: Image[] = [];
-  private imageSubscribtion: Subscription;
+  private imagesSubscription: Subscription;
   private imgChanges: Subscription;
 
   constructor(
-    private imageservice: ImageService,
-    private AuthService: AuthentificationService,
+    private imageService: ImageService,
+    private AuthService: AuthenticationService,
     private render: Renderer2
   ) {}
 
   ngOnInit(): void {
-    this.imageservice.getPosts(this.offset);
-    this.imageSubscribtion = this.imageservice
+    this.imageService.getPosts(this.offset);
+    this.imagesSubscription = this.imageService
       .getImagesStream()
       .subscribe((images: Image[]) => {
         this.images = images;
         console.log(images[0].url);
       });
     console.log(this.offset);
-  }
-
-  getSize(data: string) {
-    return new TextEncoder().encode(data).length * 0.001;
   }
 
   isLoggedIn() {
@@ -63,7 +59,7 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
       entries.forEach((entry) => {
         if (entry.isIntersecting && this.offset < this.limit) {
           this.offset += 15;
-          this.imageservice.getPosts(this.offset);
+          this.imageService.getPosts(this.offset);
           this.observer.disconnect();
         }
       });
@@ -75,8 +71,8 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
     element.scrollIntoView();
     if (to) (this.offset += 15), (this.limit += 60);
     else (this.offset = this.limit - 120), (this.limit -= 60);
-    this.imageservice.refresh();
-    this.imageservice.getPosts(this.offset);
+    this.imageService.refresh();
+    this.imageService.getPosts(this.offset);
   }
 
   showPrevious() {
@@ -87,7 +83,7 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
     return this.offset == this.limit;
   }
 
-  private idSubscribtion: Subscription = this.imageservice
+  private idSubscription: Subscription = this.imageService
     .getIdStream()
     .subscribe((id: string) => {
       console.log(id);
@@ -99,12 +95,12 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
     });
 
   deleteImage(id: string) {
-    this.imageservice.deleteImage(id);
+    this.imageService.deleteImage(id);
   }
 
   ngOnDestroy(): void {
-    this.idSubscribtion.unsubscribe();
-    this.imageSubscribtion.unsubscribe();
+    this.idSubscription.unsubscribe();
+    this.imagesSubscription.unsubscribe();
     this.imgChanges.unsubscribe();
   }
 }

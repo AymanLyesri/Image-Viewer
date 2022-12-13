@@ -7,7 +7,7 @@ import { PostsComponent } from './posts/posts.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UploadComponent } from './upload/upload.component';
-import { AuthentificationComponent } from './authentification/authentification.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatInputModule } from '@angular/material/input';
@@ -30,7 +30,7 @@ import { DonationComponent } from './donation/donation.component';
     AppComponent,
     PostsComponent,
     UploadComponent,
-    AuthentificationComponent,
+    AuthenticationComponent,
     HomeComponent,
     NavComponent,
     HiddenElementDirective,

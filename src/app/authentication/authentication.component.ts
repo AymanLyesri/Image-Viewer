@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthentificationService } from '../services/authentification.service';
+import { AuthenticationService } from '../services/authentication.service';
 import { User } from '../models/User';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-authentification',
-  templateUrl: './authentification.component.html',
-  styleUrls: ['./authentification.component.css'],
+  selector: 'app-authentication',
+  templateUrl: './authentication.component.html',
+  styleUrls: ['./authentication.component.css'],
 })
-export class AuthentificationComponent implements OnInit {
+export class AuthenticationComponent implements OnInit {
   form: FormGroup;
 
   constructor(
-    private authentificationservice: AuthentificationService,
+    private authenticationService: AuthenticationService,
     private fb: FormBuilder
   ) {}
 
@@ -34,7 +34,7 @@ export class AuthentificationComponent implements OnInit {
       return;
     }
     let user: User = { name: userData.name, password: userData.password };
-    this.authentificationservice.login(user.name, user.password);
+    this.authenticationService.login(user.name, user.password);
   }
 
   get name() {
@@ -47,14 +47,14 @@ export class AuthentificationComponent implements OnInit {
 
   onSubmit() {
     console.log('in client ', this.form.value);
-    this.authentificationservice.login(
+    this.authenticationService.login(
       this.form.value.name,
       this.form.value.password
     );
   }
 
   getResponse() {
-    return this.authentificationservice.isLoggedIn();
+    return this.authenticationService.isLoggedIn();
   }
 
   getLink() {

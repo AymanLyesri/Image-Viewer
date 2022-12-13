@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { AuthentificationComponent } from './authentification/authentification.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
 import { UploadComponent } from './upload/upload.component';
 import { AuthGuard } from './services/auth/auth.guard';
 
@@ -20,7 +20,7 @@ const Routes: Routes = [
   },
   {
     path: 'login',
-    component: AuthentificationComponent,
+    component: AuthenticationComponent,
   },
   {
     path: 'donation',
