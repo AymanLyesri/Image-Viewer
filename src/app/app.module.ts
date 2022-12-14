@@ -24,6 +24,7 @@ import { ImageRatioDirective } from './directives/image-ratio/image-ratio.direct
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { DonationComponent } from './donation/donation.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { DonationComponent } from './donation/donation.component';
     ImageRatioDirective,
     SpinnerComponent,
     DonationComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

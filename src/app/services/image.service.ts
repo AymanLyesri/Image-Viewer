@@ -43,7 +43,7 @@ export class ImageService {
   }
 
   refresh() {
-    this.images.splice(0);
+    this.images.length = 0;
   }
 
   getImagesStream() {

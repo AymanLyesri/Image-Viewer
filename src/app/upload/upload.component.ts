@@ -23,7 +23,7 @@ export class UploadComponent implements OnInit {
   ready: boolean = false;
 
   constructor(
-    private imageservice: ImageService,
+    private imageService: ImageService,
     private imageCompress: NgxImageCompressService
   ) {}
 
@@ -31,11 +31,11 @@ export class UploadComponent implements OnInit {
 
   onSubmit() {
     this.compressedImages.forEach((compressedImage) => {
-      this.imageservice.addImage(compressedImage);
+      this.imageService.addImage(compressedImage);
     });
 
-    this.imgResultBeforeCompress.splice(0);
-    this.imgResultAfterCompress.splice(0);
+    this.imgResultBeforeCompress.length = 0;
+    this.imgResultAfterCompress.length = 0;
   }
 
   getSize(data: string) {
@@ -49,7 +49,7 @@ export class UploadComponent implements OnInit {
         (
           fileList: { image: string; fileName: string; orientation: number }[]
         ) => {
-          this.compressedImages.splice(0);
+          this.compressedImages.length = 0;
           this.imgResultMultiple = fileList;
 
           fileList.forEach((file, index: number) => {

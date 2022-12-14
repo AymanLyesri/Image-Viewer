@@ -47,7 +47,7 @@ nav {
     align-items: center;
 }
 
-.donation:hover {
+nav:hover .donation {
     width: 50%;
     background: linear-gradient(90deg, #09ff00, #ff0000, #0026ff, #ff00d4);
     animation: gradient 1s ease infinite;

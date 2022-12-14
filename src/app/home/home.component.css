@@ -41,6 +41,10 @@ section {
     text-align: center;
 }
 
+.title h3 strong {
+    color: yellow;
+}
+
 .icons {
     width: 5em;
     height: 5em;

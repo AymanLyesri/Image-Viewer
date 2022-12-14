@@ -35,15 +35,15 @@ h1 {
     border: 1px #ffbb00 solid;
     border-radius: 10px;
     color: yellow;
-    background-color: #000000;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
     transition: all 0.5s;
 }
 
 .options button:hover {
     padding: 5%;
     border: 1px #000000 solid;
-    color: rgb(0, 0, 0);
-    background-color: yellow;
+    color: rgb(255, 255, 255);
 }
 
 @media screen and (max-width:600px) {
@@ -54,15 +54,6 @@ h1 {
 
 hr {
     width: 80%;
-}
-
-.hidden {
-    opacity: 0;
-}
-
-.show {
-    opacity: 1;
-    transition: all 1.5s;
 }
 
 .imageGrid {
@@ -93,13 +84,15 @@ hr {
     .imageGrid div:hover {
         border: 1px white solid;
         border-radius: 10px;
-        background-color: #00000090;
+        background-color: rgba(0, 0, 0, 0.500);
         z-index: 1000;
-        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.541);
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.500);
         transform: scale(1.5);
+        backdrop-filter: blur(5px);
     }
     .imageGrid div:hover img {
-        margin-top: 20%;
+        border: none;
+        margin-block: 20%;
     }
 }
 
@@ -112,24 +105,24 @@ hr {
     white-space: nowrap;
     overflow: hidden;
     color: aliceblue;
+    transition: all 1s;
+}
+
+.imageGrid p:hover {
+    text-indent: -100px;
 }
 
 .image-wide {
     grid-column: span 2/auto;
 }
 
-.image-tall {
-    grid-row: span 2/auto;
-}
-
 @media screen and (max-width: 600px) {
-    .image-wide,
-    .image-tall {
+    .image-wide {
         grid-column: span 1;
         grid-row: span 1;
     }
     .imageGrid {
-        grid-template-columns: 100%;
+        grid-template-columns: 1fr;
         width: 100%;
         margin: 0;
     }
@@ -147,7 +140,8 @@ hr {
     top: 50%;
     transform: translate(0, -50%);
     border-radius: 10px;
-    background-color: #000000;
+    background-color: #00000080;
+    backdrop-filter: blur(5px);
     border: 1px white solid;
     color: white;
     height: 25vh;
@@ -157,7 +151,7 @@ hr {
 
 .previous:hover {
     height: 30vh;
-    background-color: #ffbb00;
+    background-color: rgba(255, 255, 0, 0.500);
     color: rgb(0, 0, 0);
 }
 
@@ -167,7 +161,8 @@ hr {
     top: 50%;
     transform: translate(0, -50%);
     border-radius: 10px;
-    background-color: #000000;
+    background-color: #00000080;
+    backdrop-filter: blur(5px);
     border: 1px white solid;
     color: white;
     height: 25vh;
@@ -177,7 +172,7 @@ hr {
 
 .next:hover {
     height: 30vh;
-    background-color: #ffbb00;
+    background-color: rgba(255, 255, 0, 0.500);
     color: rgb(0, 0, 0);
 }
 
@@ -188,6 +183,7 @@ hr {
         transform: none;
         height: 5vh;
         width: 50vw;
+        border-radius: 30px;
     }
     .next {
         top: unset;
@@ -195,5 +191,6 @@ hr {
         transform: none;
         height: 5vh;
         width: 50vw;
+        border-radius: 30px;
     }
 }

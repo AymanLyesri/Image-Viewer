@@ -1,0 +1,85 @@
+:host {
+    background-color: #111;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+span {
+    transition: all 1s;
+    opacity: 0;
+    background-size: cover;
+    width: 2em;
+    height: 2em;
+}
+
+ul,
+li,
+a {
+    width: auto;
+}
+
+.donation a {
+    text-decoration: none;
+    color: rgb(247, 115, 115);
+    display: flex;
+}
+
+.donation a span {
+    background-image: url('../../assets/icons8-cup-96.png');
+}
+
+.donation a:hover span {
+    opacity: 1;
+    margin-inline: 20%;
+}
+
+.tech p {
+    color: rgb(170, 170, 170);
+}
+
+.tech a {
+    text-decoration: none;
+    color: grey;
+    display: flex;
+    margin: 0;
+}
+
+.tech .angular span {
+    background-image: url('../../assets/angular.svg');
+}
+
+.tech .nodejs span {
+    background-image: url('../../assets/node.svg');
+}
+
+.tech .imagekit span {
+    background-image: url('../../assets/icons8-picture.svg');
+}
+
+.tech .mongodb span {
+    background-image: url('../../assets/icons8-mongodb.svg');
+}
+
+.tech a:hover span {
+    opacity: 1;
+    margin-left: 20%;
+}
+
+.github a {
+    text-decoration: none;
+    color: rgb(5, 132, 155);
+    display: flex;
+}
+
+.github a span {
+    background-image: url('../../assets/icons8-github.svg');
+}
+
+.github a:hover span {
+    opacity: 1;
+    margin-left: 20%;
+}
