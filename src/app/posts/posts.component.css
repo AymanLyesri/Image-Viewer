@@ -71,6 +71,7 @@ hr {
 }
 
 .imageGrid img {
+    image-rendering: optimizeSpeed;
     margin-top: 0%;
     border: 1px white solid;
     width: 100%;

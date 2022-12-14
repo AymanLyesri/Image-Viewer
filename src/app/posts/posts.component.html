@@ -9,7 +9,7 @@
 
 <div #imageGrid class="imageGrid" *ngIf="images.length > 0">
     <div *ngFor="let image of images">
-        <img #img appImageRatio loading="lazy" [id]="image._id" [src]="image.url" [alt]="image.name" height="600" width="600" />
+        <img #img appImageRatio loading="lazy" [id]="image._id" [src]="image.url" [alt]="image.name" height="800" width="600" />
         <p>{{ image.name }}</p>
         <p>{{ image.createdAt }}</p>
         <p>{{ image.size / 1000 }}kb</p>

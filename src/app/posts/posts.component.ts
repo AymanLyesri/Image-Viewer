@@ -79,11 +79,11 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
         }
       });
     },
-    { rootMargin: '500px' }
+    { rootMargin: '1000px' }
   );
 
   Page(element: HTMLElement, to: boolean) {
-    element.scrollIntoView();
+    element.scrollIntoView(false);
     if (to) (this.offset += 15), (this.limit += 60);
     else (this.offset = this.limit - 120), (this.limit -= 60);
     this.imageService.refresh();
