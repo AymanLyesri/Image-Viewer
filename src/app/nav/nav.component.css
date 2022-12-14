@@ -23,7 +23,8 @@ nav {
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.479);
     display: flex;
     border: 1px rgb(41, 41, 41) solid;
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0.500);
+    backdrop-filter: blur(5px);
 }
 
 @media screen and (max-width: 600px) {
@@ -89,7 +90,7 @@ nav:hover .donation {
 }
 
 .login a span {
-    background-image: url("../../assets/user-solid-dark.svg");
+    background-image: url("../../assets/user-solid-light.svg");
     background-repeat: no-repeat;
     background-size: cover;
     display: block;
@@ -104,7 +105,7 @@ nav:hover .donation {
 .login a p {
     margin: 0;
     padding: 0;
-    color: rgb(0, 0, 0);
+    color: white;
 }
 
 .home {
@@ -121,7 +122,7 @@ nav:hover .donation {
 }
 
 .home a span {
-    background-image: url("../../assets/house-solid-dark.svg");
+    background-image: url("../../assets/house-solid-light.svg");
     background-repeat: no-repeat;
     background-size: cover;
     width: 1em;
@@ -136,7 +137,7 @@ nav:hover .donation {
 .home a p {
     margin: 0;
     padding: 0;
-    color: rgb(0, 0, 0);
+    color: white;
 }
 
 .github {
