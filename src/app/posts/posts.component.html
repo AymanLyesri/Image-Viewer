@@ -1,10 +1,15 @@
 <h1>all posts</h1>
+<div class="options">
+    <button (click)="toggleGrid(2)">Large</button>
+    <button (click)="toggleGrid(3)">Medium</button>
+    <button (click)="toggleGrid(0)">Auto</button>
+</div>
 <hr />
 <a #top></a>
 
-<div class="imageGrid" *ngIf="images.length > 0">
+<div #imageGrid class="imageGrid" *ngIf="images.length > 0">
     <div *ngFor="let image of images">
-        <img #img appImageRatio loading="lazy" [id]="image._id" [src]="image.url" [alt]="image.name" />
+        <img #img appImageRatio loading="lazy" [id]="image._id" [src]="image.url" [alt]="image.name" height="600" width="600" />
         <p>{{ image.name }}</p>
         <p>{{ image.createdAt }}</p>
         <p>{{ image.size / 1000 }}kb</p>

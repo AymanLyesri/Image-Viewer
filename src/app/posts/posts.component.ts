@@ -6,6 +6,7 @@ import {
   OnInit,
   QueryList,
   Renderer2,
+  ViewChild,
   ViewChildren,
 } from '@angular/core';
 import { ImageService } from '../services/image.service';
@@ -20,6 +21,7 @@ import { Subscription } from 'rxjs/internal/Subscription';
 })
 export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChildren('img') imgs: QueryList<ElementRef>;
+  @ViewChild('imageGrid') grid: ElementRef<HTMLElement>;
 
   private offset: number = 0;
   private limit: number = 60;
@@ -39,13 +41,26 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
       .getImagesStream()
       .subscribe((images: Image[]) => {
         this.images = images;
-        console.log(images[0].url);
       });
     console.log(this.offset);
   }
 
   isLoggedIn() {
     return this.AuthService.isLoggedIn();
+  }
+
+  toggleGrid(columns: number) {
+    let columnNumber: string =
+      columns == 0
+        ? 'repeat(auto-fill, minmax(200px, 1fr))'
+        : columns == 2
+        ? 'repeat(auto-fill, minmax(400px, 1fr))'
+        : 'repeat(auto-fill, minmax(300px, 1fr))';
+    this.render.setStyle(
+      this.grid.nativeElement,
+      'grid-template-columns',
+      columnNumber
+    );
   }
 
   ngAfterViewInit(): void {
@@ -60,7 +75,7 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
         if (entry.isIntersecting && this.offset < this.limit) {
           this.offset += 15;
           this.imageService.getPosts(this.offset);
-          this.observer.disconnect();
+          this.observer.unobserve(entry.target);
         }
       });
     },

@@ -23,6 +23,35 @@ h1 {
     color: white;
 }
 
+.options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.options button {
+    margin-inline: 5%;
+    padding: 4%;
+    border: 1px #ffbb00 solid;
+    border-radius: 10px;
+    color: yellow;
+    background-color: #000000;
+    transition: all 0.5s;
+}
+
+.options button:hover {
+    padding: 5%;
+    border: 1px #000000 solid;
+    color: rgb(0, 0, 0);
+    background-color: yellow;
+}
+
+@media screen and (max-width:600px) {
+    .options {
+        display: none;
+    }
+}
+
 hr {
     width: 80%;
 }
@@ -40,13 +69,13 @@ hr {
     width: 90%;
     margin-inline: 5%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, 200px);
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-template-rows: repeat(auto-fill, 1fr);
 }
 
 .imageGrid div {
     margin-top: 10%;
-    margin: 5%;
+    margin: 1%;
     transition: all .2s;
 }
 
@@ -54,6 +83,8 @@ hr {
     margin-top: 0%;
     border: 1px white solid;
     width: 100%;
+    height: auto;
+    background-color: #fc7b7b;
     border-radius: 10px;
     transition: all 1s;
 }
