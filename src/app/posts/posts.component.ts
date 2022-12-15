@@ -26,7 +26,8 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
   private offset: number = 0;
   private limit: number = 60;
   public images: Image[] = [];
-  private imagesSubscription: Subscription;
+  private imageSubscription: Subscription;
+  private newImageSubscription: Subscription;
   private imgChanges: Subscription;
 
   private zoomOnHover: string = 'zoom';
@@ -38,12 +39,18 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.imageService.getPosts(this.offset);
-    this.imagesSubscription = this.imageService
-      .getImagesStream()
-      .subscribe((images: Image[]) => {
-        this.images = images;
+    this.imageService.getPost(this.offset);
+    this.imageSubscription = this.imageService
+      .getImageStream()
+      .subscribe((image: Image) => {
+        this.images.push(image);
       });
+    this.newImageSubscription = this.imageService
+      .getNewImageStream()
+      .subscribe((image: Image) => {
+        this.images.unshift(image);
+      });
+
     console.log(this.offset);
   }
 
@@ -73,20 +80,20 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.imgChanges = this.imgs.changes.subscribe(() => {
-      this.observer.observe(this.imgs.last.nativeElement);
+      this.loadingObserver.observe(this.imgs.last.nativeElement);
       this.imgs.forEach((img) => {
         this.render.addClass(img.nativeElement.parentNode, this.zoomOnHover);
       });
     });
   }
 
-  private observer = new IntersectionObserver(
+  private loadingObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting && this.offset < this.limit) {
-          this.offset += 15;
-          this.imageService.getPosts(this.offset);
-          this.observer.unobserve(entry.target);
+          this.offset++;
+          this.imageService.getPost(this.offset);
+          this.loadingObserver.unobserve(entry.target);
         }
       });
     },
@@ -95,10 +102,10 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   Page(element: HTMLElement, to: boolean) {
     element.scrollIntoView(false);
-    if (to) (this.offset += 15), (this.limit += 60);
+    if (to) this.offset++, (this.limit += 60);
     else (this.offset = this.limit - 120), (this.limit -= 60);
-    this.imageService.refresh();
-    this.imageService.getPosts(this.offset);
+    this.images.length = 0;
+    this.imageService.getPost(this.offset);
   }
 
   showPrevious() {
@@ -125,8 +132,8 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnDestroy(): void {
-    this.idSubscription.unsubscribe();
-    this.imagesSubscription.unsubscribe();
+    // this.idSubscription.unsubscribe();
+    this.imageSubscription.unsubscribe();
     this.imgChanges.unsubscribe();
   }
 }

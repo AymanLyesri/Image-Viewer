@@ -73,13 +73,13 @@ hr {
     margin-inline: 5%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-template-rows: repeat(auto-fill, 1fr);
 }
 
 .imageGrid div {
     margin-top: 10%;
     margin: 1%;
     transition: all .2s;
+    border: 1px rgba(255, 255, 255, 0) solid;
 }
 
 .imageGrid img {
@@ -91,6 +91,16 @@ hr {
     background-color: #fc7b7b;
     border-radius: 10px;
     transition: all 1s;
+    animation: popUp 1s;
+}
+
+@keyframes popUp {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 100%;
+    }
 }
 
 @media screen and (min-width:600px) {
@@ -103,6 +113,9 @@ hr {
         backdrop-filter: blur(5px);
     }
     .imageGrid div:hover img {
+        border: 1px rgba(255, 255, 255, 0) solid;
+    }
+    .imageGrid div:active img {
         border: none;
         margin-block: 20%;
     }

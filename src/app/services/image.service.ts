@@ -11,8 +11,8 @@ import { SpinnerService } from './spinner/spinner.service';
   providedIn: 'root',
 })
 export class ImageService {
-  private images: Image[] = [];
-  private images$ = new Subject<Image[]>(); //observable
+  private image$ = new Subject<Image>(); //observable
+  private newImage$ = new Subject<Image>(); //observable
   readonly url = environment.URL + '/api/';
 
   constructor(
@@ -20,72 +20,62 @@ export class ImageService {
     private spinnerService: SpinnerService
   ) {}
 
-  getPosts(offset: number) {
+  getPost(offset: number) {
     this.spinnerService.requestStarted();
 
     let params = new HttpParams().set('offset', offset);
 
     return this.http
-      .get<{ images: Image[] }>(this.url + 'posts', { params: params })
+      .get<{ image: Image }>(this.url + 'posts', { params: params })
       .pipe(
         map((imageData) => {
-          return imageData.images;
+          return imageData.image;
         })
       )
-      .subscribe((images) => {
+      .subscribe((image) => {
         this.spinnerService.requestEnded();
 
-        if (images) {
-          this.images = this.images.concat(images);
-          this.images$.next(this.images);
+        if (image) {
+          this.image$.next(image);
         }
       });
   }
 
-  refresh() {
-    this.images.length = 0;
-  }
-
-  getImagesStream() {
-    return this.images$.asObservable();
+  getImageStream() {
+    return this.image$.asObservable();
   }
 
   addImage(image: { name: string; image: string }): void {
     console.log(image);
-
     this.http
       .post<{ image: Image }>(this.url + 'posts', {
         image: image,
       })
       .subscribe(
         (imageData) => {
-          console.log('data:', imageData);
-
-          this.images.unshift(imageData.image);
-          this.images$.next(this.images);
+          this.newImage$.next(imageData.image);
         },
         (error: { message: string }) => {
-          console.log(error.message);
           window.alert(error.message);
         }
       );
   }
 
-  private id: string;
+  getNewImageStream() {
+    return this.newImage$.asObservable();
+  }
+
   private id$ = new Subject<string>(); //observable
 
   deleteImage(id: string) {
     console.log('deleting image', id);
-
     this.http
       .post<{ id: string }>(this.url + 'delete', { id: id })
       .subscribe((response) => {
         console.log('image deleted : ', response.id);
-        this.id = response.id;
-        this.id$.next(this.id);
+        this.id$.next(id);
       });
   }
-
   getIdStream() {
     return this.id$.asObservable();
   }
