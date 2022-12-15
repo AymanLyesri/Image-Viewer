@@ -1,9 +1,18 @@
 <h1>all posts</h1>
 <a #top></a>
 <div class="options">
-    <button (click)="toggleGrid(2)">Large</button>
-    <button (click)="toggleGrid(3)">Medium</button>
-    <button (click)="toggleGrid(0)">Auto</button>
+    <div class="columns">
+        <h3>Display Grid</h3>
+        <button (click)="toggleGrid(4)">Large</button>
+        <button (click)="toggleGrid(3)">Medium</button>
+        <button (click)="toggleGrid(2)">Auto</button>
+    </div>
+    <div class="hover">
+        <button (click)="toggleHover('zoom')">Zoom 'default'</button>
+        <button (click)="toggleHover('zoomPlus')">Zoom+</button>
+        <button (click)="toggleHover('noZoom')">No Zoom</button>
+        <h3>Zoom Effect</h3>
+    </div>
 </div>
 <hr />
 

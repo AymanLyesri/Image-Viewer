@@ -29,6 +29,18 @@ h1 {
     align-items: center;
 }
 
+.options h3 {
+    color: white;
+}
+
+.options .columns,
+.hover {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .options button {
     margin-inline: 5%;
     padding: 4%;
@@ -71,7 +83,7 @@ hr {
 }
 
 .imageGrid img {
-    image-rendering: optimizeSpeed;
+    image-rendering: auto;
     margin-top: 0%;
     border: 1px white solid;
     width: 100%;
@@ -88,12 +100,20 @@ hr {
         background-color: rgba(0, 0, 0, 0.500);
         z-index: 1000;
         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.500);
-        transform: scale(1.5);
         backdrop-filter: blur(5px);
     }
     .imageGrid div:hover img {
         border: none;
         margin-block: 20%;
+    }
+    .zoom:hover {
+        transform: scale(1.2);
+    }
+    .zoomPlus:hover {
+        transform: scale(1.5);
+    }
+    .noZoom:hover {
+        transform: none;
     }
 }
 
