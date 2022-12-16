@@ -25,7 +25,7 @@ export class ImageService {
 
     let params = new HttpParams().set('offset', offset);
 
-    return this.http
+    this.http
       .get<{ image: Image }>(this.url + 'posts', { params: params })
       .pipe(
         map((imageData) => {
@@ -34,10 +34,7 @@ export class ImageService {
       )
       .subscribe((image) => {
         this.spinnerService.requestEnded();
-
-        if (image) {
-          this.image$.next(image);
-        }
+        this.image$.next(image);
       });
   }
 
@@ -51,14 +48,14 @@ export class ImageService {
       .post<{ image: Image }>(this.url + 'posts', {
         image: image,
       })
-      .subscribe(
-        (imageData) => {
-          this.newImage$.next(imageData.image);
-        },
-        (error: { message: string }) => {
-          window.alert(error.message);
-        }
-      );
+      .pipe(
+        map((imageData) => {
+          return imageData.image;
+        })
+      )
+      .subscribe((image) => {
+        this.newImage$.next(image);
+      });
   }
 
   getNewImageStream() {

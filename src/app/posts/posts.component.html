@@ -3,9 +3,11 @@
 <div class="options">
     <div class="columns">
         <h3>Display Grid</h3>
-        <button (click)="toggleGrid(4)">Large</button>
-        <button (click)="toggleGrid(3)">Medium</button>
-        <button (click)="toggleGrid(2)">Auto</button>
+        <button (click)="toggleGrid('repeat(2,50%)')">Large</button>
+        <button (click)="toggleGrid('repeat(4,25%)')">Medium</button>
+        <button (click)="toggleGrid('repeat(auto-fill, minmax(200px, 1fr))')">
+      Auto
+    </button>
     </div>
     <div class="hover">
         <button (click)="toggleHover('zoom')">Zoom 'default'</button>
@@ -14,11 +16,19 @@
         <h3>Zoom Effect</h3>
     </div>
 </div>
+<div class="mobileOptions">
+    <h3>Display Grid</h3>
+    <div class="columns">
+        <button (click)="mobileToggleGrid('oneColumn')">Large</button
+    ><button (click)="mobileToggleGrid('twoColumn')">Medium auto</button
+    ><button (click)="mobileToggleGrid('threeColumn')">Small</button>
+    </div>
+</div>
 <hr />
 
 <div #imageGrid class="imageGrid" *ngIf="images.length > 0">
-    <div *ngFor="let image of images">
-        <img #img appImageRatio loading="lazy" [id]="image._id" [src]="image.url" [alt]="image.name" height="800" width="600" />
+    <div #card *ngFor="let image of images" [id]="image._id">
+        <img #img appImageRatio loading="lazy" [src]="image.url" [alt]="image.name" height="800" width="600" />
         <p>{{ image.name }}</p>
         <p>{{ image.createdAt }}</p>
         <p>{{ image.size / 1000 }}kb</p>

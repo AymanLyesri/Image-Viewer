@@ -9,7 +9,7 @@ export class ImageRatioDirective {
       var realWidth = element.nativeElement.naturalWidth;
       var realHeight = element.nativeElement.naturalHeight;
 
-      if (realWidth / realHeight >= 1.5)
+      if (realWidth / realHeight >= 1.4)
         this.render.addClass(element.nativeElement.parentElement, 'image-wide');
     };
   }

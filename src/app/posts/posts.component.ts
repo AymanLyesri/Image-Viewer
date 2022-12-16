@@ -20,7 +20,7 @@ import { Subscription } from 'rxjs/internal/Subscription';
   styleUrls: ['./posts.component.css'],
 })
 export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
-  @ViewChildren('img') imgs: QueryList<ElementRef>;
+  @ViewChildren('card') cards: QueryList<ElementRef>;
   @ViewChild('imageGrid') grid: ElementRef<HTMLElement>;
 
   private offset: number = 0;
@@ -28,7 +28,7 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
   public images: Image[] = [];
   private imageSubscription: Subscription;
   private newImageSubscription: Subscription;
-  private imgChanges: Subscription;
+  private cardChanges: Subscription;
 
   private zoomOnHover: string = 'zoom';
 
@@ -58,31 +58,38 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
     return this.AuthService.isLoggedIn();
   }
 
-  toggleGrid(columns: number) {
+  toggleGrid(columns: string) {
     this.render.setStyle(
       this.grid.nativeElement,
       'grid-template-columns',
-      'repeat(auto-fill, minmax(' + columns + '00px, 1fr))'
+      columns
     );
+  }
+
+  mobileToggleGrid(columns: string) {
+    this.render.removeClass(this.grid.nativeElement, 'oneColumn');
+    this.render.removeClass(this.grid.nativeElement, 'twoColumn');
+    this.render.removeClass(this.grid.nativeElement, 'threeColumn');
+    this.render.addClass(this.grid.nativeElement, columns);
   }
 
   toggleHover(zoom: string) {
     console.log(zoom);
 
     this.zoomOnHover = zoom;
-    this.imgs.forEach((img) => {
-      this.render.removeClass(img.nativeElement.parentNode, 'zoom');
-      this.render.removeClass(img.nativeElement.parentNode, 'zoomPlus');
-      this.render.removeClass(img.nativeElement.parentNode, 'noZoom');
-      this.render.addClass(img.nativeElement.parentNode, this.zoomOnHover);
+    this.cards.forEach((card) => {
+      this.render.removeClass(card.nativeElement, 'zoom');
+      this.render.removeClass(card.nativeElement, 'zoomPlus');
+      this.render.removeClass(card.nativeElement, 'noZoom');
+      this.render.addClass(card.nativeElement, this.zoomOnHover);
     });
   }
 
   ngAfterViewInit(): void {
-    this.imgChanges = this.imgs.changes.subscribe(() => {
-      this.loadingObserver.observe(this.imgs.last.nativeElement);
-      this.imgs.forEach((img) => {
-        this.render.addClass(img.nativeElement.parentNode, this.zoomOnHover);
+    this.cardChanges = this.cards.changes.subscribe(() => {
+      this.loadingObserver.observe(this.cards.last.nativeElement);
+      this.cards.forEach((card) => {
+        this.render.addClass(card.nativeElement, this.zoomOnHover);
       });
     });
   }
@@ -93,6 +100,8 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
         if (entry.isIntersecting && this.offset < this.limit) {
           this.offset++;
           this.imageService.getPost(this.offset);
+          console.log(this.offset, this.limit);
+
           this.loadingObserver.unobserve(entry.target);
         }
       });
@@ -102,10 +111,16 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   Page(element: HTMLElement, to: boolean) {
     element.scrollIntoView(false);
+
     if (to) this.offset++, (this.limit += 60);
     else (this.offset = this.limit - 120), (this.limit -= 60);
-    this.images.length = 0;
-    this.imageService.getPost(this.offset);
+
+    console.log(this.offset, this.limit);
+
+    setTimeout(() => {
+      this.images.length = 0;
+      this.imageService.getPost(this.offset);
+    }, 1500);
   }
 
   showPrevious() {
@@ -120,9 +135,9 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
     .getIdStream()
     .subscribe((id: string) => {
       console.log(id);
-      this.imgs.forEach((img) => {
-        if (img.nativeElement.id == id) {
-          this.render.parentNode(img.nativeElement).remove();
+      this.cards.forEach((card) => {
+        if (card.nativeElement.id == id) {
+          this.render.parentNode(card.nativeElement).remove();
         }
       });
     });
@@ -134,6 +149,6 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnDestroy(): void {
     // this.idSubscription.unsubscribe();
     this.imageSubscription.unsubscribe();
-    this.imgChanges.unsubscribe();
+    this.cardChanges.unsubscribe();
   }
 }

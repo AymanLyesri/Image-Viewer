@@ -23,6 +23,36 @@ h1 {
     color: white;
 }
 
+.mobileOptions {
+    display: none;
+}
+
+.mobileOptions h3 {
+    text-align: center;
+    color: #494949;
+}
+
+.mobileOptions .columns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width:600px) {
+    .mobileOptions {
+        display: unset;
+    }
+    .oneColumn {
+        grid-template-columns: 100vw !important;
+    }
+    .twoColumn {
+        grid-template-columns: 50vw 50vw !important;
+    }
+    .threeColumn {
+        grid-template-columns: 33vw 33vw 33vw !important;
+    }
+}
+
 .options {
     display: flex;
     justify-content: center;
@@ -30,7 +60,7 @@ h1 {
 }
 
 .options h3 {
-    color: white;
+    color: #494949;
 }
 
 .options .columns,
@@ -41,7 +71,8 @@ h1 {
     align-items: center;
 }
 
-.options button {
+.options button,
+.mobileOptions button {
     margin-inline: 5%;
     padding: 4%;
     border: 1px #ffbb00 solid;
@@ -69,27 +100,26 @@ hr {
 }
 
 .imageGrid {
-    width: 90%;
-    margin-inline: 5%;
+    width: 100%;
     display: grid;
+    align-items: center;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 
 .imageGrid div {
+    width: 100%;
     margin-top: 10%;
-    margin: 1%;
     transition: all .2s;
     border: 1px rgba(255, 255, 255, 0) solid;
 }
 
 .imageGrid img {
-    image-rendering: auto;
-    margin-top: 0%;
+    image-resolution: 1dppx;
     border: 1px white solid;
     width: 100%;
     height: auto;
     background-image: url('../../assets/Spinner-1.1s-200px.gif');
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     border-radius: 10px;
     transition: all 1s;
@@ -106,6 +136,10 @@ hr {
 }
 
 @media screen and (min-width:600px) {
+    .imageGrid {
+        margin-inline: 5%;
+        width: 90%;
+    }
     .imageGrid div:hover {
         border: 1px white solid;
         border-radius: 10px;
@@ -157,14 +191,8 @@ hr {
         grid-column: span 1;
         grid-row: span 1;
     }
-    .imageGrid {
-        grid-template-columns: 1fr;
-        width: 100%;
-        margin: 0;
-    }
     .imageGrid img,
     .imageGrid div {
-        width: 100vw;
         margin: 0;
         border: none;
     }
