@@ -107,6 +107,10 @@ hr {
 }
 
 .imageGrid div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     width: 100%;
     margin-top: 10%;
     transition: all .2s;
@@ -114,13 +118,10 @@ hr {
 }
 
 .imageGrid img {
-    image-resolution: 1dppx;
+    image-rendering: auto;
     border: 1px white solid;
     width: 100%;
     height: auto;
-    background-image: url('../../assets/Spinner-1.1s-200px.gif');
-    background-size: contain;
-    background-repeat: no-repeat;
     border-radius: 10px;
     transition: all 1s;
     animation: popUp 1s;
@@ -139,6 +140,7 @@ hr {
     .imageGrid {
         margin-inline: 5%;
         width: 90%;
+        gap: 1em;
     }
     .imageGrid div:hover {
         border: 1px white solid;
@@ -169,7 +171,6 @@ hr {
 .imageGrid p {
     width: 100%;
     margin: 0;
-    text-align: center;
     text-overflow: ellipsis;
     font-size: small;
     white-space: nowrap;
@@ -180,6 +181,27 @@ hr {
 
 .imageGrid p:hover {
     text-indent: -100px;
+}
+
+.imageGrid a {
+    margin-block: 5%;
+    padding: 1%;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #313131;
+    border: 1px #423000 solid;
+    border-radius: 10px;
+    transition: all 1s;
+}
+
+.imageGrid div:hover a {
+    margin-block: 0;
+    padding-block: 5%;
+    padding-inline: 10%;
+    color: #000000;
+    background-color: #ffffff;
+    border: 1px #979797 solid;
+    border-radius: 10px;
 }
 
 .image-wide {

@@ -29,6 +29,11 @@ export class ImageService {
       .get<{ image: Image }>(this.url + 'posts', { params: params })
       .pipe(
         map((imageData) => {
+          let t = 0;
+          imageData.image.thumb = imageData.image.url.replace(/\//g, (match) =>
+            ++t === 5 ? '/tr:n-media_library_thumbnail/' : match
+          );
+
           return imageData.image;
         })
       )
@@ -50,6 +55,10 @@ export class ImageService {
       })
       .pipe(
         map((imageData) => {
+          let t = 0;
+          imageData.image.thumb = imageData.image.url.replace(/\//g, (match) =>
+            ++t === 5 ? '/tr:n-media_library_thumbnail/' : match
+          );
           return imageData.image;
         })
       )
