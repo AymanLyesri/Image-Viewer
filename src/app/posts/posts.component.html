@@ -1,10 +1,10 @@
 <h1>all posts</h1>
-<a #top></a>
+<a #top id="top"></a>
 <div class="options">
     <div class="columns">
         <h3>Display Grid</h3>
-        <button (click)="toggleGrid('repeat(2,50%)')">Large</button>
-        <button (click)="toggleGrid('repeat(4,25%)')">Medium</button>
+        <button (click)="toggleGrid('repeat(2, minmax(0, 1fr))')">Large</button>
+        <button (click)="toggleGrid('repeat(4, minmax(0, 1fr))')">Medium</button>
         <button (click)="toggleGrid('repeat(auto-fill, minmax(200px, 1fr))')">
       Auto
     </button>
@@ -28,14 +28,12 @@
 
 <div #imageGrid class="imageGrid" *ngIf="images.length > 0">
     <div #card *ngFor="let image of images" [id]="image._id">
-        <img loading="lazy" [src]="image.thumb" [alt]="image.name" height="800" width="600" />
+        <img appImageRatio [src]="image.thumb" [alt]="image.name" height="800" />
         <a [href]="image.url" target="_blank">Full Size</a>
         <p>{{ image.name }}</p>
         <p>{{ image.createdAt }}</p>
         <p>{{ image.size / 1000 }}kb</p>
-        <button *ngIf="isLoggedIn()" (click)="deleteImage(image._id)">
-      delete
-    </button>
+        <button *ngIf="logged" (click)="deleteImage(image._id)">delete</button>
     </div>
 </div>
 

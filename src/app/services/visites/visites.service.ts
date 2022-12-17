@@ -9,19 +9,18 @@ import { environment } from 'src/environments/environment';
 export class VisitesService {
   constructor(private http: HttpClient) {}
 
+  private visits$ = new Subject<number>();
+
   private readonly URL =
     'https://api.countapi.xyz/hit/' + environment.COUNTKEY + '/';
 
-  private visitors: number;
-
   updateVisitors() {
     this.http.get<{ value: number }>(this.URL).subscribe((response) => {
-      this.visitors = response.value;
-      console.log(this.visitors);
+      this.visits$.next(response.value);
     });
   }
 
   getVisitors() {
-    return this.visitors;
+    return this.visits$.asObservable();
   }
 }

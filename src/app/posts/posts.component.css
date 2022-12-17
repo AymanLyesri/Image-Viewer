@@ -1,29 +1,10 @@
 :host {
-    background: linear-gradient(-45deg, #000000, #494949, #000000, #494949, #000000);
-    background-attachment: fixed;
-    background-size: 200% 200%;
-    animation: gradient 10s ease infinite;
-}
-
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+    background-color: rgb(10, 10, 10);
 }
 
 h1 {
     text-align: center;
     color: white;
-}
-
-.mobileOptions {
-    display: none;
 }
 
 .mobileOptions h3 {
@@ -37,18 +18,9 @@ h1 {
     align-items: center;
 }
 
-@media screen and (max-width:600px) {
+@media (min-width:600px) {
     .mobileOptions {
-        display: unset;
-    }
-    .oneColumn {
-        grid-template-columns: 100vw !important;
-    }
-    .twoColumn {
-        grid-template-columns: 50vw 50vw !important;
-    }
-    .threeColumn {
-        grid-template-columns: 33vw 33vw 33vw !important;
+        display: none;
     }
 }
 
@@ -99,10 +71,12 @@ hr {
 }
 
 .imageGrid {
+    gap: 0.3em;
     width: 100%;
     display: grid;
     align-items: center;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, 1fr);
 }
 
 .imageGrid div {
@@ -128,17 +102,18 @@ hr {
 @keyframes popUp {
     0% {
         opacity: 0;
+        transform: blur(5px);
     }
     100% {
         opacity: 100%;
+        transform: blur(0);
     }
 }
 
-@media screen and (min-width:600px) {
+@media (min-width:600px) {
     .imageGrid {
         margin-inline: 5%;
         width: 90%;
-        gap: 1em;
     }
     .imageGrid div:hover {
         border: 1px white solid;
@@ -149,11 +124,10 @@ hr {
         backdrop-filter: blur(5px);
     }
     .imageGrid div:hover img {
-        border: 1px rgba(255, 255, 255, 0) solid;
+        border: none;
     }
     .imageGrid div:active img {
         border: none;
-        margin-block: 20%;
     }
     .zoom:hover {
         transform: scale(1.2);
@@ -163,6 +137,18 @@ hr {
     }
     .noZoom:hover {
         transform: none;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .oneColumn {
+        grid-template-columns: 100vw !important;
+    }
+    .twoColumn {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+    .threeColumn {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
     }
 }
 
@@ -182,7 +168,7 @@ hr {
 }
 
 .imageGrid a {
-    margin-block: 5%;
+    margin-block: 3%;
     padding: 1%;
     text-decoration: none;
     color: #ffffff;
@@ -193,9 +179,6 @@ hr {
 }
 
 .imageGrid div:hover a {
-    margin-block: 0;
-    padding-block: 5%;
-    padding-inline: 10%;
     color: #000000;
     background-color: #ffffff;
     border: 1px #979797 solid;

@@ -8,17 +8,20 @@ import { VisitesService } from '../services/visites/visites.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  visitors: number;
+  public visitors: number;
+  public title: string;
 
   constructor(private visitsService: VisitesService) {}
 
-  ngOnInit(): void {}
-
-  getTitle() {
-    return environment.NAME;
+  ngOnInit(): void {
+    this.getTitle();
+    this.visitsService.updateVisitors();
+    this.visitsService
+      .getVisitors()
+      .subscribe((visits) => (this.visitors = visits));
   }
 
-  getVisits() {
-    return this.visitsService.getVisitors();
+  getTitle() {
+    this.title = environment.NAME;
   }
 }

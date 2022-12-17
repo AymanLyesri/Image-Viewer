@@ -23,6 +23,8 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChildren('card') cards: QueryList<ElementRef>;
   @ViewChild('imageGrid') grid: ElementRef<HTMLElement>;
 
+  public logged: boolean;
+
   private offset: number = 0;
   private limit: number = 60;
   public images: Image[] = [];
@@ -39,6 +41,7 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
+    this.isLoggedIn();
     this.imageService.getPost(this.offset);
     this.imageSubscription = this.imageService
       .getImageStream()
@@ -54,8 +57,11 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
     console.log(this.offset);
   }
 
+  trackByItems(index: number, image: Image): string {
+    return image._id;
+  }
   isLoggedIn() {
-    return this.AuthService.isLoggedIn();
+    this.logged = this.AuthService.isLoggedIn();
   }
 
   toggleGrid(columns: string) {
