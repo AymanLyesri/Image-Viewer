@@ -28,7 +28,7 @@
 
 <div #imageGrid class="imageGrid" *ngIf="images.length > 0">
     <div #card *ngFor="let image of images" [id]="image._id">
-        <img appImageRatio [src]="image.thumb" [alt]="image.name" height="800" />
+        <img appImageRatio [src]="image.thumb" [alt]="image.name" />
         <a [href]="image.url" target="_blank">Full Size</a>
         <p>{{ image.name }}</p>
         <p>{{ image.createdAt }}</p>
