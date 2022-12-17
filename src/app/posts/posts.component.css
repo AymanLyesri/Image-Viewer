@@ -2,7 +2,6 @@
     background: linear-gradient(-45deg, #000000, #494949, #000000, #494949, #000000);
     background-attachment: fixed;
     background-size: 200% 200%;
-    width: 100vw;
     animation: gradient 10s ease infinite;
 }
 
@@ -118,7 +117,6 @@ hr {
 }
 
 .imageGrid img {
-    image-rendering: auto;
     border: 1px white solid;
     width: 100%;
     height: auto;

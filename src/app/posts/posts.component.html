@@ -28,7 +28,7 @@
 
 <div #imageGrid class="imageGrid" *ngIf="images.length > 0">
     <div #card *ngFor="let image of images" [id]="image._id">
-        <img #img appImageRatio loading="lazy" [src]="image.thumb" [alt]="image.name" height="800" width="600" />
+        <img loading="lazy" [src]="image.thumb" [alt]="image.name" height="800" width="600" />
         <a [href]="image.url" target="_blank">Full Size</a>
         <p>{{ image.name }}</p>
         <p>{{ image.createdAt }}</p>

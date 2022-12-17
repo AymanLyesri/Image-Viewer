@@ -101,7 +101,6 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
           this.offset++;
           this.imageService.getPost(this.offset);
           console.log(this.offset, this.limit);
-
           this.loadingObserver.unobserve(entry.target);
         }
       });
