@@ -29,7 +29,7 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private oldColumns: string = 'oneColumn';
   private oldZoom: string = 'zoom';
-  private loadingSpeed: number = 1;
+  private loadingSpeed: number = 2;
   private offset: number = 0;
   private limit: number = 60;
   private imageSubscription: Subscription;
@@ -112,7 +112,11 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting && this.offset < this.limit) {
-          for (let index = 0; index < this.loadingSpeed; index++) {
+          for (
+            let index = 0;
+            index < this.loadingSpeed && this.offset < this.limit;
+            index++
+          ) {
             this.offset++;
             this.imageService.getPost(this.offset);
           }

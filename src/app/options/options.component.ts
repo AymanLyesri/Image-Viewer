@@ -7,7 +7,7 @@ import { OptionsService } from '../services/options/options.service';
   styleUrls: ['./options.component.css'],
 })
 export class OptionsComponent implements OnInit {
-  public loadingSpeed: number = 1;
+  public loadingSpeed: number = 2;
   public gridClass: string = 'auto';
   public gridClassMobile: string = 'oneColumn';
   public cardHoverClass: string = 'zoom';

@@ -1,18 +1,18 @@
 :host {
     background-color: rgb(33, 33, 33);
+    padding-block: 2vh;
 }
 
 .options {
-    margin-block: 1vh;
     gap: 5em;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.options h3,
-.options strong {
-    margin: 0;
+h3,
+strong {
+    margin-block: 1%;
     color: #444444;
     transition: all 0.5s;
 }
@@ -25,9 +25,9 @@
     color: rgb(255, 255, 0);
 }
 
-.columns,
-.hover,
-.loadingSpeed {
+.options .columns,
+.options .hover,
+.options .loadingSpeed {
     gap: 1em;
     display: flex;
     justify-content: center;
@@ -35,9 +35,9 @@
     flex-direction: column;
 }
 
-.columns div,
-.hover div,
-.loadingSpeed div {
+.options .columns div,
+.options .hover div,
+.options .loadingSpeed div {
     gap: 1em;
     display: flex;
     justify-content: center;
@@ -64,17 +64,25 @@
     }
 }
 
-.mobileOptions h3 {
-    text-align: center;
-    color: #494949;
+.mobileOptions strong {
+    color: #ffbb00;
 }
 
-.mobileOptions .columns {
+.mobileOptions .columns,
+.mobileOptions .loadingSpeed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.mobileOptions .columns div,
+.mobileOptions .loadingSpeed div {
+    width: 100%;
     gap: 1em;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
 }
 
 .mobileOptions button {
