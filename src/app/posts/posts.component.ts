@@ -13,6 +13,7 @@ import { ImageService } from '../services/image.service';
 import { Image } from '../models/Image';
 import { AuthenticationService } from '../services/authentication.service';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { OptionsService } from '../services/options/options.service';
 
 @Component({
   selector: 'app-posts',
@@ -23,25 +24,42 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChildren('card') cards: QueryList<ElementRef>;
   @ViewChild('imageGrid') grid: ElementRef<HTMLElement>;
 
+  public images: Image[] = [];
   public logged: boolean;
 
+  private oldColumns: string = 'oneColumn';
+  private oldZoom: string = 'zoom';
+  private loadingSpeed: number = 1;
   private offset: number = 0;
   private limit: number = 60;
-  public images: Image[] = [];
   private imageSubscription: Subscription;
   private newImageSubscription: Subscription;
   private cardChanges: Subscription;
 
-  private zoomOnHover: string = 'zoom';
-
   constructor(
     private imageService: ImageService,
     private AuthService: AuthenticationService,
-    private render: Renderer2
+    private render: Renderer2,
+    private options: OptionsService
   ) {}
 
   ngOnInit(): void {
     this.isLoggedIn();
+    this.options.getLoadingSpeed().subscribe((speed) => {
+      this.loadingSpeed = speed;
+    });
+    this.options.getGridClass().subscribe((columns) => {
+      this.toggleGrid(columns);
+    });
+    this.options.getGridClassMobile().subscribe((columns) => {
+      this.mobileToggleGrid(columns, this.oldColumns);
+      this.oldColumns = columns;
+    });
+    this.options.getCardHoverClass().subscribe((zoom) => {
+      this.toggleHover(zoom, this.oldZoom);
+      this.oldZoom = zoom;
+    });
+
     this.imageService.getPost(this.offset);
     this.imageSubscription = this.imageService
       .getImageStream()
@@ -57,13 +75,6 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
     console.log(this.offset);
   }
 
-  trackByItems(index: number, image: Image): string {
-    return image._id;
-  }
-  isLoggedIn() {
-    this.logged = this.AuthService.isLoggedIn();
-  }
-
   toggleGrid(columns: string) {
     this.render.setStyle(
       this.grid.nativeElement,
@@ -72,30 +83,27 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
     );
   }
 
-  mobileToggleGrid(columns: string) {
-    this.render.removeClass(this.grid.nativeElement, 'oneColumn');
-    this.render.removeClass(this.grid.nativeElement, 'twoColumn');
-    this.render.removeClass(this.grid.nativeElement, 'threeColumn');
+  mobileToggleGrid(columns: string, oldColumns: string) {
+    this.render.removeClass(this.grid.nativeElement, oldColumns);
     this.render.addClass(this.grid.nativeElement, columns);
   }
 
-  toggleHover(zoom: string) {
-    console.log(zoom);
-
-    this.zoomOnHover = zoom;
+  toggleHover(zoom: string, oldZoom: string) {
     this.cards.forEach((card) => {
-      this.render.removeClass(card.nativeElement, 'zoom');
-      this.render.removeClass(card.nativeElement, 'zoomPlus');
-      this.render.removeClass(card.nativeElement, 'noZoom');
-      this.render.addClass(card.nativeElement, this.zoomOnHover);
+      this.render.removeClass(card.nativeElement, oldZoom);
+      this.render.addClass(card.nativeElement, zoom);
     });
+  }
+
+  isLoggedIn() {
+    this.logged = this.AuthService.isLoggedIn();
   }
 
   ngAfterViewInit(): void {
     this.cardChanges = this.cards.changes.subscribe(() => {
       this.loadingObserver.observe(this.cards.last.nativeElement);
       this.cards.forEach((card) => {
-        this.render.addClass(card.nativeElement, this.zoomOnHover);
+        this.render.addClass(card.nativeElement, this.oldZoom);
       });
     });
   }
@@ -104,8 +112,13 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting && this.offset < this.limit) {
-          this.offset++;
-          this.imageService.getPost(this.offset);
+          for (let index = 0; index < this.loadingSpeed; index++) {
+            this.offset++;
+            this.imageService.getPost(this.offset);
+          }
+
+          console.log(this.loadingSpeed);
+
           console.log(this.offset, this.limit);
           this.loadingObserver.unobserve(entry.target);
         }
@@ -155,5 +168,6 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
     // this.idSubscription.unsubscribe();
     this.imageSubscription.unsubscribe();
     this.cardChanges.unsubscribe();
+    this.newImageSubscription.unsubscribe();
   }
 }

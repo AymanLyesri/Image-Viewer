@@ -1,6 +1,7 @@
 :host {
+    width: 100%;
     height: 100vh;
-    background-color: rgb(10, 10, 10);
+    background-color: rgb(15, 15, 15);
 }
 
 @keyframes gradient {
@@ -30,11 +31,9 @@ section {
     color: aliceblue;
 }
 
-.title h1 {
-    text-align: center;
-}
-
-.title h3 {
+.title h1,
+h3,
+h6 {
     text-align: center;
 }
 
@@ -43,8 +42,6 @@ section {
 }
 
 .icons {
-    width: 5em;
-    height: 5em;
     position: absolute;
     top: 75%;
     left: 50%;
@@ -59,6 +56,7 @@ section {
     position: absolute;
     animation: arrow1 2s ease infinite;
     animation-delay: 1.5s;
+    transform: translateX(-50%);
 }
 
 .arrow2 {
@@ -70,6 +68,7 @@ section {
     position: absolute;
     animation: arrow1 2s ease infinite;
     animation-delay: 0.5s;
+    transform: translateX(-50%);
 }
 
 @keyframes arrow1 {

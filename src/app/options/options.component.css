@@ -1,0 +1,92 @@
+:host {
+    background-color: rgb(33, 33, 33);
+}
+
+.options {
+    margin-block: 1vh;
+    gap: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.options h3,
+.options strong {
+    margin: 0;
+    color: #444444;
+    transition: all 0.5s;
+}
+
+.options div:hover h3 {
+    color: #666666;
+}
+
+.options div:hover strong {
+    color: rgb(255, 255, 0);
+}
+
+.columns,
+.hover,
+.loadingSpeed {
+    gap: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.columns div,
+.hover div,
+.loadingSpeed div {
+    gap: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.options button {
+    border: 1px #000000 solid;
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    transition: all 0.5s;
+}
+
+.options button:hover {
+    border: 1px rgb(255, 255, 0) solid;
+    color: rgb(255, 255, 0);
+}
+
+@media screen and (max-width:600px) {
+    .options {
+        display: none;
+    }
+}
+
+.mobileOptions h3 {
+    text-align: center;
+    color: #494949;
+}
+
+.mobileOptions .columns {
+    gap: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.mobileOptions button {
+    padding: 5%;
+    border: 1px #ffbb00 solid;
+    border-radius: 10px;
+    color: yellow;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width:600px) {
+    .mobileOptions {
+        display: none;
+    }
+}

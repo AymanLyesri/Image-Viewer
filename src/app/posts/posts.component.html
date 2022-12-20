@@ -1,32 +1,9 @@
 <h1>all posts</h1>
 <a #top id="top"></a>
-<div class="options">
-    <div class="columns">
-        <h3>Display Grid</h3>
-        <button (click)="toggleGrid('repeat(2, minmax(0, 1fr))')">Large</button>
-        <button (click)="toggleGrid('repeat(4, minmax(0, 1fr))')">Medium</button>
-        <button (click)="toggleGrid('repeat(auto-fill, minmax(200px, 1fr))')">
-      Auto
-    </button>
-    </div>
-    <div class="hover">
-        <button (click)="toggleHover('zoom')">Zoom 'default'</button>
-        <button (click)="toggleHover('zoomPlus')">Zoom+</button>
-        <button (click)="toggleHover('noZoom')">No Zoom</button>
-        <h3>Zoom Effect</h3>
-    </div>
-</div>
-<div class="mobileOptions">
-    <h3>Display Grid</h3>
-    <div class="columns">
-        <button (click)="mobileToggleGrid('oneColumn')">Large</button
-    ><button (click)="mobileToggleGrid('twoColumn')">Medium auto</button
-    ><button (click)="mobileToggleGrid('threeColumn')">Small</button>
-    </div>
-</div>
+
 <hr />
 
-<div #imageGrid class="imageGrid" *ngIf="images.length > 0">
+<div #imageGrid class="imageGrid oneColumn" *ngIf="images.length > 0">
     <div #card *ngFor="let image of images" [id]="image._id">
         <img appImageRatio [src]="image.thumb" [alt]="image.name" />
         <a [href]="image.url" target="_blank">Full Size</a>

@@ -7,28 +7,29 @@
 
 /* scroll bar */
 
-@media screen and (min-width:600px) {
-     ::-webkit-scrollbar {
-        position: fixed;
-        background-color: rgba(0, 0, 0, 0.500);
-        transition: all 1s;
-        width: 0.5em;
-    }
-     ::-webkit-scrollbar-track {
-        background-color: rgba(0, 0, 0, 0.500);
-    }
-     ::-webkit-scrollbar-thumb {
-        background-color: rgba(255, 0, 0, 0.226);
-        border: 0.2em solid rgb(0, 0, 0);
-        border-radius: 10px;
-        transition: all 1s;
-    }
-     ::-webkit-scrollbar-thumb:hover {
-        background-color: rgb(255, 0, 0);
-    }
-     ::-webkit-scrollbar-thumb:active {
-        background-color: rgb(255, 255, 0);
-    }
+ ::-webkit-scrollbar {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.750);
+    transition: all 1s;
+    width: 0.5em;
+}
+
+ ::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.500);
+}
+
+ ::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 0, 0, 0.226);
+    border: 0.2em solid rgb(0, 0, 0);
+    border-radius: 10px;
+}
+
+ ::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(255, 0, 0);
+}
+
+ ::-webkit-scrollbar-thumb:active {
+    background-color: rgb(255, 255, 0);
 }
 
 html {

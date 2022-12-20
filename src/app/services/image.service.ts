@@ -31,7 +31,7 @@ export class ImageService {
         map((imageData) => {
           let t = 0;
           imageData.image.thumb = imageData.image.url.replace(/\//g, (match) =>
-            ++t === 5 ? '/tr:w-400,h-400,c-at_max/' : match
+            ++t === 5 ? '/tr:w-500,h-500,c-at_max/' : match
           );
 
           return imageData.image;

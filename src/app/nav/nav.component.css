@@ -1,7 +1,7 @@
 :host {
     width: 100vw;
     position: fixed;
-    z-index: 100;
+    z-index: 1000;
     display: flex;
     justify-content: center;
     animation: intro 1s ease;

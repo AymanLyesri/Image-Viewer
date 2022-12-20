@@ -1,0 +1,47 @@
+<section class="options">
+    <div class="columns">
+        <h3>
+            Display Grid, <strong>{{ gridClass }}</strong>
+        </h3>
+        <div>
+            <button (click)="toggleGrid('repeat(2, minmax(0, 1fr))', 'large')">
+        Large
+      </button>
+            <button (click)="toggleGrid('repeat(4, minmax(0, 1fr))', 'medium')">
+        Medium
+      </button>
+            <button (click)="toggleGrid('repeat(auto-fill, minmax(200px, 1fr))', 'auto')">
+        Auto
+      </button>
+        </div>
+    </div>
+    <div class="hover">
+        <h3>
+            Zoom Effect, <strong> {{ cardHoverClass }}</strong>
+        </h3>
+        <div>
+            <button (click)="toggleHover('zoom')">Zoom</button>
+            <button (click)="toggleHover('zoomPlus')">Zoom+</button>
+            <button (click)="toggleHover('noZoom')">NoZoom</button>
+        </div>
+    </div>
+    <div class="loadingSpeed">
+        <h3>
+            Loading Speed,<strong>{{ loadingSpeed }}</strong>
+        </h3>
+        <div>
+            <button (click)="toggleLoadingSpeed(1)">1</button>
+            <button (click)="toggleLoadingSpeed(2)">2</button
+      ><button (click)="toggleLoadingSpeed(3)">3 maybe lag</button>
+        </div>
+    </div>
+</section>
+
+<section class="mobileOptions">
+    <h3>Display Grid, {{ gridClassMobile }}</h3>
+    <div class="columns">
+        <button (click)="mobileToggleGrid('oneColumn')">one Column</button
+    ><button (click)="mobileToggleGrid('twoColumn')">two Columns</button
+    ><button (click)="mobileToggleGrid('threeColumn')">three Columns</button>
+    </div>
+</section>

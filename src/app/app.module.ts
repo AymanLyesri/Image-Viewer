@@ -25,6 +25,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { DonationComponent } from './donation/donation.component';
 import { FooterComponent } from './footer/footer.component';
+import { ParallaxImageDirective } from './directives/parallax-image/parallax-image.directive';
+import { OptionsComponent } from './options/options.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { FooterComponent } from './footer/footer.component';
     SpinnerComponent,
     DonationComponent,
     FooterComponent,
+    ParallaxImageDirective,
+    OptionsComponent,
   ],
   imports: [
     BrowserModule,

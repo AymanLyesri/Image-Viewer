@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { SpinnerService } from '../services/spinner/spinner.service';
 
@@ -10,10 +10,7 @@ import { SpinnerService } from '../services/spinner/spinner.service';
 export class SpinnerComponent implements OnInit {
   showSpinner = false;
 
-  constructor(
-    private spinnerService: SpinnerService,
-    private cdRef: ChangeDetectorRef
-  ) {}
+  constructor(private spinnerService: SpinnerService) {}
 
   ngOnInit(): void {
     this.init();
@@ -22,7 +19,6 @@ export class SpinnerComponent implements OnInit {
   init() {
     this.spinnerService.getSpinnerObserver().subscribe((status) => {
       this.showSpinner = status === 'start';
-      this.cdRef.detectChanges();
     });
   }
 

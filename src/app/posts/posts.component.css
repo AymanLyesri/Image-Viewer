@@ -7,65 +7,6 @@ h1 {
     color: white;
 }
 
-.mobileOptions h3 {
-    text-align: center;
-    color: #494949;
-}
-
-.mobileOptions .columns {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-@media (min-width:600px) {
-    .mobileOptions {
-        display: none;
-    }
-}
-
-.options {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.options h3 {
-    color: #494949;
-}
-
-.options .columns,
-.hover {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.options button,
-.mobileOptions button {
-    margin-inline: 5%;
-    padding: 4%;
-    border: 1px #ffbb00 solid;
-    border-radius: 10px;
-    color: yellow;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
-    transition: all 0.5s;
-}
-
-.options button:hover {
-    padding: 5%;
-    border: 1px #000000 solid;
-    color: rgb(255, 255, 255);
-}
-
-@media screen and (max-width:600px) {
-    .options {
-        display: none;
-    }
-}
-
 hr {
     width: 80%;
 }
@@ -76,7 +17,6 @@ hr {
     display: grid;
     align-items: center;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-template-columns: repeat(auto-fill, 1fr);
 }
 
 .imageGrid div {
@@ -91,6 +31,8 @@ hr {
 }
 
 .imageGrid img {
+    perspective: 1000;
+    transform-style: preserve-3d;
     border: 1px white solid;
     width: 100%;
     height: auto;
@@ -119,7 +61,7 @@ hr {
         border: 1px white solid;
         border-radius: 10px;
         background-color: rgba(0, 0, 0, 0.500);
-        z-index: 1000;
+        z-index: 900;
         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.500);
         backdrop-filter: blur(5px);
     }
@@ -142,12 +84,18 @@ hr {
 
 @media screen and (max-width:600px) {
     .oneColumn {
+        width: 100vw;
         grid-template-columns: 100vw !important;
     }
+    .oneColumn .image-wide {
+        grid-column: span 1;
+    }
     .twoColumn {
+        width: 100vw;
         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     }
     .threeColumn {
+        width: 100vw;
         grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
     }
 }
@@ -190,10 +138,6 @@ hr {
 }
 
 @media screen and (max-width: 600px) {
-    .image-wide {
-        grid-column: span 1;
-        grid-row: span 1;
-    }
     .imageGrid img,
     .imageGrid div {
         margin: 0;
