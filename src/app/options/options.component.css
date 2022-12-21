@@ -17,6 +17,10 @@ strong {
     transition: all 0.5s;
 }
 
+.options div:hover * {
+    text-shadow: 10px 10px 10px black;
+}
+
 .options div:hover h3 {
     color: #666666;
 }

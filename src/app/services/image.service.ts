@@ -39,7 +39,8 @@ export class ImageService {
       )
       .subscribe((image) => {
         this.spinnerService.requestEnded();
-        this.image$.next(image);
+
+        if (image) this.image$.next(image);
       });
   }
 

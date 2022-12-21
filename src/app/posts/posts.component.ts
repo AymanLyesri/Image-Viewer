@@ -53,11 +53,9 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
     });
     this.options.getGridClassMobile().subscribe((columns) => {
       this.mobileToggleGrid(columns, this.oldColumns);
-      this.oldColumns = columns;
     });
     this.options.getCardHoverClass().subscribe((zoom) => {
       this.toggleHover(zoom, this.oldZoom);
-      this.oldZoom = zoom;
     });
 
     this.imageService.getPost(this.offset);
@@ -86,6 +84,7 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
   mobileToggleGrid(columns: string, oldColumns: string) {
     this.render.removeClass(this.grid.nativeElement, oldColumns);
     this.render.addClass(this.grid.nativeElement, columns);
+    this.oldColumns = columns;
   }
 
   toggleHover(zoom: string, oldZoom: string) {
@@ -93,6 +92,7 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
       this.render.removeClass(card.nativeElement, oldZoom);
       this.render.addClass(card.nativeElement, zoom);
     });
+    this.oldZoom = zoom;
   }
 
   isLoggedIn() {
@@ -101,7 +101,8 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.cardChanges = this.cards.changes.subscribe(() => {
-      this.loadingObserver.observe(this.cards.last.nativeElement);
+      if (this.images.length > 0)
+        this.loadingObserver.observe(this.cards.last.nativeElement);
       this.cards.forEach((card) => {
         this.render.addClass(card.nativeElement, this.oldZoom);
       });
@@ -119,11 +120,9 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
           ) {
             this.offset++;
             this.imageService.getPost(this.offset);
+            console.log(this.offset, this.limit);
           }
 
-          console.log(this.loadingSpeed);
-
-          console.log(this.offset, this.limit);
           this.loadingObserver.unobserve(entry.target);
         }
       });
@@ -137,12 +136,11 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
     if (to) this.offset++, (this.limit += 60);
     else (this.offset = this.limit - 120), (this.limit -= 60);
 
-    console.log(this.offset, this.limit);
+    this.images.length = 0;
 
     setTimeout(() => {
-      this.images.length = 0;
       this.imageService.getPost(this.offset);
-    }, 1500);
+    }, 700);
   }
 
   showPrevious() {
@@ -169,7 +167,7 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnDestroy(): void {
-    // this.idSubscription.unsubscribe();
+    this.idSubscription.unsubscribe();
     this.imageSubscription.unsubscribe();
     this.cardChanges.unsubscribe();
     this.newImageSubscription.unsubscribe();

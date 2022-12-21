@@ -38,11 +38,9 @@
 .paypal a:hover {
     padding-block: 50%;
     font-size: large;
-    text-decoration: underline;
-    text-decoration: overline;
     color: rgb(255, 255, 0);
     border: 1px rgb(255, 255, 255) solid;
-    background-color: rgb(11, 11, 11);
+    background-color: rgb(0, 0, 0);
     text-decoration: none;
     border-radius: 50%;
 }

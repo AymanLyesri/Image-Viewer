@@ -2,12 +2,23 @@
     background-color: rgb(10, 10, 10);
 }
 
+header {
+    width: 100%;
+}
+
+header .bg-1 svg {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(10, 10, 10);
+}
+
 h1 {
     text-align: center;
-    color: white;
+    color: rgb(150, 150, 150);
 }
 
 hr {
+    margin-block: 5%;
     width: 80%;
 }
 
@@ -25,7 +36,6 @@ hr {
     justify-content: center;
     flex-direction: column;
     width: 100%;
-    margin-top: 10%;
     transition: all .2s;
     border: 1px rgba(255, 255, 255, 0) solid;
 }
@@ -58,7 +68,7 @@ hr {
         width: 90%;
     }
     .imageGrid div:hover {
-        border: 1px white solid;
+        border: 1px rgba(255, 255, 255, 0) solid;
         border-radius: 10px;
         background-color: rgba(0, 0, 0, 0.500);
         z-index: 900;
@@ -68,8 +78,8 @@ hr {
     .imageGrid div:hover img {
         border: none;
     }
-    .imageGrid div:active img {
-        border: none;
+    .imageGrid div:active {
+        padding: 10%;
     }
     .zoom:hover {
         transform: scale(1.2);
@@ -120,7 +130,7 @@ hr {
     padding: 1%;
     text-decoration: none;
     color: #ffffff;
-    background-color: #313131;
+    background-color: #333333;
     border: 1px #423000 solid;
     border-radius: 10px;
     transition: all 1s;
@@ -145,61 +155,57 @@ hr {
     }
 }
 
-.previous {
+.previous,
+.next {
     position: fixed;
-    left: 0;
     top: 50%;
     transform: translate(0, -50%);
-    border-radius: 0px 30px 30px 0px;
-    background-color: #00000080;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px rgb(0, 0, 0) solid;
     backdrop-filter: blur(5px);
-    border: 1px white solid;
     color: white;
-    height: 25vh;
-    width: 5vw;
-    transition: all 1s;
+    height: 20vh;
+    width: 2vw;
+    transition: all 0.5s;
 }
 
-.previous:hover {
-    height: 30vh;
-    background-color: rgba(255, 255, 0, 0.500);
-    color: rgb(0, 0, 0);
+.previous {
+    left: 0;
+    border-radius: 0px 30px 30px 0px;
 }
 
 .next {
-    position: fixed;
     right: 0;
-    top: 50%;
-    transform: translate(0, -50%);
     border-radius: 30px 0px 0px 30px;
-    background-color: #00000080;
-    backdrop-filter: blur(5px);
-    border: 1px white solid;
-    color: white;
-    height: 25vh;
-    width: 5vw;
-    transition: all 1s;
 }
 
+.previous p,
+.next p {
+    margin: auto;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+}
+
+.previous:hover,
 .next:hover {
     height: 30vh;
-    background-color: rgba(255, 255, 0, 0.500);
-    color: rgb(0, 0, 0);
+    width: 4vw;
+    color: rgb(255, 255, 0);
+    border: 1px rgb(255, 255, 0) solid;
 }
 
 @media screen and (max-width:600px) {
-    .previous {
-        top: unset;
-        bottom: 0;
-        transform: none;
-        height: 5vh;
-        width: 50vw;
-    }
+    .previous,
     .next {
         top: unset;
         bottom: 0;
         transform: none;
         height: 5vh;
         width: 50vw;
+    }
+    .previous p,
+    .next p {
+        writing-mode: unset;
+        text-orientation: unset;
     }
 }
