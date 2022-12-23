@@ -1,18 +1,24 @@
 :host {
-    background-color: rgb(10, 10, 10);
+    background-color: #0a0a0a;
 }
 
 header {
+    position: absolute;
     width: 100%;
+    height: auto;
 }
 
-header .bg-1 svg {
-    height: 100%;
+header .bg-1 {
+    background-image: url("../../assets/layered-waves-haikei-post.svg");
     width: 100%;
-    background-color: rgb(10, 10, 10);
+    height: auto;
+    aspect-ratio: 900/450;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 h1 {
+    margin-top: 25%;
     text-align: center;
     color: rgb(150, 150, 150);
 }
@@ -57,6 +63,9 @@ hr {
     width: 100%;
     height: auto;
     border-radius: 10px;
+    background-image: url("../../assets/Spinner-1.1s-200px.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
     transition: all 1s;
 }
 
@@ -82,8 +91,8 @@ hr {
         border: 1px #979797 solid;
         border-radius: 10px;
     }
-    .imageGrid div:hover p {
-        opacity: 1;
+    .imageGrid p {
+        opacity: 0;
     }
     .imageGrid p:hover {
         text-indent: -200%;
@@ -120,7 +129,7 @@ hr {
 .imageGrid p {
     display: block;
     width: 100%;
-    opacity: 0;
+    opacity: 0.5;
     margin: 0;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -130,7 +139,8 @@ hr {
     transition: all 0.5s, text-indent 5s;
 }
 
-.imageGrid div:active p {
+.imageGrid div:active p,
+.imageGrid div:hover p {
     opacity: 1;
 }
 
