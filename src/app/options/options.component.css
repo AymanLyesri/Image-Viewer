@@ -49,6 +49,7 @@ strong {
 }
 
 .options button {
+    padding: 10px;
     border: 1px #000000 solid;
     border-radius: 10px;
     color: rgb(255, 255, 255);

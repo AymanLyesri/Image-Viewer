@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
 
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Image } from '../models/Image';
 import { SpinnerService } from './spinner/spinner.service';
@@ -33,14 +33,18 @@ export class ImageService {
           imageData.image.thumb = imageData.image.url.replace(/\//g, (match) =>
             ++t === 5 ? '/tr:w-500,h-500,c-at_max/' : match
           );
-
           return imageData.image;
         })
       )
-      .subscribe((image) => {
-        this.spinnerService.requestEnded();
-
-        if (image) this.image$.next(image);
+      .subscribe({
+        next: (image) => {
+          this.spinnerService.requestEnded();
+          this.image$.next(image);
+        },
+        error: (err: { error: { message: string } }) => {
+          this.spinnerService.requestEnded();
+          console.log('error', JSON.stringify(err));
+        },
       });
   }
 
@@ -49,6 +53,7 @@ export class ImageService {
   }
 
   addImage(image: { name: string; image: string }): void {
+    this.spinnerService.requestStarted();
     console.log(image);
     this.http
       .post<{ image: Image }>(this.url + 'posts', {
@@ -63,8 +68,15 @@ export class ImageService {
           return imageData.image;
         })
       )
-      .subscribe((image) => {
-        this.newImage$.next(image);
+      .subscribe({
+        next: (image) => {
+          this.spinnerService.requestEnded();
+          this.newImage$.next(image);
+        },
+        error: (err: { error: { message: string } }) => {
+          this.spinnerService.requestEnded();
+          window.alert(err.error.message);
+        },
       });
   }
 

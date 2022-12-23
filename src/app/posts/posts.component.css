@@ -36,18 +36,8 @@ hr {
     justify-content: center;
     flex-direction: column;
     width: 100%;
-    transition: all .2s;
+    transition: all 0.5s;
     border: 1px rgba(255, 255, 255, 0) solid;
-}
-
-.imageGrid img {
-    perspective: 1000;
-    transform-style: preserve-3d;
-    border: 1px white solid;
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    transition: all 1s;
     animation: popUp 1s;
 }
 
@@ -60,6 +50,16 @@ hr {
         opacity: 100%;
         transform: blur(0);
     }
+}
+
+.imageGrid img {
+    perspective: 1000;
+    transform-style: preserve-3d;
+    border: 1px white solid;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: all 1s;
 }
 
 @media (min-width:600px) {
@@ -78,8 +78,18 @@ hr {
     .imageGrid div:hover img {
         border: none;
     }
-    .imageGrid div:active {
-        padding: 10%;
+    .imageGrid div:hover a {
+        color: #000000;
+        padding-inline: 5%;
+        background-color: #7a7a7a;
+        border: 1px #979797 solid;
+        border-radius: 10px;
+    }
+    .imageGrid div:hover p {
+        opacity: 1;
+    }
+    .imageGrid p:hover {
+        text-indent: -200%;
     }
     .zoom:hover {
         transform: scale(1.2);
@@ -93,12 +103,12 @@ hr {
 }
 
 @media screen and (max-width:600px) {
+    .oneColumn .image-wide {
+        grid-column: span 1;
+    }
     .oneColumn {
         width: 100vw;
         grid-template-columns: 100vw !important;
-    }
-    .oneColumn .image-wide {
-        grid-column: span 1;
     }
     .twoColumn {
         width: 100vw;
@@ -111,36 +121,27 @@ hr {
 }
 
 .imageGrid p {
+    display: block;
     width: 100%;
+    opacity: 0;
     margin: 0;
     text-overflow: ellipsis;
-    font-size: small;
     white-space: nowrap;
+    font-size: small;
     overflow: hidden;
     color: aliceblue;
-    transition: all 1s;
-}
-
-.imageGrid p:hover {
-    text-indent: -100px;
+    transition: all 0.5s, text-indent 5s;
 }
 
 .imageGrid a {
     margin-block: 3%;
     padding: 1%;
     text-decoration: none;
-    color: #ffffff;
+    color: #000000;
     background-color: #333333;
     border: 1px #423000 solid;
     border-radius: 10px;
     transition: all 1s;
-}
-
-.imageGrid div:hover a {
-    color: #000000;
-    background-color: #ffffff;
-    border: 1px #979797 solid;
-    border-radius: 10px;
 }
 
 .image-wide {

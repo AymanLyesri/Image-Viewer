@@ -9,9 +9,13 @@
 
 @keyframes intro {
     0% {
+        opacity: 0;
+        transform: blur(5px);
         margin-top: 30vh;
     }
     100% {
+        opacity: 100%;
+        transform: blur(0);
         margin-top: 0;
     }
 }
