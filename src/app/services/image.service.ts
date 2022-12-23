@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
 
-import { catchError, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Image } from '../models/Image';
 import { SpinnerService } from './spinner/spinner.service';
@@ -84,18 +84,8 @@ export class ImageService {
     return this.newImage$.asObservable();
   }
 
-  private id$ = new Subject<string>(); //observable
-
   deleteImage(id: string) {
     console.log('deleting image', id);
-    this.http
-      .post<{ id: string }>(this.url + 'delete', { id: id })
-      .subscribe((response) => {
-        console.log('image deleted : ', response.id);
-        this.id$.next(id);
-      });
-  }
-  getIdStream() {
-    return this.id$.asObservable();
+    return this.http.post<{ id: string }>(this.url + 'delete', { id: id });
   }
 }

@@ -37,7 +37,6 @@ hr {
     flex-direction: column;
     width: 100%;
     transition: all 0.5s;
-    border: 1px rgba(255, 255, 255, 0) solid;
     animation: popUp 1s;
 }
 
@@ -55,7 +54,6 @@ hr {
 .imageGrid img {
     perspective: 1000;
     transform-style: preserve-3d;
-    border: 1px white solid;
     width: 100%;
     height: auto;
     border-radius: 10px;
@@ -68,7 +66,6 @@ hr {
         width: 90%;
     }
     .imageGrid div:hover {
-        border: 1px rgba(255, 255, 255, 0) solid;
         border-radius: 10px;
         background-color: rgba(0, 0, 0, 0.500);
         z-index: 900;
@@ -131,6 +128,10 @@ hr {
     overflow: hidden;
     color: aliceblue;
     transition: all 0.5s, text-indent 5s;
+}
+
+.imageGrid div:active p {
+    opacity: 1;
 }
 
 .imageGrid a {

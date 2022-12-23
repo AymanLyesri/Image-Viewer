@@ -22,7 +22,7 @@ export class AuthenticationComponent implements OnInit {
       name: ['', [Validators.required]],
       password: ['' /** default value */, [Validators.required]],
     });
-    this.autoLogin();
+    // this.autoLogin();
   }
 
   autoLogin() {

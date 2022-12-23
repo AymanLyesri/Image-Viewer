@@ -45,6 +45,7 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit(): void {
     this.isLoggedIn();
+
     this.options.getLoadingSpeed().subscribe((speed) => {
       this.loadingSpeed = speed;
     });
@@ -73,6 +74,18 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
     console.log(this.offset);
   }
 
+  // downloadImage(url: string, imageName: string) {
+  //   this.imageService
+  //     .downloadImage(url)
+  //     .subscribe((response: Blob | MediaSource) => {
+  //       console.log(response, imageName);
+  //       var a = document.createElement('a');
+  //       a.download = imageName;
+  //       a.href = window.URL.createObjectURL(response);
+  //       a.click;
+  //     });
+  // }
+
   toggleGrid(columns: string) {
     this.render.setStyle(
       this.grid.nativeElement,
@@ -96,7 +109,7 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   isLoggedIn() {
-    this.logged = this.AuthService.isLoggedIn();
+    return this.AuthService.isLoggedIn();
   }
 
   ngAfterViewInit(): void {
@@ -151,23 +164,18 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
     return this.offset == this.limit;
   }
 
-  private idSubscription: Subscription = this.imageService
-    .getIdStream()
-    .subscribe((id: string) => {
-      console.log(id);
+  deleteImage(id: string) {
+    this.imageService.deleteImage(id).subscribe((response) => {
+      console.log(response.id);
       this.cards.forEach((card) => {
-        if (card.nativeElement.id == id) {
-          this.render.parentNode(card.nativeElement).remove();
+        if (card.nativeElement.id == response.id) {
+          card.nativeElement.remove();
         }
       });
     });
-
-  deleteImage(id: string) {
-    this.imageService.deleteImage(id);
   }
 
   ngOnDestroy(): void {
-    this.idSubscription.unsubscribe();
     this.imageSubscription.unsubscribe();
     this.cardChanges.unsubscribe();
     this.newImageSubscription.unsubscribe();

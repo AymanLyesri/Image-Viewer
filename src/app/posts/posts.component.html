@@ -13,14 +13,17 @@
 
 <hr />
 
-<div #imageGrid class="imageGrid oneColumn" *ngIf="images.length > 0">
+<div #imageGrid class="imageGrid oneColumn">
     <div #card *ngFor="let image of images" [id]="image._id">
         <img appImageRatio [src]="image.thumb" [alt]="image.name" />
         <a [href]="image.url" target="_blank">Full Size</a>
+        <!-- <button (click)="downloadImage(image.url, 'fdsf')">Download</button> -->
         <p>{{ image.name }}</p>
         <p>{{ image.createdAt }}</p>
         <p>{{ image.size / 1000 }}kb</p>
-        <button *ngIf="logged" (click)="deleteImage(image._id)">delete</button>
+        <button *ngIf="isLoggedIn()" (click)="deleteImage(image._id)">
+      delete
+    </button>
     </div>
 </div>
 
