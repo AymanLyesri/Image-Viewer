@@ -27,12 +27,21 @@
     </div>
     <div class="loadingSpeed">
         <h3>
-            Loading Speed,<strong>{{ loadingSpeed }}</strong>
+            Loading Speed, <strong>{{ loadingSpeed }}</strong>
         </h3>
         <div>
             <button (click)="toggleLoadingSpeed(1)">1</button>
             <button (click)="toggleLoadingSpeed(2)">2</button
       ><button (click)="toggleLoadingSpeed(3)">3 maybe lag</button>
+        </div>
+    </div>
+    <div class="span">
+        <h3>
+            Span, <strong>{{ spanState }}</strong>
+        </h3>
+        <div>
+            <button (click)="toggleSpan(true)">Span</button
+      ><button (click)="toggleSpan(false)">noSpan</button>
         </div>
     </div>
 </section>
@@ -60,6 +69,15 @@
             <button (click)="toggleLoadingSpeed(1)">1</button>
             <button (click)="toggleLoadingSpeed(2)">2</button
       ><button (click)="toggleLoadingSpeed(3)">3 maybe lag</button>
+        </div>
+    </div>
+    <div class="span">
+        <h3>
+            Span, <strong>{{ spanState }}</strong>
+        </h3>
+        <div>
+            <button (click)="toggleSpan(true)">Span</button
+      ><button (click)="toggleSpan(false)">noSpan</button>
         </div>
     </div>
 </section>

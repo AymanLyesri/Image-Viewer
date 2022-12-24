@@ -1,16 +1,51 @@
-import { Directive, Renderer2, ElementRef } from '@angular/core';
+import { Directive, Renderer2, ElementRef, AfterViewInit } from '@angular/core';
+import { OptionsService } from 'src/app/services/options/options.service';
 
 @Directive({
   selector: '[appImageRatio]',
 })
-export class ImageRatioDirective {
-  constructor(element: ElementRef, private render: Renderer2) {
-    element.nativeElement.onload = () => {
-      var realWidth = element.nativeElement.naturalWidth;
-      var realHeight = element.nativeElement.naturalHeight;
+export class ImageRatioDirective implements AfterViewInit {
+  spanState: boolean;
 
-      if (realWidth / realHeight >= 1.4)
-        this.render.addClass(element.nativeElement.parentElement, 'image-wide');
-    };
+  constructor(
+    private element: ElementRef,
+    private render: Renderer2,
+    private options: OptionsService
+  ) {}
+
+  ngAfterViewInit(): void {
+    if (this.options.getSpanState()) {
+      this.element.nativeElement.onload = () => {
+        var realWidth = this.element.nativeElement.naturalWidth;
+        var realHeight = this.element.nativeElement.naturalHeight;
+
+        if (realWidth / realHeight >= 1.4)
+          this.render.addClass(
+            this.element.nativeElement.parentElement,
+            'image-wide'
+          );
+      };
+    }
+
+    this.options.getSpanState$().subscribe((state) => {
+      console.log('btuh', state);
+
+      if (state) {
+        var realWidth = this.element.nativeElement.naturalWidth;
+        var realHeight = this.element.nativeElement.naturalHeight;
+        console.log(realHeight, realWidth);
+
+        if (realWidth / realHeight >= 1.4)
+          this.render.addClass(
+            this.element.nativeElement.parentElement,
+            'image-wide'
+          );
+      } else {
+        this.render.removeClass(
+          this.element.nativeElement.parentElement,
+          'image-wide'
+        );
+      }
+    });
   }
 }

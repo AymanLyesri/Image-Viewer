@@ -11,6 +11,7 @@ export class OptionsComponent implements OnInit {
   public gridClass: string = 'auto';
   public gridClassMobile: string = 'oneColumn';
   public cardHoverClass: string = 'zoom';
+  public spanState: boolean = false;
 
   constructor(private options: OptionsService) {}
 
@@ -34,5 +35,9 @@ export class OptionsComponent implements OnInit {
   toggleLoadingSpeed(speed: number) {
     this.loadingSpeed = speed;
     this.options.updateLoadingSpeed(speed);
+  }
+  toggleSpan(state: boolean) {
+    this.spanState = state;
+    this.options.updateSpanState(state);
   }
 }

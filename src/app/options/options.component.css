@@ -31,7 +31,8 @@ strong {
 
 .options .columns,
 .options .hover,
-.options .loadingSpeed {
+.options .loadingSpeed,
+.options .span {
     gap: 1em;
     display: flex;
     justify-content: center;
@@ -41,7 +42,8 @@ strong {
 
 .options .columns div,
 .options .hover div,
-.options .loadingSpeed div {
+.options .loadingSpeed div,
+.options .span div {
     gap: 1em;
     display: flex;
     justify-content: center;
@@ -74,7 +76,8 @@ strong {
 }
 
 .mobileOptions .columns,
-.mobileOptions .loadingSpeed {
+.mobileOptions .loadingSpeed,
+.mobileOptions .span {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -82,7 +85,8 @@ strong {
 }
 
 .mobileOptions .columns div,
-.mobileOptions .loadingSpeed div {
+.mobileOptions .loadingSpeed div,
+.mobileOptions .span div {
     width: 100%;
     gap: 1em;
     display: flex;

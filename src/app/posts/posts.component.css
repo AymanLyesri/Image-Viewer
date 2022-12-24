@@ -18,7 +18,7 @@ header .bg-1 {
 }
 
 h1 {
-    margin-top: 25%;
+    margin-top: 20%;
     text-align: center;
     color: rgb(150, 150, 150);
 }
@@ -109,19 +109,19 @@ hr {
 }
 
 @media screen and (max-width:600px) {
+    .imageGrid {
+        width: 100vw;
+    }
     .oneColumn .image-wide {
         grid-column: span 1;
     }
     .oneColumn {
-        width: 100vw;
         grid-template-columns: 100vw !important;
     }
     .twoColumn {
-        width: 100vw;
         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     }
     .threeColumn {
-        width: 100vw;
         grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
     }
 }
@@ -157,14 +157,6 @@ hr {
 
 .image-wide {
     grid-column: span 2/auto;
-}
-
-@media screen and (max-width: 600px) {
-    .imageGrid img,
-    .imageGrid div {
-        margin: 0;
-        border: none;
-    }
 }
 
 .previous,
