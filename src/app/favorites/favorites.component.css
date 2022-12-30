@@ -1,26 +1,12 @@
 :host {
     background-color: #0a0a0a;
-}
-
-header {
-    position: absolute;
-    width: 100%;
-    height: auto;
-}
-
-header .bg-1 {
-    background-image: url("../../assets/layered-waves-haikei-post.svg");
-    width: 100%;
-    height: auto;
-    aspect-ratio: 900/450;
-    background-repeat: no-repeat;
-    background-size: cover;
+    z-index: 0;
 }
 
 h1 {
     margin-top: 20%;
     text-align: center;
-    color: rgb(150, 150, 150);
+    color: rgb(255, 92, 92);
 }
 
 hr {

@@ -3,7 +3,7 @@
 }
 
 .options {
-    gap: 5em;
+    gap: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,10 +28,7 @@ strong {
     color: rgb(255, 255, 0);
 }
 
-.options .columns,
-.options .hover,
-.options .loadingSpeed,
-.options .span {
+.options>div {
     gap: 1em;
     display: flex;
     justify-content: center;
@@ -39,10 +36,7 @@ strong {
     flex-direction: column;
 }
 
-.options .columns div,
-.options .hover div,
-.options .loadingSpeed div,
-.options .span div {
+.options>div>div {
     gap: 1em;
     display: flex;
     justify-content: center;
@@ -74,18 +68,14 @@ strong {
     color: #ffbb00;
 }
 
-.mobileOptions .columns,
-.mobileOptions .loadingSpeed,
-.mobileOptions .span {
+.mobileOptions>div {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.mobileOptions .columns div,
-.mobileOptions .loadingSpeed div,
-.mobileOptions .span div {
+.mobileOptions>div>div {
     width: 100%;
     gap: 1em;
     display: flex;

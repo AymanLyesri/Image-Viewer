@@ -10,7 +10,7 @@
 @keyframes intro {
     0% {
         opacity: 0;
-        transform: blur(5px);
+        transform: blur(25px);
         margin-top: 30vh;
     }
     100% {
@@ -59,7 +59,7 @@ nav {
 nav:hover .donation {
     width: 50%;
     background: linear-gradient(90deg, rgba(9, 255, 0, 0.500), rgb(255, 0, 0, 0.5), rgb(0, 38, 255, 0.5), rgb(255, 0, 212, 0.5));
-    animation: gradient 1s ease infinite;
+    animation: gradient 1s forwards infinite;
     background-size: 400% 400%;
 }
 
@@ -79,8 +79,11 @@ nav:hover .donation {
     0% {
         background-position: 0% 0%;
     }
-    100% {
+    50% {
         background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 0%;
     }
 }
 
@@ -101,15 +104,6 @@ nav:hover .donation {
     display: flex;
 }
 
-.login a span {
-    background-image: url("../../assets/user-solid-light.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: block;
-    width: 1em;
-    height: 1em;
-}
-
 .login:hover span,
 .home:hover span,
 .github:hover span,
@@ -125,28 +119,31 @@ nav:hover .donation {
     color: white;
 }
 
-.home a span {
-    background-image: url("../../assets/house-solid-light.svg");
+.home a span,
+.favorites a span,
+.github span,
+.login a span {
     background-repeat: no-repeat;
     background-size: cover;
     width: 1em;
     height: 1em;
     display: block;
+}
+
+.home a span {
+    background-image: url("../../assets/house-solid-light.svg");
 }
 
 .favorites a span {
     background-image: url("../../assets/heart-992.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 1em;
-    height: 1em;
-    display: block;
+}
+
+.login a span {
+    background-image: url("../../assets/user-solid-light.svg");
 }
 
 .github span {
     background-image: url("../../assets/icons8-github.svg");
-    background-size: cover;
-    display: block;
-    height: 1.5em;
     width: 1.5em;
+    height: 1.5em;
 }

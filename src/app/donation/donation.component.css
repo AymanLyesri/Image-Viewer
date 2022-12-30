@@ -1,6 +1,6 @@
 :host {
     background-color: rgb(255, 57, 57);
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -21,7 +21,7 @@
 }
 
 .paypal {
-    margin-block: 10vw;
+    margin-block: 10%;
     text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
@@ -56,13 +56,19 @@
     color: rgb(255, 255, 0);
 }
 
-.bg {
-    z-index: -1;
+footer {
     position: absolute;
-    bottom: 0;
-    background-image: url("../../assets/layered-waves-haikei.svg");
     width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+footer .bg {
+    position: absolute;
+    background-image: url("../../assets/layered-waves-haikei.svg");
+    width: 100%;
     height: auto;
+    bottom: 0;
     aspect-ratio: 900/600;
     background-repeat: no-repeat;
     background-size: cover;

@@ -1,8 +1,6 @@
 <h1>all favorites</h1>
 <a #top id="top"></a>
-
 <hr />
-
 <div #imageGrid class="imageGrid oneColumn">
     <div #card *ngFor="let image of images" [id]="image._id">
         <img appImageRatio [src]="image.thumb" [alt]="image.name" />
@@ -17,6 +15,10 @@
         <h1>You got no favorites Bruh</h1>
     </div>
 </div>
+
+<footer>
+    <div class="bg"></div>
+</footer>
 
 <!-- <button class="previous" *ngIf="showPrevious()" (click)="Page(top, false)">
   <p>PREVIOUS</p>
