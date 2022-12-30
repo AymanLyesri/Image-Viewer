@@ -20,7 +20,7 @@ header .bg-1 {
 h1 {
     margin-top: 20%;
     text-align: center;
-    color: rgba(255, 50, 50, 0.5);
+    color: rgb(150, 150, 150);
 }
 
 hr {
@@ -75,16 +75,13 @@ hr {
         width: 90%;
     }
     .imageGrid div:hover {
-        border-radius: 10px;
         background-color: rgba(0, 0, 0, 0.500);
         z-index: 900;
         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.500);
         backdrop-filter: blur(5px);
     }
-    .imageGrid div:hover img {
-        border: none;
-    }
-    .imageGrid div:hover a {
+    .imageGrid div:hover a,
+    .imageGrid div:hover .favorite {
         color: #000000;
         padding-inline: 5%;
         background-color: #7a7a7a;
@@ -95,7 +92,7 @@ hr {
         opacity: 0;
     }
     .imageGrid p:hover {
-        text-indent: -100%;
+        text-indent: -200%;
     }
     .zoom:hover {
         transform: scale(1.2);
@@ -133,7 +130,7 @@ hr {
     margin: 0;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: small;
+    font-size: smaller;
     overflow: hidden;
     color: aliceblue;
     transition: all 0.5s, text-indent 5s;
@@ -144,9 +141,14 @@ hr {
     opacity: 1;
 }
 
+.imageGrid .actions {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
 .imageGrid a,
-.imageGrid button {
-    margin-block: 3%;
+.imageGrid .favorite {
     padding: 1%;
     text-decoration: none;
     color: #000000;
@@ -154,6 +156,11 @@ hr {
     border: 1px #423000 solid;
     border-radius: 10px;
     transition: all 1s;
+}
+
+.imageGrid .favorite {
+    background-color: rgba(255, 50, 50, 0.5);
+    color: rgb(0, 0, 0);
 }
 
 .image-wide {
