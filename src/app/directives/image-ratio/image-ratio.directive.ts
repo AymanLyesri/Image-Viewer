@@ -29,17 +29,16 @@ export class ImageRatioDirective implements AfterViewInit {
 
     this.options.getSpanState$().subscribe((state) => {
       console.log('btuh', state);
-
-      if (state) {
-        var realWidth = this.element.nativeElement.naturalWidth;
-        var realHeight = this.element.nativeElement.naturalHeight;
-        console.log(realHeight, realWidth);
-
-        if (realWidth / realHeight >= 1.4)
-          this.render.addClass(
-            this.element.nativeElement.parentElement,
-            'image-wide'
-          );
+      if (
+        state &&
+        this.element.nativeElement.naturalWidth /
+          this.element.nativeElement.naturalHeight >=
+          1.4
+      ) {
+        this.render.addClass(
+          this.element.nativeElement.parentElement,
+          'image-wide'
+        );
       } else {
         this.render.removeClass(
           this.element.nativeElement.parentElement,

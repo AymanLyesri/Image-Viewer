@@ -1,8 +1,4 @@
-<header>
-    <div class="bg-1"></div>
-</header>
-
-<h1>all posts</h1>
+<h1>all favorites</h1>
 <a #top id="top"></a>
 
 <hr />
@@ -10,25 +6,21 @@
 <div #imageGrid class="imageGrid oneColumn">
     <div #card *ngFor="let image of images" [id]="image._id">
         <img appImageRatio [src]="image.thumb" [alt]="image.name" />
-        <div class="actions">
-            <a [href]="image.url" target="_blank">Full Size</a>
-            <button class="favorite" (click)="addFavorite(image._id)">
-        favorite it
-      </button>
-        </div>
+        <a [href]="image.url" target="_blank">Full Size</a>
         <!-- <button (click)="downloadImage(image.url, 'fdsf')">Download</button> -->
         <p>{{ image.name }}</p>
         <p>{{ image.createdAt }}</p>
         <p>{{ image.size / 1000 }}kb</p>
-        <button *ngIf="isLoggedIn()" (click)="deleteImage(image._id)">
-      delete
-    </button>
+        <button class="favorite" (click)="deleteFavorite(image._id)">delete</button>
+    </div>
+    <div *ngIf="images.length == 0">
+        <h1>You got no favorites Bruh</h1>
     </div>
 </div>
 
-<button class="previous" *ngIf="showPrevious()" (click)="Page(top, false)">
+<!-- <button class="previous" *ngIf="showPrevious()" (click)="Page(top, false)">
   <p>PREVIOUS</p>
 </button>
 <button class="next" *ngIf="showNext()" (click)="Page(top, true)">
   <p>NEXT</p>
-</button>
+</button> -->

@@ -10,7 +10,7 @@ export class OptionsService {
   private gridClassMobile$ = new Subject<string>();
   private cardHoverClass$ = new Subject<string>();
   private spanState$ = new Subject<boolean>();
-  private spanState: boolean = false;
+  private spanState: boolean = true;
 
   constructor() {}
 

@@ -27,6 +27,7 @@ import { DonationComponent } from './donation/donation.component';
 import { FooterComponent } from './footer/footer.component';
 import { ParallaxImageDirective } from './directives/parallax-image/parallax-image.directive';
 import { OptionsComponent } from './options/options.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { OptionsComponent } from './options/options.component';
     FooterComponent,
     ParallaxImageDirective,
     OptionsComponent,
+    FavoritesComponent,
   ],
   imports: [
     BrowserModule,

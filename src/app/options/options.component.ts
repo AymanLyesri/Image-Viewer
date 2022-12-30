@@ -11,7 +11,7 @@ export class OptionsComponent implements OnInit {
   public gridClass: string = 'auto';
   public gridClassMobile: string = 'oneColumn';
   public cardHoverClass: string = 'zoom';
-  public spanState: boolean = false;
+  public spanState: boolean = true;
 
   constructor(private options: OptionsService) {}
 

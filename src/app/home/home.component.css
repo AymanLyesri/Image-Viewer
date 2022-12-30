@@ -13,11 +13,11 @@
 }
 
 .bg {
-    position: absolute;
-    bottom: 0;
     background-image: url("../../assets/layered-waves-haikei.svg");
-    width: 100%;
+    position: absolute;
+    width: 100vw;
     height: auto;
+    bottom: 0;
     aspect-ratio: 900/600;
     background-repeat: no-repeat;
     background-size: cover;
@@ -36,9 +36,9 @@
 }
 
 section {
+    height: 100vh;
     perspective: 10px;
     width: 100%;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -76,7 +76,7 @@ h6 {
 
 .icons {
     position: absolute;
-    top: 75%;
+    top: 60%;
     left: 50%;
 }
 

@@ -1,27 +1,24 @@
 import {
-  AfterViewInit,
   Component,
   ElementRef,
-  OnDestroy,
   OnInit,
   QueryList,
   Renderer2,
   ViewChild,
   ViewChildren,
 } from '@angular/core';
-import { ImageService } from '../services/image.service';
 import { Image } from '../models/Image';
-import { AuthenticationService } from '../services/authentication.service';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { ImageService } from '../services/image.service';
 import { OptionsService } from '../services/options/options.service';
 import { RefreshFavoritesService } from '../services/refresh-favorites/refresh-favorites.service';
 
 @Component({
-  selector: 'app-posts',
-  templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.css'],
+  selector: 'app-favorites',
+  templateUrl: './favorites.component.html',
+  styleUrls: ['./favorites.component.css'],
 })
-export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
+export class FavoritesComponent implements OnInit {
   @ViewChildren('card') cards: QueryList<ElementRef>;
   @ViewChild('imageGrid') grid: ElementRef<HTMLElement>;
 
@@ -34,20 +31,21 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
   private loadingSpeed: number = 2;
   private offset: number = 0;
   private limit: number = 60;
+
+  private refreshSubscription: Subscription;
   private imageSubscription: Subscription;
   private newImageSubscription: Subscription;
   private cardChanges: Subscription;
 
   constructor(
     private imageService: ImageService,
-    private AuthService: AuthenticationService,
     private render: Renderer2,
     private options: OptionsService,
     private refreshService: RefreshFavoritesService
   ) {}
 
   ngOnInit(): void {
-    this.isLoggedIn();
+    this.favorites = JSON.parse(localStorage.getItem('favorites'));
 
     this.options.getLoadingSpeed().subscribe((speed) => {
       this.loadingSpeed = speed;
@@ -62,32 +60,20 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
       this.toggleHover(zoom, this.oldZoom);
     });
 
-    this.imageService.getPost(this.offset);
+    this.imageService.getFavorite(this.favorites[this.offset]);
+
     this.imageSubscription = this.imageService
-      .getImageStream()
+      .getFavoriteStream()
       .subscribe((image: Image) => {
         this.images.push(image);
       });
-    this.newImageSubscription = this.imageService
-      .getNewImageStream()
-      .subscribe((image: Image) => {
-        this.images.unshift(image);
-      });
 
-    console.log(this.offset);
+    this.refreshSubscription = this.refreshService.refresh().subscribe(() => {
+      this.favorites = JSON.parse(localStorage.getItem('favorites'));
+      console.log(this.favorites);
+      this.imageService.getFavorite(this.favorites[this.favorites.length - 1]);
+    });
   }
-
-  // downloadImage(url: string, imageName: string) {
-  //   this.imageService
-  //     .downloadImage(url)
-  //     .subscribe((response: Blob | MediaSource) => {
-  //       console.log(response, imageName);
-  //       var a = document.createElement('a');
-  //       a.download = imageName;
-  //       a.href = window.URL.createObjectURL(response);
-  //       a.click;
-  //     });
-  // }
 
   toggleGrid(columns: string) {
     this.render.setStyle(
@@ -111,10 +97,6 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
     this.oldZoom = zoom;
   }
 
-  isLoggedIn() {
-    return this.AuthService.isLoggedIn();
-  }
-
   ngAfterViewInit(): void {
     this.cardChanges = this.cards.changes.subscribe(() => {
       if (this.images.length > 0)
@@ -128,14 +110,14 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
   private loadingObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting && this.offset < this.limit) {
+        if (entry.isIntersecting && this.offset < this.favorites.length) {
           for (
             let index = 0;
             index < this.loadingSpeed && this.offset < this.limit;
             index++
           ) {
             this.offset++;
-            this.imageService.getPost(this.offset);
+            this.imageService.getFavorite(this.favorites[this.offset]);
             console.log(this.offset, this.limit);
           }
 
@@ -146,56 +128,17 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
     { rootMargin: '1000px' }
   );
 
-  Page(element: HTMLElement, to: boolean) {
-    element.scrollIntoView(false);
+  deleteFavorite(id: string) {
+    if (this.favorites.indexOf(id) < 0) return;
 
-    if (to) this.offset++, (this.limit += 60);
-    else (this.offset = this.limit - 120), (this.limit -= 60);
+    this.favorites = JSON.parse(localStorage.getItem('favorites'));
+    this.favorites.splice(this.favorites.indexOf(id), 1);
 
-    this.images.length = 0;
-
-    setTimeout(() => {
-      this.imageService.getPost(this.offset);
-    }, 700);
-  }
-
-  showPrevious() {
-    return this.limit != 60;
-  }
-
-  showNext() {
-    return this.offset == this.limit;
-  }
-
-  deleteImage(id: string) {
-    this.imageService.deleteImage(id).subscribe((response) => {
-      console.log(response.id);
-      this.cards.forEach((card) => {
-        if (card.nativeElement.id == response.id) {
-          card.nativeElement.remove();
-        }
-      });
+    this.cards.forEach((card) => {
+      if (card.nativeElement.id == id) card.nativeElement.remove();
     });
-  }
 
-  addFavorite(id: string) {
-    console.log(id);
-
-    this.favorites = JSON.parse(localStorage.getItem('favorites'))
-      ? JSON.parse(localStorage.getItem('favorites'))
-      : [];
-
-    if (this.favorites.indexOf(id) > 0) return;
-
-    this.favorites.push(id);
     console.log(this.favorites);
     localStorage.setItem('favorites', JSON.stringify(this.favorites));
-    this.refreshService.setRefreshRequest();
-  }
-
-  ngOnDestroy(): void {
-    this.imageSubscription.unsubscribe();
-    this.cardChanges.unsubscribe();
-    this.newImageSubscription.unsubscribe();
   }
 }

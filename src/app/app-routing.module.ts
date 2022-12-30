@@ -7,6 +7,7 @@ import { UploadComponent } from './upload/upload.component';
 import { AuthGuard } from './services/auth/auth.guard';
 
 import { DonationComponent } from './donation/donation.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 const Routes: Routes = [
   {
@@ -30,6 +31,10 @@ const Routes: Routes = [
     path: 'upload',
     component: UploadComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'favorites',
+    component: FavoritesComponent,
   },
 ];
 
