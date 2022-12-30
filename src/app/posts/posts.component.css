@@ -1,8 +1,10 @@
 :host {
     background-color: #0a0a0a;
+    z-index: 0;
 }
 
 header {
+    z-index: -1;
     position: absolute;
     width: 100%;
     height: auto;
@@ -58,13 +60,10 @@ hr {
 }
 
 .imageGrid img {
-    perspective: 1000;
-    transform-style: preserve-3d;
     width: 100%;
     height: auto;
     border-radius: 10px;
-    background-image: url("../../assets/Spinner-1.1s-200px.gif");
-    background-repeat: no-repeat;
+    background-color: #ff7676;
     background-size: cover;
     transition: all 1s;
 }

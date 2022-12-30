@@ -9,7 +9,7 @@
 
 <div #imageGrid class="imageGrid oneColumn">
     <div #card *ngFor="let image of images" [id]="image._id">
-        <img appImageRatio [src]="image.thumb" [alt]="image.name" />
+        <img appImageRatio [src]="image.thumb" [alt]="image.name" height="500" width="500" />
         <div class="actions">
             <a [href]="image.url" target="_blank">Full Size</a>
             <button class="favorite" (click)="addFavorite(image._id)">

@@ -44,12 +44,10 @@ hr {
 }
 
 .imageGrid img {
-    perspective: 1000;
-    transform-style: preserve-3d;
     width: 100%;
     height: auto;
     border-radius: 10px;
-    background-image: url("../../assets/Spinner-1.1s-200px.gif");
+    background-color: #ff7676;
     background-repeat: no-repeat;
     background-size: cover;
     transition: all 1s;

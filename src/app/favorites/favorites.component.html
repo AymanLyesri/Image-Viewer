@@ -3,7 +3,7 @@
 <hr />
 <div #imageGrid class="imageGrid oneColumn">
     <div #card *ngFor="let image of images" [id]="image._id">
-        <img appImageRatio [src]="image.thumb" [alt]="image.name" />
+        <img appImageRatio [src]="image.thumb" [alt]="image.name" height="500" width="500" />
         <a [href]="image.url" target="_blank">Full Size</a>
         <!-- <button (click)="downloadImage(image.url, 'fdsf')">Download</button> -->
         <p>{{ image.name }}</p>
