@@ -36,6 +36,7 @@ hr {
     display: grid;
     align-items: center;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-flow: row dense;
 }
 
 .imageGrid div {
@@ -79,12 +80,18 @@ hr {
         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.500);
         backdrop-filter: blur(5px);
     }
-    .imageGrid div:hover a,
-    .imageGrid div:hover .favorite {
-        color: #000000;
+    .imageGrid a:hover {
         padding-inline: 5%;
+        border-radius: 10px;
+        color: #000000;
         background-color: #7a7a7a;
         border: 1px #979797 solid;
+    }
+    .imageGrid .favorite:hover {
+        color: #ffffff;
+        padding-inline: 5%;
+        background-color: #ff0000;
+        border: 1px #000000 solid;
         border-radius: 10px;
     }
     .imageGrid p {
@@ -166,6 +173,10 @@ hr {
     grid-column: span 2/auto;
 }
 
+.image-tall {
+    grid-row: span 2/auto;
+}
+
 .previous,
 .next {
     position: fixed;
@@ -175,7 +186,7 @@ hr {
     border: 1px rgb(0, 0, 0) solid;
     backdrop-filter: blur(5px);
     color: white;
-    height: 20vh;
+    height: 30vh;
     width: 2vw;
     transition: all 0.5s;
 }
@@ -199,7 +210,7 @@ hr {
 
 .previous:hover,
 .next:hover {
-    height: 30vh;
+    height: 50vh;
     width: 4vw;
     color: rgb(255, 255, 0);
     border: 1px rgb(255, 255, 0) solid;

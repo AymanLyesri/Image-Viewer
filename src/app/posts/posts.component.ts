@@ -34,6 +34,7 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
   private loadingSpeed: number = 2;
   private offset: number = 0;
   private limit: number = 60;
+
   private imageSubscription: Subscription;
   private newImageSubscription: Subscription;
   private cardChanges: Subscription;
@@ -73,8 +74,6 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
       .subscribe((image: Image) => {
         this.images.unshift(image);
       });
-
-    console.log(this.offset);
   }
 
   // downloadImage(url: string, imageName: string) {
@@ -152,9 +151,8 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
     if (to) this.offset++, (this.limit += 60);
     else (this.offset = this.limit - 120), (this.limit -= 60);
 
-    this.images.length = 0;
-
     setTimeout(() => {
+      this.images.length = 0;
       this.imageService.getPost(this.offset);
     }, 700);
   }

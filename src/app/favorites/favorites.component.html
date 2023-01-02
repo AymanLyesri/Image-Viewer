@@ -1,6 +1,6 @@
-<h1>all favorites</h1>
-<a #top id="top"></a>
-<hr />
+<h1 style="color: rgb(255, 70, 70)">all favorites</h1>
+
+<hr style="border-color: rgb(255, 70, 70)" />
 <div #imageGrid class="imageGrid oneColumn">
     <div #card *ngFor="let image of images" [id]="image._id">
         <img appImageRatio [src]="image.thumb" [alt]="image.name" height="500" width="500" />

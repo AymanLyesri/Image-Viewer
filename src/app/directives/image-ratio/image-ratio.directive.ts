@@ -24,25 +24,40 @@ export class ImageRatioDirective implements AfterViewInit {
             this.element.nativeElement.parentElement,
             'image-wide'
           );
+        else if (realWidth / realHeight <= 0.6)
+          this.render.addClass(
+            this.element.nativeElement.parentElement,
+            'image-tall'
+          );
       };
     }
 
     this.options.getSpanState$().subscribe((state) => {
       console.log('btuh', state);
-      if (
-        state &&
-        this.element.nativeElement.naturalWidth /
-          this.element.nativeElement.naturalHeight >=
-          1.4
-      ) {
+      if (state == false) {
+        this.render.removeClass(
+          this.element.nativeElement.parentElement,
+          'image-wide'
+        );
+        this.render.removeClass(
+          this.element.nativeElement.parentElement,
+          'image-tall'
+        );
+        return;
+      }
+
+      var realWidth = this.element.nativeElement.naturalWidth;
+      var realHeight = this.element.nativeElement.naturalHeight;
+
+      if (realWidth / realHeight >= 1.4) {
         this.render.addClass(
           this.element.nativeElement.parentElement,
           'image-wide'
         );
-      } else {
-        this.render.removeClass(
+      } else if (realWidth / realHeight <= 0.6) {
+        this.render.addClass(
           this.element.nativeElement.parentElement,
-          'image-wide'
+          'image-tall'
         );
       }
     });

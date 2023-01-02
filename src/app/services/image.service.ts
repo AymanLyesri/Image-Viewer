@@ -54,26 +54,26 @@ export class ImageService {
   }
 
   getFavorite(id: string) {
+    if (id == undefined) return;
+
     let params = new HttpParams().set('id', id);
 
     console.log('fav', id);
 
-    if (id != undefined)
-      this.http
-        .get<{ image: Image }>(this.url + 'favorites', { params: params })
-        .pipe(
-          map((imageData) => {
-            let t = 0;
-            imageData.image.thumb = imageData.image.url.replace(
-              /\//g,
-              (match) => (++t === 5 ? '/tr:w-500,h-500,c-at_max/' : match)
-            );
-            return imageData.image;
-          })
-        )
-        .subscribe((image) => {
-          this.favorite$.next(image);
-        });
+    this.http
+      .get<{ image: Image }>(this.url + 'favorites', { params: params })
+      .pipe(
+        map((imageData) => {
+          let t = 0;
+          imageData.image.thumb = imageData.image.url.replace(/\//g, (match) =>
+            ++t === 5 ? '/tr:w-500,h-500,c-at_max/' : match
+          );
+          return imageData.image;
+        })
+      )
+      .subscribe((image) => {
+        this.favorite$.next(image);
+      });
   }
 
   getFavoriteStream() {

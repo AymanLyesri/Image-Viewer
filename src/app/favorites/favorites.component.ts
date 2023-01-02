@@ -16,7 +16,7 @@ import { RefreshFavoritesService } from '../services/refresh-favorites/refresh-f
 @Component({
   selector: 'app-favorites',
   templateUrl: './favorites.component.html',
-  styleUrls: ['./favorites.component.css'],
+  styleUrls: ['../posts/posts.component.css'],
 })
 export class FavoritesComponent implements OnInit {
   @ViewChildren('card') cards: QueryList<ElementRef>;
