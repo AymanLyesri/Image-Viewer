@@ -76,18 +76,6 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
       });
   }
 
-  // downloadImage(url: string, imageName: string) {
-  //   this.imageService
-  //     .downloadImage(url)
-  //     .subscribe((response: Blob | MediaSource) => {
-  //       console.log(response, imageName);
-  //       var a = document.createElement('a');
-  //       a.download = imageName;
-  //       a.href = window.URL.createObjectURL(response);
-  //       a.click;
-  //     });
-  // }
-
   toggleGrid(columns: string) {
     this.render.setStyle(
       this.grid.nativeElement,
@@ -137,7 +125,6 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
             this.imageService.getPost(this.offset);
             console.log(this.offset, this.limit);
           }
-
           this.loadingObserver.unobserve(entry.target);
         }
       });
@@ -148,10 +135,9 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
   Page(element: HTMLElement, to: boolean) {
     element.scrollIntoView(false);
 
-    if (to) this.offset++, (this.limit += 60);
-    else (this.offset = this.limit - 120), (this.limit -= 60);
-
     setTimeout(() => {
+      if (to) this.offset++, (this.limit += 60);
+      else (this.offset = this.limit - 120), (this.limit -= 60);
       this.images.length = 0;
       this.imageService.getPost(this.offset);
     }, 700);
