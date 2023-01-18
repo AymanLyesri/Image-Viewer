@@ -19,12 +19,12 @@ export class ImageRatioDirective implements AfterViewInit {
         var realWidth = this.element.nativeElement.naturalWidth;
         var realHeight = this.element.nativeElement.naturalHeight;
 
-        if (realWidth / realHeight >= 1.4)
+        if (realWidth / realHeight >= 1)
           this.render.addClass(
             this.element.nativeElement.parentElement,
             'image-wide'
           );
-        else if (realWidth / realHeight <= 0.6)
+        else if (realWidth / realHeight <= 0.4)
           this.render.addClass(
             this.element.nativeElement.parentElement,
             'image-tall'
@@ -49,12 +49,12 @@ export class ImageRatioDirective implements AfterViewInit {
       var realWidth = this.element.nativeElement.naturalWidth;
       var realHeight = this.element.nativeElement.naturalHeight;
 
-      if (realWidth / realHeight >= 1.4) {
+      if (realWidth / realHeight >= 1) {
         this.render.addClass(
           this.element.nativeElement.parentElement,
           'image-wide'
         );
-      } else if (realWidth / realHeight <= 0.6) {
+      } else if (realWidth / realHeight <= 0.4) {
         this.render.addClass(
           this.element.nativeElement.parentElement,
           'image-tall'

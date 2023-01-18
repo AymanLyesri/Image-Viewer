@@ -14,6 +14,8 @@ export class ImageService {
   private image$ = new Subject<Image>(); //observable
   private favorite$ = new Subject<Image>();
   private newImage$ = new Subject<Image>(); //observable
+  private error$ = new Subject<string>(); //observable
+
   readonly url = environment.URL + '/api/';
 
   constructor(
@@ -71,9 +73,17 @@ export class ImageService {
           return imageData.image;
         })
       )
-      .subscribe((image) => {
-        this.favorite$.next(image);
+      .subscribe({
+        next: (image) => this.favorite$.next(image),
+        error: (e) => {
+          if (e.status == 469) this.error$.next(id);
+        },
+        complete: () => console.log('complete'),
       });
+  }
+
+  getErrorStream() {
+    return this.error$.asObservable();
   }
 
   getFavoriteStream() {

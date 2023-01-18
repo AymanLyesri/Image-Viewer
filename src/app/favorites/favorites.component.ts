@@ -47,6 +47,8 @@ export class FavoritesComponent implements OnInit {
   ngOnInit(): void {
     this.favorites = JSON.parse(localStorage.getItem('favorites'));
 
+    console.log(this.favorites);
+
     this.options.getLoadingSpeed().subscribe((speed) => {
       this.loadingSpeed = speed;
     });
@@ -67,6 +69,10 @@ export class FavoritesComponent implements OnInit {
       .subscribe((image: Image) => {
         this.images.push(image);
       });
+
+    this.imageService.getErrorStream().subscribe((id) => {
+      this.deleteFavorite(id);
+    });
 
     this.refreshSubscription = this.refreshService.refresh().subscribe(() => {
       this.favorites = JSON.parse(localStorage.getItem('favorites'));
