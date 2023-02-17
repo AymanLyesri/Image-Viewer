@@ -1,21 +1,23 @@
-<h1 style="color: rgb(255, 70, 70)">all favorites</h1>
+<section>
+    <h1 style="color: rgb(255, 70, 70)">all favorites</h1>
 
-<hr style="border-color: rgb(255, 70, 70)" />
-<div #imageGrid class="imageGrid oneColumn">
-    <div #card *ngFor="let image of images" [id]="image._id">
-        <img loading="lazy" appImageRatio [src]="image.thumb" [alt]="image.name" height="500" width="500" />
-        <a [href]="image.url" target="_blank">Full Size</a>
-        <!-- <button (click)="downloadImage(image.url, 'fdsf')">Download</button> -->
-        <p>{{ image.name }}</p>
-        <p>{{ image.createdAt }}</p>
-        <p>{{ image.size / 1000 }}kb</p>
-        <button class="favorite" (click)="deleteFavorite(image._id)">delete</button>
+    <hr style="border-color: rgb(255, 70, 70)" />
+    <div #imageGrid class="imageGrid oneColumn">
+        <div #card *ngFor="let image of images" [id]="image._id">
+            <img loading="lazy" appImageRatio [src]="image.thumb" [alt]="image.name" height="500" width="500" />
+            <a [href]="image.url" target="_blank">Full Size</a>
+            <p>{{ image.name }}</p>
+            <p>{{ image.createdAt }}</p>
+            <p>{{ image.size / 1000 }}kb</p>
+            <button class="favorite" (click)="deleteFavorite(image._id)">
+        delete
+      </button>
+        </div>
+        <div *ngIf="images.length == 0 || !images">
+            <h1>You got no favorites Bruh</h1>
+        </div>
     </div>
-    <div *ngIf="images.length == 0 || !images">
-        <h1>You got no favorites Bruh</h1>
-    </div>
-</div>
-
-<footer>
-    <div class="bg"></div>
-</footer>
+    <footer>
+        <div class="bg"></div>
+    </footer>
+</section>
