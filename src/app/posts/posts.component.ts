@@ -32,8 +32,12 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
   private oldColumns: string = 'oneColumn';
   private oldZoom: string = 'zoom';
   private loadingSpeed: number = 2;
+
   private offset: number = 0;
   private limit: number = 60;
+
+  public showPrevious: boolean = false;
+  public showNext: boolean = false;
 
   private imageSubscription: Subscription;
   private newImageSubscription: Subscription;
@@ -126,6 +130,9 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
             console.log(this.offset, this.limit);
           }
           this.loadingObserver.unobserve(entry.target);
+
+          this.showPrevious = this.limit != 60 ? true : false;
+          this.showNext = this.offset == this.limit ? true : false;
         }
       });
     },
@@ -141,14 +148,6 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
       this.images.length = 0;
       this.imageService.getPost(this.offset);
     }, 700);
-  }
-
-  showPrevious() {
-    return this.limit != 60;
-  }
-
-  showNext() {
-    return this.offset == this.limit;
   }
 
   deleteImage(id: string) {
@@ -169,7 +168,7 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
       ? JSON.parse(localStorage.getItem('favorites'))
       : [];
 
-    if (this.favorites.indexOf(id) > 0) return;
+    if (this.favorites.indexOf(id) >= 0) return;
 
     this.favorites.push(id);
     console.log(this.favorites);

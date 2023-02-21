@@ -9,9 +9,9 @@
             <p>{{ image.name }}</p>
             <p>{{ image.createdAt }}</p>
             <p>{{ image.size / 1000 }}kb</p>
-            <button class="favorite" (click)="deleteFavorite(image._id)">
+            <a href="#delete" class="favorite" (click)="deleteFavorite(image._id)">
         delete
-      </button>
+      </a>
         </div>
         <div *ngIf="images.length == 0 || !images">
             <h1>You got no favorites Bruh</h1>

@@ -7,10 +7,10 @@
             <button (click)="toggleGrid('repeat(4, minmax(0, 1fr))', 'large')">
         Large
       </button>
-            <button (click)="toggleGrid('repeat(8, minmax(0, 1fr))', 'medium')">
+            <button (click)="toggleGrid('repeat(6, minmax(0, 1fr))', 'medium')">
         Medium
       </button>
-            <button (click)="toggleGrid('repeat(auto-fill, minmax(100px, 1fr))', 'auto')">
+            <button (click)="toggleGrid('repeat(auto-fill, minmax(150px, 1fr))', 'auto')">
         Auto
       </button>
         </div>
@@ -37,7 +37,7 @@
     </div>
     <div class="span">
         <h3>
-            Span, <strong>{{ spanState }}</strong>
+            Dynamic Span, <strong>{{ spanState }}</strong>
         </h3>
         <div>
             <button (click)="toggleSpan(true)">Span</button

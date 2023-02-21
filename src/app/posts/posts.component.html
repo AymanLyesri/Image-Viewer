@@ -11,23 +11,20 @@
     <div #card *ngFor="let image of images" [id]="image._id">
         <img loading="lazy" appImageRatio [src]="image.thumb" [alt]="image.name" height="500" width="500" />
         <div class="actions">
-            <a [href]="image.url" target="_blank">Full Size</a>
-            <button class="favorite" (click)="addFavorite(image._id)">
-        Favorite it
-      </button>
-        </div>
-        <p>{{ image.name }}</p>
-        <p>{{ image.createdAt }}</p>
-        <p>{{ image.size / 1000 }}kb</p>
-        <button *ngIf="isLoggedIn()" (click)="deleteImage(image._id)">
-      delete
-    </button>
+            <a class="fullSize" [href]="image.url" target="_blank">Full Size</a>
+            <a class="favorite" href="#fav" (click)="addFavorite(image._id)">Favorite it</a
+      >
     </div>
-</div>
+    <p>{{ image.name }}</p>
+    <p>{{ image.createdAt }}</p>
+    <p>{{ image.size / 1000 }}kb</p>
+    <a *ngIf="isLoggedIn()" (click)="deleteImage(image._id)">Remove it</a>
+        </div>
+    </div>
 
-<button class="previous" *ngIf="showPrevious()" (click)="Page(top, false)">
+    <button class="previous" *ngIf="showPrevious" (click)="Page(top, false)">
   <p>PREVIOUS</p>
 </button>
-<button class="next" *ngIf="showNext()" (click)="Page(top, true)">
+    <button class="next" *ngIf="showNext" (click)="Page(top, true)">
   <p>NEXT</p>
 </button>

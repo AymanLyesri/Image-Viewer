@@ -35,7 +35,7 @@ hr {
     width: 100vw;
     display: grid;
     align-items: center;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     grid-auto-flow: row dense;
 }
 
@@ -79,7 +79,7 @@ hr {
         z-index: 900;
         transition: all 0.5s;
         transition-delay: 0.2s;
-        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.500);
+        box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.500);
         backdrop-filter: blur(5px);
     }
     .imageGrid a:hover {
@@ -100,7 +100,11 @@ hr {
         opacity: 0;
     }
     .imageGrid p:hover {
-        text-indent: -200%;
+        font-size: 0.6em;
+        background-color: rgba(0, 0, 0, 0.5);
+        box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.500);
+        transform: scale(1.2);
+        backdrop-filter: blur(5px);
     }
     .zoom:hover {
         transform: scale(1.2);
@@ -155,10 +159,11 @@ hr {
     gap: 1em;
 }
 
-.imageGrid a,
-.imageGrid .favorite {
-    padding: 1%;
+.imageGrid a {
+    width: 33%;
+    padding-bottom: 2%;
     text-decoration: none;
+    text-align: center;
     color: #000000;
     background-color: #333333;
     border: 1px #423000 solid;
