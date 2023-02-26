@@ -15,6 +15,7 @@ import { AuthenticationService } from '../services/authentication.service';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { OptionsService } from '../services/options/options.service';
 import { RefreshFavoritesService } from '../services/refresh-favorites/refresh-favorites.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-posts',
@@ -42,6 +43,8 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
   private imageSubscription: Subscription;
   private newImageSubscription: Subscription;
   private cardChanges: Subscription;
+
+  public imgAlt = environment.TITLE + ' ';
 
   constructor(
     private imageService: ImageService,

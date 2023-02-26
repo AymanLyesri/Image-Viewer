@@ -9,7 +9,7 @@
 
 <div #imageGrid class="imageGrid oneColumn">
     <div #card *ngFor="let image of images" [id]="image._id">
-        <img loading="lazy" appImageRatio [src]="image.thumb" [alt]="image.name" height="500" width="500" />
+        <img loading="lazy" appImageRatio [src]="image.thumb" [alt]="imgAlt + image.name" height="500" width="500" />
         <div class="actions">
             <a class="fullSize" [href]="image.url" target="_blank">Full Size</a>
             <a class="favorite" href="#fav" (click)="addFavorite(image._id)">Favorite it</a
@@ -22,9 +22,9 @@
         </div>
     </div>
 
-    <button class="previous" *ngIf="showPrevious" (click)="Page(top, false)">
-  <p>PREVIOUS</p>
-</button>
+    <a class="previous" *ngIf="showPrevious" (click)="Page(top, false)">
+        <p>PREVIOUS</p>
+    </a>
     <button class="next" *ngIf="showNext" (click)="Page(top, true)">
   <p>NEXT</p>
 </button>

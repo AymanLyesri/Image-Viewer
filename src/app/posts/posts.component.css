@@ -229,6 +229,7 @@ hr {
         top: unset;
         bottom: 0;
         transform: none;
+        backdrop-filter: none;
         height: 5vh;
         width: 50vw;
     }

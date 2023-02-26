@@ -36,6 +36,7 @@ nav {
     nav {
         margin-top: 0;
         width: 100%;
+        backdrop-filter: none;
     }
     p {
         display: none;

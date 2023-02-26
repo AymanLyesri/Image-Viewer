@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs/internal/Subscription';
 import { ImageService } from '../services/image.service';
 import { OptionsService } from '../services/options/options.service';
 import { RefreshFavoritesService } from '../services/refresh-favorites/refresh-favorites.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-favorites',
@@ -31,6 +32,8 @@ export class FavoritesComponent implements OnInit {
   private loadingSpeed: number = 2;
   private offset: number = 0;
   private limit: number = 60;
+
+  public imgAlt = environment.TITLE + ' ';
 
   private refreshSubscription: Subscription;
   private imageSubscription: Subscription;

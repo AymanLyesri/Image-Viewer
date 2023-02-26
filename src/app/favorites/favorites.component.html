@@ -4,7 +4,7 @@
     <hr style="border-color: rgb(255, 70, 70)" />
     <div #imageGrid class="imageGrid oneColumn">
         <div #card *ngFor="let image of images" [id]="image._id">
-            <img loading="lazy" appImageRatio [src]="image.thumb" [alt]="image.name" height="500" width="500" />
+            <img loading="lazy" appImageRatio [src]="image.thumb" [alt]="imgAlt + image.name" height="500" width="500" />
             <a [href]="image.url" target="_blank">Full Size</a>
             <p>{{ image.name }}</p>
             <p>{{ image.createdAt }}</p>
