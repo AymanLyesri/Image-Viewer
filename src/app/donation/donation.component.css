@@ -18,15 +18,17 @@
 }
 
 section {
-    margin-top: 5%;
-    margin-inline: 25%;
+    margin-top: 10vh;
+    margin-inline: 20vw;
     animation: popUp 2s ease;
     justify-content: center;
     align-items: center;
 }
 
 .intro {
+    max-height: 50vh;
     color: white;
+    overflow: auto;
 }
 
 @keyframes popUp {
@@ -72,22 +74,4 @@ section {
 
 .paypal:hover strong {
     color: rgb(38, 1, 185);
-}
-
-footer {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-}
-
-footer .bg {
-    position: absolute;
-    background-image: url("../../assets/layered-waves-haikei.svg");
-    width: 100%;
-    height: auto;
-    bottom: 0;
-    aspect-ratio: 900/600;
-    background-repeat: no-repeat;
-    background-size: cover;
 }

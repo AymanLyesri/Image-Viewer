@@ -10,7 +10,7 @@ export class SauceService {
 
   getSauce(imageUrl: string) {
     let params = new HttpParams().set('url', imageUrl);
-    params = params.set('api_key', environment.SAUCEAPIKEY);
+    // params = params.set('api_key', environment.SAUCEAPIKEY);
 
     this.http
       .get('https://saucenao.com/search.php', {
