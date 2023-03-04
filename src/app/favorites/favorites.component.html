@@ -1,4 +1,4 @@
-<section>
+<section style="margin-bottom: -33%">
     <h1 style="color: rgb(255, 70, 70)">all favorites</h1>
 
     <hr style="border-color: rgb(255, 70, 70)" />
@@ -6,18 +6,21 @@
         <div #card *ngFor="let image of images" [id]="image._id">
             <img loading="lazy" appImageRatio [src]="image.thumb" [alt]="imgAlt + image.name" height="500" width="500" />
             <a [href]="image.url" target="_blank">Full Size</a>
-            <p>{{ image.name }}</p>
-            <p>{{ image.createdAt }}</p>
-            <p>{{ image.size / 1000 }}kb</p>
-            <a href="#delete" class="favorite" (click)="deleteFavorite(image._id)">
+            <a class="sauce" [href]="'https://saucenao.com/search.php?url=' + image.url" target="_blank">Sauce?</a
+      >
+      <p>{{ image.name }}</p>
+      <p>{{ image.createdAt }}</p>
+      <p>{{ image.size / 1000 }}kb</p>
+      <a href="#delete" class="favorite" (click)="deleteFavorite(image._id)">
         delete
       </a>
         </div>
         <div *ngIf="images.length == 0 || !images">
-            <h1>You got no favorites Bruh</h1>
+            <h1>You got no favorites Bruh ^^</h1>
         </div>
     </div>
-    <footer>
-        <div class="bg"></div>
-    </footer>
 </section>
+
+<footer>
+    <div class="bg"></div>
+</footer>

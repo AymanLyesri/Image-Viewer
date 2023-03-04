@@ -1,10 +1,7 @@
 :host {
-    background-color: rgb(255, 126, 126);
+    background-color: rgb(255, 97, 97);
     width: 100vw;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     z-index: 0;
 }
 
@@ -21,7 +18,15 @@
 }
 
 section {
+    margin-top: 5%;
+    margin-inline: 25%;
     animation: popUp 2s ease;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro {
+    color: white;
 }
 
 @keyframes popUp {
@@ -36,7 +41,6 @@ section {
 }
 
 .paypal {
-    margin-block: 10%;
     text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
@@ -44,7 +48,7 @@ section {
 
 .paypal a {
     text-align: center;
-    padding-block: 25%;
+    padding-block: 5%;
     color: white;
     border: 1px rgb(255, 255, 255) solid;
     background-color: rgb(0, 0, 0, 0.5);
@@ -54,12 +58,11 @@ section {
 }
 
 .paypal a:hover {
-    padding-block: 50%;
     color: rgb(157, 201, 255);
     border: 1px rgb(255, 255, 255) solid;
     background-color: rgb(0, 0, 0, 0.7);
     text-decoration: none;
-    border-radius: 50%;
+    padding-block: 15%;
 }
 
 .paypal strong {
@@ -68,7 +71,7 @@ section {
 }
 
 .paypal:hover strong {
-    color: rgb(255, 255, 0);
+    color: rgb(38, 1, 185);
 }
 
 footer {

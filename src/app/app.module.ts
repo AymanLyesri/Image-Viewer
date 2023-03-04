@@ -28,6 +28,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ParallaxImageDirective } from './directives/parallax-image/parallax-image.directive';
 import { OptionsComponent } from './options/options.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { SauceComponent } from './sauce/sauce.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
     ParallaxImageDirective,
     OptionsComponent,
     FavoritesComponent,
+    SauceComponent,
   ],
   imports: [
     BrowserModule,

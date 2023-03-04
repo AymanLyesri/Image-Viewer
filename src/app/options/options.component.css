@@ -2,6 +2,11 @@
     background-color: #212121;
 }
 
+#options {
+    margin-top: -50vh;
+    position: absolute;
+}
+
 .options {
     gap: 5%;
     display: flex;

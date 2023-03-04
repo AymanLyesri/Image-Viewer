@@ -91,10 +91,13 @@ hr {
     }
     .imageGrid .favorite:hover {
         color: #ffffff;
-        padding-inline: 5%;
         background-color: #ff0000;
         border: 1px #000000 solid;
-        border-radius: 10px;
+    }
+    .imageGrid .sauce:hover {
+        color: #aaff00;
+        background-color: #000000;
+        border: 1px #000000 solid;
     }
     .imageGrid p {
         opacity: 0;
@@ -161,7 +164,7 @@ hr {
 
 .imageGrid a {
     width: 33%;
-    padding-bottom: 2%;
+    padding-block: 2%;
     text-decoration: none;
     text-align: center;
     color: #000000;
@@ -174,6 +177,11 @@ hr {
 .imageGrid .favorite {
     background-color: rgba(255, 50, 50, 0.5);
     color: rgb(0, 0, 0);
+}
+
+.imageGrid .sauce {
+    background-color: rgba(0, 39, 91, 0.5);
+    color: rgb(255, 255, 255);
 }
 
 .image-wide {
@@ -238,4 +246,22 @@ hr {
         writing-mode: unset;
         text-orientation: unset;
     }
+}
+
+footer {
+    width: 100vw;
+    z-index: -100;
+    margin-bottom: 0;
+}
+
+footer .bg {
+    position: relative;
+    background-image: url("../../assets/layered-waves-haikei.svg");
+    z-index: -100;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    aspect-ratio: 900/600;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
