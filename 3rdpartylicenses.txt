@@ -66,6 +66,9 @@ MIT
 @angular/router
 MIT
 
+ngx-file-drop
+MIT
+
 ngx-image-compress
 MIT
 MIT License
