@@ -11,4 +11,5 @@ export const environment = {
     'https://ik.imagekit.io/3njnkmvef/all/20a80a121c16d07fb47c2b31c8afbb3d_CK09Uenev.jpg',
   SITELINK: 'https://image-viewer.web.app',
   TITLE: 'Image Viewer',
+  DONATIONINTRO: '',
 };

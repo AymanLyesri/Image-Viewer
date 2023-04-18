@@ -36,6 +36,7 @@ export class UploadComponent implements OnInit {
 
     this.imgResultBeforeCompress.length = 0;
     this.imgResultAfterCompress.length = 0;
+    this.ready = false;
   }
 
   getSize(data: string) {

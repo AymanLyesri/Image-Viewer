@@ -163,8 +163,9 @@ hr {
 }
 
 .imageGrid a {
+    font-size: smaller;
     width: 33%;
-    padding-block: 2%;
+    padding-block: 0.5%;
     text-decoration: none;
     text-align: center;
     color: #000000;

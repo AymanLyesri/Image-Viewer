@@ -30,6 +30,8 @@ import { OptionsComponent } from './options/options.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { SauceComponent } from './sauce/sauce.component';
 
+import { NgxFileDropModule } from 'ngx-file-drop';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,6 +62,7 @@ import { SauceComponent } from './sauce/sauce.component';
     MatCheckboxModule,
     MatChipsModule,
     AppRoutingModule,
+    NgxFileDropModule,
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],

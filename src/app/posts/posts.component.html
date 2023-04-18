@@ -1,5 +1,5 @@
 <header>
-    <div class="bg-1"></div>
+  <div class="bg-1"></div>
 </header>
 
 <h1>all posts</h1>
@@ -8,11 +8,19 @@
 <hr />
 
 <div #imageGrid class="imageGrid oneColumn">
-    <div #card *ngFor="let image of images" [id]="image._id">
-        <img loading="lazy" appImageRatio [src]="image.thumb" [alt]="imgAlt + image.name" height="500" width="500" />
-        <div class="actions">
-            <a class="fullSize" [href]="image.url" target="_blank">Full Size</a>
-            <a class="favorite" href="#fav" (click)="addFavorite(image._id)">Favorite it</a
+  <div #card *ngFor="let image of images" [id]="image._id">
+    <img
+      loading="lazy"
+      appImageRatio
+      [src]="image.thumb"
+      [alt]="imgAlt + image.name"
+      height="500"
+      width="500"
+    />
+    <div class="actions">
+      <a class="fullSize" [href]="image.url" target="_blank">Full Size</a>
+      <a class="favorite" href="#fav" (click)="addFavorite(image._id)"
+        >Favorite it</a
       >
       <a
         class="sauce"
@@ -25,12 +33,12 @@
     <p>{{ image.createdAt }}</p>
     <p>{{ image.size / 1000 }}kb</p>
     <a *ngIf="isLoggedIn()" (click)="deleteImage(image._id)">Remove it</a>
-        </div>
-    </div>
+  </div>
+</div>
 
-    <a class="previous" *ngIf="showPrevious" (click)="Page(top, false)">
-        <p>PREVIOUS</p>
-    </a>
-    <button class="next" *ngIf="showNext" (click)="Page(top, true)">
+<button class="previous" *ngIf="showPrevious" (click)="Page(top, false)">
+  <p>PREVIOUS</p>
+</button>
+<button class="next" *ngIf="showNext" (click)="Page(top, true)">
   <p>NEXT</p>
 </button>
