@@ -40,6 +40,7 @@ hr {
 }
 
 .imageGrid div {
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -60,19 +61,27 @@ hr {
     }
 }
 
-.imageGrid img {
+.imageGrid div img {
     width: 100%;
     height: auto;
     border-radius: 10px;
     background-color: #ff7676;
     background-size: cover;
     transition: all 1s;
+    transition-delay: 0.2s;
 }
 
 @media (min-width:600px) {
     .imageGrid {
         margin-inline: 5%;
         width: 90%;
+    }
+    .imageGrid div {
+        height: 350px;
+    }
+    .imageGrid div img {
+        height: 250px;
+        object-fit: cover;
     }
     .imageGrid div:hover {
         background-color: rgba(0, 0, 0, 0.500);
@@ -81,6 +90,10 @@ hr {
         transition-delay: 0.2s;
         box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.500);
         backdrop-filter: blur(5px);
+    }
+    .imageGrid div:hover img {
+        height: unset;
+        transition: all 1s;
     }
     .imageGrid a:hover {
         padding-inline: 5%;
@@ -103,7 +116,8 @@ hr {
         opacity: 0;
     }
     .imageGrid p:hover {
-        font-size: 0.6em;
+        width: 40vw;
+        text-align: center;
         background-color: rgba(0, 0, 0, 0.5);
         box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.500);
         transform: scale(1.2);
@@ -149,6 +163,7 @@ hr {
     overflow: hidden;
     color: aliceblue;
     transition: all 0.5s, text-indent 5s;
+    background-color: rgba(0, 0, 0, 0.500);
 }
 
 .imageGrid div:active p,
@@ -160,6 +175,7 @@ hr {
     display: flex;
     flex-direction: row;
     gap: 1em;
+    background-color: rgba(0, 0, 0, 0.500);
 }
 
 .imageGrid a {
@@ -191,6 +207,7 @@ hr {
 
 .image-tall {
     grid-row: span 2/auto;
+    height: 500px;
 }
 
 .previous,

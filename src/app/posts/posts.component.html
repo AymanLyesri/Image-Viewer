@@ -29,9 +29,11 @@
         >Sauce?</a
       >
     </div>
-    <p>{{ image.name }}</p>
-    <p>{{ image.createdAt }}</p>
-    <p>{{ image.size / 1000 }}kb</p>
+    <div>
+      <p>{{ image.name }}</p>
+      <p>{{ image.createdAt }}</p>
+      <p>{{ image.size / 1000 }}kb</p>
+    </div>
     <a *ngIf="isLoggedIn()" (click)="deleteImage(image._id)">Remove it</a>
   </div>
 </div>
