@@ -31,6 +31,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { SauceComponent } from './sauce/sauce.component';
 
 import { NgxFileDropModule } from 'ngx-file-drop';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { NgxFileDropModule } from 'ngx-file-drop';
     OptionsComponent,
     FavoritesComponent,
     SauceComponent,
+    StatisticsComponent,
   ],
   imports: [
     BrowserModule,

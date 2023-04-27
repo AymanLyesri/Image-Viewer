@@ -1,0 +1,33 @@
+:host {
+    width: 100%;
+    padding-top: 1vh;
+    background-color: #212121;
+}
+
+:host:hover h4 {
+    color: rgb(255, 183, 0);
+}
+
+:host:hover p {
+    color: rgb(255, 255, 0);
+}
+
+h4,
+p {
+    transition: all 0.5s;
+    text-align: center;
+}
+
+h4 {
+    width: 100%;
+    color: rgb(119, 85, 0);
+}
+
+div {
+    display: flex;
+}
+
+p {
+    width: 50%;
+    color: rgb(129, 129, 0);
+}
