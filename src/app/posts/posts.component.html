@@ -14,14 +14,12 @@
       appImageRatio
       [src]="image.thumb"
       [alt]="imgAlt + image.name"
-      height="500"
-      width="500"
     />
     <div class="actions">
       <a class="fullSize" [href]="image.url" target="_blank">Full Size</a>
       <a class="favorite" href="#fav" (click)="addFavorite(image._id)"
-        >Favorite it</a
-      >
+        ><span></span
+      ></a>
       <a
         class="sauce"
         [href]="'https://saucenao.com/search.php?url=' + image.url"

@@ -16,19 +16,7 @@ export class ImageRatioDirective implements AfterViewInit {
   ngAfterViewInit(): void {
     if (this.options.getSpanState()) {
       this.element.nativeElement.onload = () => {
-        var realWidth = this.element.nativeElement.naturalWidth;
-        var realHeight = this.element.nativeElement.naturalHeight;
-
-        if (realWidth / realHeight >= 1)
-          this.render.addClass(
-            this.element.nativeElement.parentElement,
-            'image-wide'
-          );
-        else if (realWidth / realHeight <= 0.4)
-          this.render.addClass(
-            this.element.nativeElement.parentElement,
-            'image-tall'
-          );
+        this.calculate();
       };
     }
 
@@ -45,21 +33,24 @@ export class ImageRatioDirective implements AfterViewInit {
         );
         return;
       }
-
-      var realWidth = this.element.nativeElement.naturalWidth;
-      var realHeight = this.element.nativeElement.naturalHeight;
-
-      if (realWidth / realHeight >= 1) {
-        this.render.addClass(
-          this.element.nativeElement.parentElement,
-          'image-wide'
-        );
-      } else if (realWidth / realHeight <= 0.4) {
-        this.render.addClass(
-          this.element.nativeElement.parentElement,
-          'image-tall'
-        );
-      }
+      this.calculate();
     });
+  }
+
+  calculate() {
+    var realWidth = this.element.nativeElement.naturalWidth;
+    var realHeight = this.element.nativeElement.naturalHeight;
+
+    if (realWidth / realHeight >= 1.2) {
+      this.render.addClass(
+        this.element.nativeElement.parentElement,
+        'image-wide'
+      );
+    } else if (realWidth / realHeight <= 0.4) {
+      this.render.addClass(
+        this.element.nativeElement.parentElement,
+        'image-tall'
+      );
+    }
   }
 }

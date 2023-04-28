@@ -63,7 +63,7 @@ hr {
 
 .imageGrid div img {
     width: 100%;
-    height: auto;
+    height: 75%;
     border-radius: 10px;
     background-color: #ff7676;
     background-size: cover;
@@ -77,10 +77,9 @@ hr {
         width: 90%;
     }
     .imageGrid div {
-        height: 350px;
+        height: 300px;
     }
     .imageGrid div img {
-        height: 250px;
         object-fit: cover;
     }
     .imageGrid div:hover {
@@ -92,7 +91,7 @@ hr {
         backdrop-filter: blur(5px);
     }
     .imageGrid div:hover img {
-        height: unset;
+        height: unset !important;
         transition: all 1s;
     }
     .imageGrid a:hover {
@@ -101,16 +100,6 @@ hr {
         color: #000000;
         background-color: #7a7a7a;
         border: 1px #979797 solid;
-    }
-    .imageGrid .favorite:hover {
-        color: #ffffff;
-        background-color: #ff0000;
-        border: 1px #000000 solid;
-    }
-    .imageGrid .sauce:hover {
-        color: #aaff00;
-        background-color: #000000;
-        border: 1px #000000 solid;
     }
     .imageGrid p {
         opacity: 0;
@@ -138,8 +127,11 @@ hr {
     .imageGrid {
         width: 100vw;
     }
-    .oneColumn .image-wide {
-        grid-column: span 1;
+    .oneColumn .image-wide,
+    .oneColumn .image-tall {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+        height: 100% !important;
     }
     .oneColumn {
         grid-template-columns: 100vw !important;
@@ -150,6 +142,15 @@ hr {
     .threeColumn {
         grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
     }
+}
+
+.image-wide {
+    grid-column: span 2/auto;
+}
+
+.image-tall {
+    grid-row: span 2/auto;
+    height: 700px !important;
 }
 
 .imageGrid p {
@@ -172,6 +173,7 @@ hr {
 }
 
 .imageGrid .actions {
+    padding-block: 1vh;
     display: flex;
     flex-direction: row;
     gap: 1em;
@@ -180,34 +182,25 @@ hr {
 
 .imageGrid a {
     font-size: smaller;
-    width: 33%;
+    padding-inline: auto;
     padding-block: 0.5%;
     text-decoration: none;
     text-align: center;
-    color: #000000;
-    background-color: #333333;
-    border: 1px #423000 solid;
+    color: #858585;
     border-radius: 10px;
-    transition: all 1s;
+    transition: all 0.2s;
 }
 
-.imageGrid .favorite {
-    background-color: rgba(255, 50, 50, 0.5);
-    color: rgb(0, 0, 0);
+.actions a span {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 1.5em;
+    height: 1.5em;
+    display: block;
 }
 
-.imageGrid .sauce {
-    background-color: rgba(0, 39, 91, 0.5);
-    color: rgb(255, 255, 255);
-}
-
-.image-wide {
-    grid-column: span 2/auto;
-}
-
-.image-tall {
-    grid-row: span 2/auto;
-    height: 500px;
+.favorite span {
+    background-image: url("../../assets/heart-992.svg");
 }
 
 .previous,
