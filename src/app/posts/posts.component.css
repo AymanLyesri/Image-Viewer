@@ -1,278 +1,173 @@
 :host {
-    background-color: #0a0a0a;
-    z-index: 0;
+  background-color: #0a0a0a;
+  z-index: 0;
 }
 
 header {
-    z-index: -1;
-    position: absolute;
-    width: 100%;
-    height: auto;
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: auto;
 }
 
 header .bg-1 {
-    background-image: url("../../assets/layered-waves-haikei-post.svg");
-    width: 100%;
-    height: auto;
-    aspect-ratio: 900/450;
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url("../../assets/layered-waves-haikei-post.svg");
+  width: 100%;
+  height: auto;
+  aspect-ratio: 900/450;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 h1 {
-    margin-top: 20%;
-    text-align: center;
-    color: rgb(150, 150, 150);
+  margin-top: 20%;
+  text-align: center;
+  color: rgb(150, 150, 150);
 }
 
 hr {
-    margin-block: 5%;
-    width: 80%;
+  margin-block: 5%;
+  width: 80%;
 }
 
 .imageGrid {
-    gap: 0.3em;
+  gap: 0.3em;
+  width: 100vw;
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-auto-flow: row dense;
+}
+
+@media (min-width: 600px) {
+  .imageGrid {
+    margin-inline: 5%;
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .imageGrid {
     width: 100vw;
-    display: grid;
-    align-items: center;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+  .oneColumn .image-wide,
+  .oneColumn .image-tall {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+    height: 100% !important;
+  }
+  .oneColumn {
+    grid-template-columns: 100vw !important;
     grid-auto-flow: row dense;
-}
-
-.imageGrid div {
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    transition: all 0.2s;
-    animation: popUp 2s ease;
-}
-
-@keyframes popUp {
-    0% {
-        opacity: 0;
-        transform: blur(10px);
-    }
-    100% {
-        opacity: 100%;
-        transform: blur(0);
-    }
-}
-
-.imageGrid div img {
-    width: 100%;
-    height: 75%;
-    border-radius: 10px;
-    background-color: #ff7676;
-    background-size: cover;
-    transition: all 1s;
-    transition-delay: 0.2s;
-}
-
-@media (min-width:600px) {
-    .imageGrid {
-        margin-inline: 5%;
-        width: 90%;
-    }
-    .imageGrid div {
-        height: 300px;
-    }
-    .imageGrid div img {
-        object-fit: cover;
-    }
-    .imageGrid div:hover {
-        background-color: rgba(0, 0, 0, 0.500);
-        z-index: 900;
-        transition: all 0.5s;
-        transition-delay: 0.2s;
-        box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.500);
-        backdrop-filter: blur(5px);
-    }
-    .imageGrid div:hover img {
-        height: unset !important;
-        transition: all 1s;
-    }
-    .imageGrid a:hover {
-        padding-inline: 5%;
-        border-radius: 10px;
-        color: #000000;
-        background-color: #7a7a7a;
-        border: 1px #979797 solid;
-    }
-    .imageGrid p {
-        opacity: 0;
-    }
-    .imageGrid p:hover {
-        width: 40vw;
-        text-align: center;
-        background-color: rgba(0, 0, 0, 0.5);
-        box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.500);
-        transform: scale(1.2);
-        backdrop-filter: blur(5px);
-    }
-    .zoom:hover {
-        transform: scale(1.2);
-    }
-    .zoomPlus:hover {
-        transform: scale(1.5);
-    }
-    .noZoom:hover {
-        transform: none;
-    }
-}
-
-@media screen and (max-width:600px) {
-    .imageGrid {
-        width: 100vw;
-    }
-    .oneColumn .image-wide,
-    .oneColumn .image-tall {
-        grid-column: span 1 !important;
-        grid-row: span 1 !important;
-        height: 100% !important;
-    }
-    .oneColumn {
-        grid-template-columns: 100vw !important;
-    }
-    .twoColumn {
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    }
-    .threeColumn {
-        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    }
+  }
+  .twoColumn {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-auto-flow: row dense;
+  }
+  .threeColumn {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-auto-flow: row dense;
+  }
 }
 
 .image-wide {
-    grid-column: span 2/auto;
+  grid-column: span 2 / auto;
 }
 
 .image-tall {
-    grid-row: span 2/auto;
-    height: 700px !important;
+  grid-row: span 2 / auto;
+  height: 700px !important;
 }
 
 .imageGrid p {
-    display: block;
-    width: 100%;
-    opacity: 0.5;
-    margin: 0;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: smaller;
-    overflow: hidden;
-    color: aliceblue;
-    transition: all 0.5s, text-indent 5s;
-    background-color: rgba(0, 0, 0, 0.500);
+  display: block;
+  width: 100%;
+  opacity: 0.5;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: smaller;
+  overflow: hidden;
+  color: aliceblue;
+  transition: all 0.5s, text-indent 5s;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .imageGrid div:active p,
 .imageGrid div:hover p {
-    opacity: 1;
+  opacity: 1;
 }
 
-.imageGrid .actions {
-    padding-block: 1vh;
-    display: flex;
-    flex-direction: row;
-    gap: 1em;
-    background-color: rgba(0, 0, 0, 0.500);
-}
-
-.imageGrid a {
-    font-size: smaller;
-    padding-inline: auto;
-    padding-block: 0.5%;
-    text-decoration: none;
-    text-align: center;
-    color: #858585;
-    border-radius: 10px;
-    transition: all 0.2s;
-}
-
-.actions a span {
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 1.5em;
-    height: 1.5em;
-    display: block;
-}
-
-.favorite span {
-    background-image: url("../../assets/heart-992.svg");
-}
-
-.previous,
+.imageGrid .previous,
 .next {
-    position: fixed;
-    top: 50%;
-    transform: translate(0, -50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    border: 1px rgb(0, 0, 0) solid;
-    backdrop-filter: blur(5px);
-    color: white;
-    height: 30vh;
-    width: 2vw;
-    transition: all 0.5s;
+  position: fixed;
+  top: 50%;
+  transform: translate(0, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px rgb(0, 0, 0) solid;
+  backdrop-filter: blur(5px);
+  color: white;
+  height: 30vh;
+  width: 2vw;
+  transition: all 0.5s;
 }
 
 .previous {
-    left: 0;
-    border-radius: 0px 30px 30px 0px;
+  left: 0;
+  border-radius: 0px 30px 30px 0px;
 }
 
 .next {
-    right: 0;
-    border-radius: 30px 0px 0px 30px;
+  right: 0;
+  border-radius: 30px 0px 0px 30px;
 }
 
 .previous p,
 .next p {
-    margin: auto;
-    writing-mode: vertical-rl;
-    text-orientation: upright;
+  margin: auto;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
 }
 
 .previous:hover,
 .next:hover {
-    height: 50vh;
-    width: 4vw;
-    color: rgb(255, 255, 0);
-    border: 1px rgb(255, 255, 0) solid;
+  height: 50vh;
+  width: 4vw;
+  color: rgb(255, 255, 0);
+  border: 1px rgb(255, 255, 0) solid;
 }
 
-@media screen and (max-width:600px) {
-    .previous,
-    .next {
-        top: unset;
-        bottom: 0;
-        transform: none;
-        backdrop-filter: none;
-        height: 5vh;
-        width: 50vw;
-    }
-    .previous p,
-    .next p {
-        writing-mode: unset;
-        text-orientation: unset;
-    }
+@media screen and (max-width: 600px) {
+  .previous,
+  .next {
+    top: unset;
+    bottom: 0;
+    transform: none;
+    backdrop-filter: none;
+    height: 5vh;
+    width: 50vw;
+  }
+  .previous p,
+  .next p {
+    writing-mode: unset;
+    text-orientation: unset;
+  }
 }
 
 footer {
-    width: 100vw;
-    z-index: -100;
-    margin-bottom: 0;
+  width: 100vw;
+  z-index: -100;
+  margin-bottom: 0;
 }
 
 footer .bg {
-    position: relative;
-    background-image: url("../../assets/layered-waves-haikei.svg");
-    z-index: -100;
-    width: 100%;
-    height: auto;
-    bottom: 0;
-    aspect-ratio: 900/600;
-    background-repeat: no-repeat;
-    background-size: cover;
+  position: relative;
+  background-image: url("../../assets/layered-waves-haikei.svg");
+  z-index: -100;
+  width: 100%;
+  height: auto;
+  bottom: 0;
+  aspect-ratio: 900/600;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

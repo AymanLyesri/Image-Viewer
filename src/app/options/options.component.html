@@ -1,82 +1,14 @@
 <div id="options"></div>
 
 <section class="options">
-    <div class="columns">
-        <h3>
-            Display Grid, <strong>{{ gridClass }}</strong>
-        </h3>
-        <div>
-            <button (click)="toggleGrid('repeat(4, minmax(0, 1fr))', 'large')">
-        Large
-      </button>
-            <button (click)="toggleGrid('repeat(6, minmax(0, 1fr))', 'medium')">
-        Medium
-      </button>
-            <button (click)="toggleGrid('repeat(auto-fill, minmax(150px, 1fr))', 'auto')">
-        Auto
-      </button>
-        </div>
-    </div>
-    <div class="hover">
-        <h3>
-            Zoom Effect, <strong> {{ cardHoverClass }}</strong>
-        </h3>
-        <div>
-            <button (click)="toggleHover('zoom')">Zoom</button>
-            <button (click)="toggleHover('zoomPlus')">Zoom+</button>
-            <button (click)="toggleHover('noZoom')">NoZoom</button>
-        </div>
-    </div>
-    <div class="loadingSpeed">
-        <h3>
-            Loading Speed, <strong>{{ loadingSpeed }}</strong>
-        </h3>
-        <div>
-            <button (click)="toggleLoadingSpeed(1)">1</button>
-            <button (click)="toggleLoadingSpeed(2)">2</button
-      ><button (click)="toggleLoadingSpeed(3)">3 maybe lag</button>
-        </div>
-    </div>
-    <div class="span">
-        <h3>
-            Dynamic Span, <strong>{{ spanState }}</strong>
-        </h3>
-        <div>
-            <button (click)="toggleSpan(true)">Span</button
-      ><button (click)="toggleSpan(false)">noSpan</button>
-        </div>
-    </div>
+  <app-option [options]="gridOptions"></app-option>
+  <app-option [options]="cardHoverOptions"></app-option>
+  <app-option [options]="loadingSpeedsOptions"></app-option>
+  <app-option [options]="spanOptions"></app-option>
 </section>
 
 <section class="mobileOptions">
-    <div class="columns">
-        <h3>
-            Display Grid, <strong>{{ gridClassMobile }}</strong>
-        </h3>
-        <div>
-            <button (click)="mobileToggleGrid('oneColumn')">one Column</button
-      ><button (click)="mobileToggleGrid('twoColumn')">two Columns</button
-      ><button (click)="mobileToggleGrid('threeColumn')">three Columns</button>
-        </div>
-    </div>
-
-    <div class="loadingSpeed">
-        <h3>
-            Loading Speed,<strong>{{ loadingSpeed }}</strong>
-        </h3>
-        <div>
-            <button (click)="toggleLoadingSpeed(1)">1</button>
-            <button (click)="toggleLoadingSpeed(2)">2</button
-      ><button (click)="toggleLoadingSpeed(3)">3 maybe lag</button>
-        </div>
-    </div>
-    <div class="span">
-        <h3>
-            Dynamic Span, <strong>{{ spanState }}</strong>
-        </h3>
-        <div>
-            <button (click)="toggleSpan(true)">Span</button
-      ><button (click)="toggleSpan(false)">noSpan</button>
-        </div>
-    </div>
+  <app-option [options]="mobileGridOptions"></app-option>
+  <app-option [options]="loadingSpeedsOptions"></app-option>
+  <app-option [options]="spanOptions"></app-option>
 </section>

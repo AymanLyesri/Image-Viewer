@@ -14,6 +14,15 @@ export class OptionsService {
 
   constructor() {}
 
+  getPreview(type: string) {
+    if (type == 'grid') return 'Medium';
+    if (type == 'hover') return 'Zoom';
+    if (type == 'loadingSpeed') return 'Medium';
+    if (type == 'span') return 'On';
+    if (type == 'mobileGrid') return 'One Column';
+    else return 'Not Working';
+  }
+
   updateLoadingSpeed(speed: number) {
     this.loadingSpeed$.next(speed);
   }

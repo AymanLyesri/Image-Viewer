@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   OnDestroy,
@@ -14,7 +13,6 @@ import { Image } from '../models/Image';
 import { AuthenticationService } from '../services/authentication.service';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { OptionsService } from '../services/options/options.service';
-import { RefreshFavoritesService } from '../services/refresh-favorites/refresh-favorites.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -22,7 +20,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.css'],
 })
-export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
+export class PostsComponent implements OnInit, OnDestroy {
   @ViewChildren('card') cards: QueryList<ElementRef>;
   @ViewChild('imageGrid') grid: ElementRef<HTMLElement>;
 
@@ -31,7 +29,7 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
   public logged: boolean;
 
   private oldColumns: string = 'oneColumn';
-  private oldZoom: string = 'zoom';
+
   private loadingSpeed: number = 2;
 
   private offset: number = 0;
@@ -50,8 +48,7 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
     private imageService: ImageService,
     private AuthService: AuthenticationService,
     private render: Renderer2,
-    private options: OptionsService,
-    private refreshService: RefreshFavoritesService
+    private options: OptionsService
   ) {}
 
   ngOnInit(): void {
@@ -66,9 +63,9 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
     this.options.getGridClassMobile().subscribe((columns) => {
       this.mobileToggleGrid(columns, this.oldColumns);
     });
-    this.options.getCardHoverClass().subscribe((zoom) => {
-      this.toggleHover(zoom, this.oldZoom);
-    });
+    // this.options.getCardHoverClass().subscribe((zoom) => {
+    //   this.toggleHover(zoom, this.oldZoom);
+    // });
 
     this.imageService.getPost(this.offset);
     this.imageSubscription = this.imageService
@@ -97,26 +94,8 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
     this.oldColumns = columns;
   }
 
-  toggleHover(zoom: string, oldZoom: string) {
-    this.cards.forEach((card) => {
-      this.render.removeClass(card.nativeElement, oldZoom);
-      this.render.addClass(card.nativeElement, zoom);
-    });
-    this.oldZoom = zoom;
-  }
-
   isLoggedIn() {
     return this.AuthService.isLoggedIn();
-  }
-
-  ngAfterViewInit(): void {
-    this.cardChanges = this.cards.changes.subscribe(() => {
-      if (this.images.length > 0)
-        this.loadingObserver.observe(this.cards.last.nativeElement);
-      this.cards.forEach((card) => {
-        this.render.addClass(card.nativeElement, this.oldZoom);
-      });
-    });
   }
 
   private loadingObserver = new IntersectionObserver(
@@ -139,18 +118,17 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
         }
       });
     },
-    { rootMargin: '1000px' }
+    { rootMargin: '500px' }
   );
 
-  Page(element: HTMLElement, to: boolean) {
-    element.scrollIntoView(false);
-
-    setTimeout(() => {
-      if (to) this.offset++, (this.limit += 60);
-      else (this.offset = this.limit - 120), (this.limit -= 60);
-      this.images.length = 0;
-      this.imageService.getPost(this.offset);
-    }, 700);
+  ngAfterViewInit(): void {
+    this.cardChanges = this.cards.changes.subscribe(() => {
+      if (this.images.length > 0)
+        this.loadingObserver.observe(this.cards.last.nativeElement);
+      // this.cards.forEach((card) => {
+      //   this.render.addClass(card.nativeElement, this.oldZoom);
+      // });
+    });
   }
 
   deleteImage(id: string) {
@@ -164,19 +142,15 @@ export class PostsComponent implements OnInit, OnDestroy, AfterViewInit {
     });
   }
 
-  addFavorite(id: string) {
-    console.log(id);
+  Page(element: HTMLElement, to: boolean) {
+    element.scrollIntoView(false);
 
-    this.favorites = JSON.parse(localStorage.getItem('favorites'))
-      ? JSON.parse(localStorage.getItem('favorites'))
-      : [];
-
-    if (this.favorites.indexOf(id) >= 0) return;
-
-    this.favorites.push(id);
-    console.log(this.favorites);
-    localStorage.setItem('favorites', JSON.stringify(this.favorites));
-    this.refreshService.setRefreshRequest();
+    setTimeout(() => {
+      if (to) this.offset++, (this.limit += 60);
+      else (this.offset = this.limit - 120), (this.limit -= 60);
+      this.images.length = 0;
+      this.imageService.getPost(this.offset);
+    }, 700);
   }
 
   ngOnDestroy(): void {

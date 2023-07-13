@@ -1,0 +1,123 @@
+@keyframes popUp {
+  0% {
+    opacity: 0;
+    transform: blur(10px);
+  }
+  100% {
+    opacity: 100%;
+    transform: blur(0);
+  }
+}
+
+section {
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  transition: all 0.2s;
+  animation: popUp 2s ease;
+}
+
+section:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 900;
+  transition: all 0.5s;
+  transition-delay: 0.2s;
+  box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+}
+@media screen and (min-width: 600px) {
+  section {
+    aspect-ratio: 1/1;
+  }
+}
+
+section:hover img {
+  height: unset !important;
+  transition: all 1s;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: #ff7676;
+  background-size: cover;
+  transition: all 1s;
+  transition-delay: 0.2s;
+  object-fit: cover;
+}
+
+a:hover {
+  padding-inline: 5%;
+  border-radius: 10px;
+  color: #000000;
+  background-color: #7a7a7a;
+  border: 1px #979797 solid;
+}
+
+p:hover {
+  width: 40vw;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.5);
+  transform: scale(1.2);
+  backdrop-filter: blur(5px);
+}
+
+.zoom:hover {
+  transform: scale(1.2);
+}
+.zoomPlus:hover {
+  transform: scale(1.5);
+}
+.noZoom:hover {
+  transform: none;
+}
+
+a {
+  font-size: smaller;
+  padding-inline: auto;
+  padding-block: 0.5%;
+  text-decoration: none;
+  text-align: center;
+  color: #858585;
+  border-radius: 10px;
+  transition: all 0.2s;
+}
+
+p {
+  display: block;
+  width: 100%;
+  opacity: 0.5;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: smaller;
+  overflow: hidden;
+  color: aliceblue;
+  transition: all 0.5s, text-indent 5s;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.actions {
+  min-height: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.actions a span {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 1.5em;
+  height: 1.5em;
+  display: block;
+}
+
+.favorite span {
+  background-image: url("../../../assets/heart-992.svg");
+}

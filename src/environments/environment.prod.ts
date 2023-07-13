@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  URL: 'https://image-viewer-api-production.up.railway.app',
+  URL: 'https://image-viewer-api-prod.onrender.com',
   NAME: 'Image Viewer',
   FAVICON: '../assets/faviconbasic.ico',
   HELPICON: '../assets/gmail.png',

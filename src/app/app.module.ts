@@ -32,6 +32,8 @@ import { SauceComponent } from './sauce/sauce.component';
 
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { OptionComponent } from './options/option/option.component';
+import { PostComponent } from './posts/post/post.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +67,8 @@ import { StatisticsComponent } from './statistics/statistics.component';
     MatChipsModule,
     AppRoutingModule,
     NgxFileDropModule,
+    OptionComponent,
+    PostComponent,
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],

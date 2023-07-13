@@ -1,0 +1,26 @@
+<section>
+  <img
+    loading="lazy"
+    appImageRatio
+    [src]="image.thumb"
+    [alt]="imgAlt + image.name"
+  />
+  <div class="actions">
+    <a class="fullSize" [href]="image.url" target="_blank">Full Size</a>
+    <!-- <a class="favorite" href="#fav" (click)="addFavorite(image._id)"
+      ><span></span
+    ></a> -->
+    <a
+      class="sauce"
+      [href]="'https://saucenao.com/search.php?url=' + image.url"
+      target="_blank"
+      >Sauce?</a
+    >
+  </div>
+  <!-- <div>
+    <p>{{ image.name }}</p>
+    <p>{{ image.createdAt }}</p>
+    <p>{{ image.size / 1000 }}kb</p>
+  </div> -->
+  <a *ngIf="isLoggedIn()" (click)="deleteImage(image._id)">Remove it</a>
+</section>

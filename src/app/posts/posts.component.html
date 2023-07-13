@@ -9,36 +9,13 @@
 
 <div #imageGrid class="imageGrid oneColumn">
   <div #card *ngFor="let image of images" [id]="image._id">
-    <img
-      loading="lazy"
-      appImageRatio
-      [src]="image.thumb"
-      [alt]="imgAlt + image.name"
-    />
-    <div class="actions">
-      <a class="fullSize" [href]="image.url" target="_blank">Full Size</a>
-      <a class="favorite" href="#fav" (click)="addFavorite(image._id)"
-        ><span></span
-      ></a>
-      <a
-        class="sauce"
-        [href]="'https://saucenao.com/search.php?url=' + image.url"
-        target="_blank"
-        >Sauce?</a
-      >
-    </div>
-    <div>
-      <p>{{ image.name }}</p>
-      <p>{{ image.createdAt }}</p>
-      <p>{{ image.size / 1000 }}kb</p>
-    </div>
-    <a *ngIf="isLoggedIn()" (click)="deleteImage(image._id)">Remove it</a>
+    <app-post [image]="image"></app-post>
   </div>
-</div>
 
-<button class="previous" *ngIf="showPrevious" (click)="Page(top, false)">
-  <p>PREVIOUS</p>
-</button>
-<button class="next" *ngIf="showNext" (click)="Page(top, true)">
-  <p>NEXT</p>
-</button>
+  <button class="previous" *ngIf="showPrevious" (click)="Page(top, false)">
+    <p>PREVIOUS</p>
+  </button>
+  <button class="next" *ngIf="showNext" (click)="Page(top, true)">
+    <p>NEXT</p>
+  </button>
+</div>

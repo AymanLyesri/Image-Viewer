@@ -1,0 +1,57 @@
+section {
+  width: 20vw;
+}
+section:hover * {
+  text-shadow: 10px 10px 10px black;
+}
+
+section:hover h3 {
+  color: #666666;
+}
+
+section:hover strong {
+  color: rgb(255, 255, 0);
+}
+
+h3 {
+  text-align: center;
+  margin-block: 1%;
+  color: #444444;
+  transition: all 0.5s;
+}
+
+div {
+  gap: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  padding: 10px;
+  border: 1px #000000 solid;
+  border-radius: 10px;
+  color: rgb(255, 255, 255);
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  transition: all 0.5s;
+}
+button:hover {
+  border: 1px rgb(255, 255, 0) solid;
+  color: rgb(255, 255, 0);
+}
+
+@media (max-width: 600px) {
+  section {
+    width: 100vw;
+  }
+
+  button {
+    border: 1px #ffbb00 solid;
+    color: yellow;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  strong {
+    color: #ffbb00;
+  }
+}
