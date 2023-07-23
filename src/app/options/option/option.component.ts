@@ -10,22 +10,21 @@ import { Option } from 'src/app/models/Option';
   templateUrl: './option.component.html',
   styleUrls: ['./option.component.css'],
 })
-export class OptionComponent implements OnInit {
-  @Input() options: Option;
+export class OptionComponent implements OnInit
+{
+  @Input() option: Option;
 
-  constructor(private serviceOptions: OptionsService) {}
+  constructor(private serviceOptions: OptionsService) { }
   public preview: any;
 
-  ngOnInit(): void {
-    this.preview = this.serviceOptions.getPreview(this.options.type);
+  ngOnInit(): void
+  {
+    this.preview = this.serviceOptions.getOption(this.option.type);
   }
 
-  toggle(type: string, action?: any, abbreviation?: string) {
-    this.preview = abbreviation;
-    if (type == 'grid') this.serviceOptions.updateGridClass(action);
-    if (type == 'hover') this.serviceOptions.updateCardHoverClass(action);
-    if (type == 'loadingSpeed') this.serviceOptions.updateLoadingSpeed(action);
-    if (type == 'span') this.serviceOptions.updateSpanState(action);
-    if (type == 'mobileGrid') this.serviceOptions.updateGridClassMobile(action);
+  toggle(type: string, action?: any, abbreviation?: string)
+  {
+    this.preview = action;
+    this.serviceOptions.updateOption(type, action)
   }
 }

@@ -24,6 +24,7 @@
         "@angular/platform-browser": "^14.2.0",
         "@angular/platform-browser-dynamic": "^14.2.0",
         "@angular/router": "^14.2.0",
+        "ng2-tooltip-directive": "^2.10.3",
         "ngx-file-drop": "^15.0.0",
         "ngx-image-compress": "^13.1.13",
         "rxjs": "~7.5.0",

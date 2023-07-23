@@ -2,26 +2,19 @@
   background-color: #212121;
 }
 
-#options {
-  margin-top: -50vh;
-  position: absolute;
-}
-
 .options {
-  gap: 5vw;
+  gap: 3vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 @media screen and (max-width: 600px) {
-  .options {
+  #hoverOption {
     display: none;
   }
-}
-
-@media (min-width: 600px) {
-  .mobileOptions {
-    display: none;
+  .options {
+    flex-direction: column;
   }
 }

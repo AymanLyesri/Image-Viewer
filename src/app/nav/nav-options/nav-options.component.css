@@ -1,0 +1,64 @@
+:host {
+  width: 100%;
+}
+
+section {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-evenly;
+}
+
+@keyframes intro {
+  0% {
+    opacity: 0;
+    transform: blur(25px);
+    margin-top: 30vh;
+  }
+  100% {
+    opacity: 100%;
+    transform: blur(0);
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .options {
+    display: none;
+  }
+  p {
+    display: none;
+  }
+}
+
+a {
+  flex: auto;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+span {
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 1em;
+  height: 1em;
+  display: block;
+}
+
+a:hover span {
+  animation: shaking 1s ease infinite;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+span {
+  width: 1.5em;
+  height: 1.5em;
+}

@@ -1,10 +1,10 @@
-import {
+import
+{
   Component,
   ElementRef,
   OnDestroy,
   OnInit,
   QueryList,
-  Renderer2,
   ViewChild,
   ViewChildren,
 } from '@angular/core';
@@ -12,23 +12,25 @@ import { ImageService } from '../services/image.service';
 import { Image } from '../models/Image';
 import { AuthenticationService } from '../services/authentication.service';
 import { Subscription } from 'rxjs/internal/Subscription';
-import { OptionsService } from '../services/options/options.service';
 import { environment } from 'src/environments/environment';
+import { OptionsService } from '../services/options/options.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.css'],
 })
-export class PostsComponent implements OnInit, OnDestroy {
-  @ViewChildren('card') cards: QueryList<ElementRef>;
+export class PostsComponent implements OnInit, OnDestroy
+{
+  @ViewChildren('posts') posts: QueryList<ElementRef>;
   @ViewChild('imageGrid') grid: ElementRef<HTMLElement>;
+
+  public METHOD = "posts" || "favorites";
 
   public favorites: string[];
   public images: Image[] = [];
   public logged: boolean;
-
-  private oldColumns: string = 'oneColumn';
 
   private loadingSpeed: number = 2;
 
@@ -40,101 +42,131 @@ export class PostsComponent implements OnInit, OnDestroy {
 
   private imageSubscription: Subscription;
   private newImageSubscription: Subscription;
-  private cardChanges: Subscription;
+  private postsChanges: Subscription;
+
+  private loadingObserver;
 
   public imgAlt = environment.TITLE + ' ';
 
   constructor(
     private imageService: ImageService,
     private AuthService: AuthenticationService,
-    private render: Renderer2,
-    private options: OptionsService
-  ) {}
+    private activatedRoute: ActivatedRoute,
+    private optionsService: OptionsService
+  )
+  {
+    this.METHOD = this.activatedRoute.snapshot.paramMap.get('method') || "posts"
 
-  ngOnInit(): void {
+    console.log(this.activatedRoute.snapshot.paramMap.get('method'));
+
+    this.loadingObserver = new IntersectionObserver(
+      (entries) =>
+      {
+        entries.forEach((entry) =>
+        {
+          if (entry.isIntersecting && this.offset < this.limit) {
+            for (
+              let index = 0;
+              index < this.loadingSpeed && this.offset < this.limit;
+              index++
+            ) {
+              this.offset++;
+              this.imageService.getPost(this.offset);
+              console.log(this.offset, this.limit);
+            }
+            this.loadingObserver.unobserve(entry.target);
+
+
+            this.showPrevious = this.limit != 60 ? true : false;
+            this.showNext = this.offset == this.limit ? true : false;
+          }
+        });
+      },
+      { rootMargin: '1000px' }
+    );
+
+  }
+
+  ngOnInit(): void
+  {
+
+
     this.isLoggedIn();
 
-    this.options.getLoadingSpeed().subscribe((speed) => {
+    this.optionsService.getLoadingSpeed$.subscribe((speed) =>
+    {
       this.loadingSpeed = speed;
     });
-    this.options.getGridClass().subscribe((columns) => {
-      this.toggleGrid(columns);
-    });
-    this.options.getGridClassMobile().subscribe((columns) => {
-      this.mobileToggleGrid(columns, this.oldColumns);
-    });
-    // this.options.getCardHoverClass().subscribe((zoom) => {
-    //   this.toggleHover(zoom, this.oldZoom);
-    // });
 
-    this.imageService.getPost(this.offset);
-    this.imageSubscription = this.imageService
-      .getImageStream()
-      .subscribe((image: Image) => {
-        this.images.push(image);
-      });
-    this.newImageSubscription = this.imageService
-      .getNewImageStream()
-      .subscribe((image: Image) => {
-        this.images.unshift(image);
-      });
+    if (this.METHOD === "posts") {
+      console.log("done");
+
+
+      this.imageSubscription = this.imageService
+        .getImageStream()
+        .subscribe((image: Image) =>
+        {
+          this.images.push(image);
+
+        });
+
+      this.newImageSubscription = this.imageService
+        .getNewImageStream()
+        .subscribe((image: Image) =>
+        {
+          this.images.unshift(image);
+        });
+    }
+    else if (this.METHOD === "favorites") {
+      if (JSON.parse(localStorage.getItem('favorites')) != null)
+        this.images = JSON.parse(localStorage.getItem('favorites'));
+
+      this.imageSubscription = this.imageService
+        .getFavoriteStream()
+        .subscribe((image: Image) =>
+        {
+          this.images.push(image);
+        });
+    }
   }
 
-  toggleGrid(columns: string) {
-    this.render.setStyle(
-      this.grid.nativeElement,
-      'grid-template-columns',
-      columns
-    );
-  }
-
-  mobileToggleGrid(columns: string, oldColumns: string) {
-    this.render.removeClass(this.grid.nativeElement, oldColumns);
-    this.render.addClass(this.grid.nativeElement, columns);
-    this.oldColumns = columns;
-  }
-
-  isLoggedIn() {
+  isLoggedIn()
+  {
     return this.AuthService.isLoggedIn();
   }
 
-  private loadingObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && this.offset < this.limit) {
-          for (
-            let index = 0;
-            index < this.loadingSpeed && this.offset < this.limit;
-            index++
-          ) {
-            this.offset++;
-            this.imageService.getPost(this.offset);
-            console.log(this.offset, this.limit);
-          }
-          this.loadingObserver.unobserve(entry.target);
+  ngAfterViewInit(): void
+  {
+    this.postsChanges = this.posts.changes.subscribe(() =>
+    {
+      console.log(this.images.length);
+      console.log(this.posts.last.nativeElement);
 
-          this.showPrevious = this.limit != 60 ? true : false;
-          this.showNext = this.offset == this.limit ? true : false;
-        }
-      });
-    },
-    { rootMargin: '500px' }
-  );
-
-  ngAfterViewInit(): void {
-    this.cardChanges = this.cards.changes.subscribe(() => {
-      if (this.images.length > 0)
-        this.loadingObserver.observe(this.cards.last.nativeElement);
-      // this.cards.forEach((card) => {
-      //   this.render.addClass(card.nativeElement, this.oldZoom);
-      // });
+      this.loadingObserver.observe(this.posts.last.nativeElement);
     });
+
+    if (this.METHOD == "posts") this.imageService.getPost(this.offset); //needs to be after
+
   }
 
-  deleteImage(id: string) {
-    this.imageService.deleteImage(id).subscribe((response) => {
+  deleteFavorite(id: string)
+  {
+
+    let favorites = JSON.parse(localStorage.getItem('favorites'));
+    favorites.splice(this.favorites.indexOf(id), 1);
+
+
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }
+
+
+  deleteImage(id: string)
+  {
+    this.imageService.deleteImage(id).subscribe((response) =>
+    {
       console.log(response.id);
-      this.cards.forEach((card) => {
+      this.posts.forEach((card) =>
+      {
         if (card.nativeElement.id == response.id) {
           card.nativeElement.remove();
         }
@@ -142,10 +174,12 @@ export class PostsComponent implements OnInit, OnDestroy {
     });
   }
 
-  Page(element: HTMLElement, to: boolean) {
+  Page(element: HTMLElement, to: boolean)
+  {
     element.scrollIntoView(false);
 
-    setTimeout(() => {
+    setTimeout(() =>
+    {
       if (to) this.offset++, (this.limit += 60);
       else (this.offset = this.limit - 120), (this.limit -= 60);
       this.images.length = 0;
@@ -153,9 +187,10 @@ export class PostsComponent implements OnInit, OnDestroy {
     }, 700);
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy(): void
+  {
     this.imageSubscription.unsubscribe();
-    this.cardChanges.unsubscribe();
+
     this.newImageSubscription.unsubscribe();
   }
 }

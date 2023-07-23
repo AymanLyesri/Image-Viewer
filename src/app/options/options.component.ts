@@ -6,14 +6,16 @@ import { Option } from '../models/Option';
   templateUrl: './options.component.html',
   styleUrls: ['./options.component.css'],
 })
-export class OptionsComponent implements OnInit {
+export class OptionsComponent implements OnInit
+{
   public gridOptions: Option = {
     title: 'Grid',
     type: 'grid',
     buttons: [
-      { placeholder: 'Large', action: 'repeat(4, minmax(0, 1fr))' },
-      { placeholder: 'Medium', action: 'repeat(6, minmax(0, 1fr))' },
-      { placeholder: 'Auto', action: 'repeat(auto-fill, minmax(200px, 1fr))' },
+      { placeholder: 'XL', action: 'xlColumn' },
+      { placeholder: 'Large', action: 'largeColumn' },
+      { placeholder: 'Med', action: 'mediumColumn' },
+      { placeholder: 'Auto', action: 'autoColumn' },
     ],
   };
   public cardHoverOptions: Option = {
@@ -21,8 +23,8 @@ export class OptionsComponent implements OnInit {
     type: 'hover',
     buttons: [
       { placeholder: 'Zoom', action: 'zoom' },
-      { placeholder: 'Zoom Plus', action: 'zoomPlus' },
-      { placeholder: 'No Zoom', action: 'noZoom' },
+      { placeholder: 'Zoom+', action: 'zoomPlus' },
+      { placeholder: "none", action: 'noZoom' },
     ],
   };
   public loadingSpeedsOptions: Option = {
@@ -38,22 +40,13 @@ export class OptionsComponent implements OnInit {
     title: 'Span',
     type: 'span',
     buttons: [
-      { placeholder: 'On', action: 'true' },
-      { placeholder: 'Off', action: 'false' },
-    ],
-  };
-  //mobile Options
-  public mobileGridOptions: Option = {
-    title: 'Grid',
-    type: 'mobileGrid',
-    buttons: [
-      { placeholder: 'Large', action: 'oneColumn' },
-      { placeholder: 'Small', action: 'twoColumn' },
-      { placeholder: 'Auto', action: 'threeColumn' },
+      { placeholder: 'On', action: true },
+      { placeholder: 'Off', action: false },
     ],
   };
 
-  constructor() {}
 
-  ngOnInit(): void {}
+  constructor() { }
+
+  ngOnInit(): void { }
 }

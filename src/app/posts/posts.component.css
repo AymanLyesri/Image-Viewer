@@ -19,6 +19,10 @@ header .bg-1 {
   background-size: cover;
 }
 
+section {
+  height: fit-content;
+}
+
 h1 {
   margin-top: 20%;
   text-align: center;
@@ -32,73 +36,68 @@ hr {
 
 .imageGrid {
   gap: 0.3em;
-  width: 100vw;
+  margin-inline: 5%;
+  width: 90%;
   display: grid;
   align-items: center;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
   grid-auto-flow: row dense;
 }
 
-@media (min-width: 600px) {
-  .imageGrid {
-    margin-inline: 5%;
-    width: 90%;
-  }
+.xlColumn {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.largeColumn {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+.mediumColumn {
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+}
+.autoColumn {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 
 @media screen and (max-width: 600px) {
   .imageGrid {
     width: 100vw;
+    margin-inline: unset;
   }
-  .oneColumn .image-wide,
-  .oneColumn .image-tall {
-    grid-column: span 1 !important;
-    grid-row: span 1 !important;
-    height: 100% !important;
-  }
-  .oneColumn {
+  .xlColumn {
     grid-template-columns: 100vw !important;
-    grid-auto-flow: row dense;
   }
-  .twoColumn {
+  .largeColumn {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    grid-auto-flow: row dense;
   }
-  .threeColumn {
+  .mediumColumn {
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    grid-auto-flow: row dense;
+  }
+  .autoColumn {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
   }
 }
 
 .image-wide {
   grid-column: span 2 / auto;
 }
-
 .image-tall {
   grid-row: span 2 / auto;
-  height: 700px !important;
+  /* height: 700px !important; */
+}
+.image-big {
+  grid-column: span 2 / auto;
+  grid-row: span 2 / auto;
 }
 
-.imageGrid p {
-  display: block;
-  width: 100%;
-  opacity: 0.5;
-  margin: 0;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: smaller;
-  overflow: hidden;
-  color: aliceblue;
-  transition: all 0.5s, text-indent 5s;
-  background-color: rgba(0, 0, 0, 0.5);
+.zoom:hover {
+  transform: scale(1.2);
+}
+.zoomPlus:hover {
+  transform: scale(1.5);
+}
+.noZoom:hover {
+  transform: none;
 }
 
-.imageGrid div:active p,
-.imageGrid div:hover p {
-  opacity: 1;
-}
-
-.imageGrid .previous,
+.previous,
 .next {
   position: fixed;
   top: 50%;
@@ -132,7 +131,7 @@ hr {
 .previous:hover,
 .next:hover {
   height: 50vh;
-  width: 4vw;
+  width: 5vw;
   color: rgb(255, 255, 0);
   border: 1px rgb(255, 255, 0) solid;
 }
@@ -146,6 +145,12 @@ hr {
     backdrop-filter: none;
     height: 5vh;
     width: 50vw;
+    border-radius: unset;
+  }
+  .previous:hover,
+  .next:hover {
+    height: 5vh;
+    width: 50vw;
   }
   .previous p,
   .next p {
@@ -155,17 +160,12 @@ hr {
 }
 
 footer {
-  width: 100vw;
-  z-index: -100;
-  margin-bottom: 0;
+  z-index: -1;
 }
 
-footer .bg {
-  position: relative;
+footer .bg-2 {
   background-image: url("../../assets/layered-waves-haikei.svg");
-  z-index: -100;
   width: 100%;
-  height: auto;
   bottom: 0;
   aspect-ratio: 900/600;
   background-repeat: no-repeat;

@@ -1,15 +1,17 @@
-<header>
+<header *ngIf="METHOD == 'posts'">
   <div class="bg-1"></div>
 </header>
 
-<h1>all posts</h1>
-<a #top id="top"></a>
+<section>
+  <h1>all {{ METHOD }}</h1>
+  <a #top id="top"></a>
 
-<hr />
+  <hr />
 
-<div #imageGrid class="imageGrid oneColumn">
-  <div #card *ngFor="let image of images" [id]="image._id">
-    <app-post [image]="image"></app-post>
+  <div appImageGrid class="imageGrid">
+    <div #posts *ngFor="let image of images">
+      <app-post [image]="image"></app-post>
+    </div>
   </div>
 
   <button class="previous" *ngIf="showPrevious" (click)="Page(top, false)">
@@ -18,4 +20,8 @@
   <button class="next" *ngIf="showNext" (click)="Page(top, true)">
     <p>NEXT</p>
   </button>
-</div>
+</section>
+
+<footer *ngIf="METHOD == 'favorites'">
+  <div class="bg-2"></div>
+</footer>

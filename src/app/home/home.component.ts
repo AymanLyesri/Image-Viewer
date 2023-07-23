@@ -8,7 +8,8 @@ import { VisitesService } from '../services/visites/visites.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit
+{
   public visitors: number;
   public title: string;
 
@@ -16,23 +17,24 @@ export class HomeComponent implements OnInit {
     private visitsService: VisitesService,
     private globalTitle: Title,
     private meta: Meta
-  ) {}
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void
+  {
     this.globalTitle.setTitle(environment.TITLE);
     this.meta.addTags([
       { name: 'title', content: environment.TITLE },
       { name: 'description', content: environment.SITEDESCRIPTION },
     ]);
 
-    this.getTitle();
-    this.visitsService.updateVisitors();
-    this.visitsService
-      .getVisitors()
-      .subscribe((visits) => (this.visitors = visits));
+    this.setTitle();
+    // this.visitsService
+    //   .getVisitors()
+    //   .subscribe((visits) => (this.visitors = visits));
   }
 
-  getTitle() {
+  setTitle()
+  {
     this.title = environment.NAME;
   }
 }

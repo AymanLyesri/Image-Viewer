@@ -1,11 +1,11 @@
 <section>
   <h3>
-    {{ options.title }}, <strong>{{ preview }}</strong>
+    {{ option.title }}, <strong>{{ preview }}</strong>
   </h3>
   <div class="buttons">
     <button
-      *ngFor="let button of options.buttons"
-      (click)="toggle(options.type, button.action, button.placeholder)"
+      *ngFor="let button of option.buttons"
+      (click)="toggle(option.type, button.action, button.placeholder)"
     >
       {{ button.placeholder }}
     </button>

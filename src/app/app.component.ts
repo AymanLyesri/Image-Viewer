@@ -8,20 +8,23 @@ import { VisitesService } from './services/visites/visites.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit
+{
   constructor(
     private visitsService: VisitesService,
     private globalTitle: Title,
     private meta: Meta
-  ) {}
+  ) { }
 
   favicon: HTMLLinkElement = document.querySelector('#favicon');
 
-  getTitle() {
+  getTitle()
+  {
     return environment.NAME;
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void
+  {
     this.globalTitle.setTitle(environment.TITLE);
     this.meta.addTags([
       { name: 'title', content: environment.TITLE },
@@ -44,6 +47,6 @@ export class AppComponent implements OnInit {
       },
     ]);
     this.favicon.href = environment.FAVICON;
-    this.visitsService.updateVisitors();
+    // this.visitsService.updateVisitors();
   }
 }

@@ -1,80 +1,101 @@
 :host {
-    background-color: rgb(255, 97, 97);
-    width: 100vw;
-    height: 100vh;
-    z-index: 0;
+  background-color: rgb(255, 97, 97);
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+}
+
+footer {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+footer .bg {
+  position: absolute;
+  background-image: url("../../assets/layered-waves-haikei.svg");
+  width: 100%;
+  bottom: 0;
+  aspect-ratio: 900/600;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 @keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 section {
-    margin-top: 10vh;
-    margin-inline: 20vw;
-    animation: popUp 2s ease;
-    justify-content: center;
-    align-items: center;
+  position: absolute;
+  margin-top: 10vh;
+  margin-inline: 10vw;
+  animation: popUp 2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .intro {
-    max-height: 50vh;
-    color: white;
-    overflow: auto;
+  white-space: pre-line;
+  max-height: 40vh;
+  color: white;
+  overflow: auto;
 }
 
 @keyframes popUp {
-    0% {
-        opacity: 0;
-        transform: blur(5px);
-    }
-    100% {
-        opacity: 100%;
-        transform: blur(0);
-    }
+  0% {
+    opacity: 0;
+    transform: blur(5px);
+  }
+  100% {
+    opacity: 100%;
+    transform: blur(0);
+  }
 }
 
 .paypal {
-    text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+  text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .paypal a {
-    width: 50%;
-    margin-left: 25%;
-    text-align: center;
-    padding-block: 5%;
-    color: white;
-    border: 1px rgb(255, 255, 255) solid;
-    background-color: rgb(0, 0, 0, 0.5);
-    text-decoration: none;
-    border-radius: 10px;
-    transition: 1s;
+  width: 50%;
+  margin-left: 25%;
+  text-align: center;
+  padding-block: 5%;
+  color: white;
+  border: 1px rgb(255, 255, 255) solid;
+  background-color: rgb(0, 0, 0, 0.5);
+  text-decoration: none;
+  border-radius: 10px;
+  transition: 1s;
 }
 
 .paypal a:hover {
-    color: rgb(157, 201, 255);
-    border: 1px rgb(255, 255, 255) solid;
-    background-color: rgb(0, 0, 0, 0.7);
-    text-decoration: none;
-    padding-block: 10%;
+  color: rgb(157, 201, 255);
+  border: 1px rgb(255, 255, 255) solid;
+  background-color: rgb(0, 0, 0, 0.7);
+  text-decoration: none;
+  padding-block: 10%;
 }
 
 .paypal strong {
-    transition: all 1s;
-    color: rgb(255, 255, 255);
+  transition: all 1s;
+  color: rgb(255, 255, 255);
 }
 
 .paypal:hover strong {
-    color: rgb(255, 0, 0);
+  color: rgb(255, 191, 0);
 }

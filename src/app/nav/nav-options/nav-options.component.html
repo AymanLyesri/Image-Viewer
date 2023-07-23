@@ -1,0 +1,21 @@
+<section>
+  <div *ngFor="let option of options">
+    <a *ngIf="option?.routerLink" [routerLink]="[option?.routerLink]"
+      ><span style="background-image: url('{{ option.svgUrl }}')"></span>
+      <p>{{ option.title }}</p>
+    </a>
+
+    <a
+      *ngIf="option?.externalLink"
+      target="_blank"
+      [href]="[option?.externalLink]"
+      ><span style="background-image: url('{{ option.svgUrl }}')"></span>
+      <p>{{ option.title }}</p>
+    </a>
+
+    <a *ngIf="option?.idLink" (click)="scrollTo(option.idLink)">
+      <span style="background-image: url('{{ option.svgUrl }}')"></span>
+      <p>{{ option.title }}</p>
+    </a>
+  </div>
+</section>

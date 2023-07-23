@@ -1,61 +1,66 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/internal/Subject';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class OptionsService {
-  private loadingSpeed$ = new Subject<number>();
-  private gridClass$ = new Subject<string>();
-  private gridClassMobile$ = new Subject<string>();
-  private cardHoverClass$ = new Subject<string>();
-  private spanState$ = new Subject<boolean>();
-  private spanState: boolean = true;
+export class OptionsService
+{
+  private loadingSpeed$ = new BehaviorSubject<number>(parseInt(localStorage.getItem('loadingSpeed')) || 1);
+  public getLoadingSpeed$: Observable<number> = this.loadingSpeed$.asObservable();
 
-  constructor() {}
+  private gridClass$ = new BehaviorSubject<string>(localStorage.getItem('grid') || "mediumColumn");
+  public getGridClass$: Observable<string> = this.gridClass$.asObservable();
 
-  getPreview(type: string) {
-    if (type == 'grid') return 'Medium';
-    if (type == 'hover') return 'Zoom';
-    if (type == 'loadingSpeed') return 'Medium';
-    if (type == 'span') return 'On';
-    if (type == 'mobileGrid') return 'One Column';
-    else return 'Not Working';
+  private cardHoverClass$ = new BehaviorSubject<string>(localStorage.getItem('hover') || "zoom");
+  public getCardHoverClass$: Observable<string> = this.cardHoverClass$.asObservable();
+
+  private spanState$ = new BehaviorSubject<boolean>(localStorage.getItem('span') == "true" || true);
+  public getSpanState$: Observable<boolean> = this.spanState$.asObservable();
+
+  constructor() { }
+
+  updateOption(type: string, value: any)
+  {
+    switch (type) {
+      case "grid":
+        localStorage.setItem(type, value);
+        this.gridClass$.next(value)
+        break;
+      case "loadingSpeed":
+        localStorage.setItem(type, value);
+        this.loadingSpeed$.next(value)
+        break;
+      case "hover":
+        localStorage.setItem(type, value);
+        this.cardHoverClass$.next(value)
+        break;
+      case "span":
+        localStorage.setItem(type, value);
+        this.spanState$.next(value)
+        break;
+
+      default:
+        console.warn("option update not specified");
+    }
   }
 
-  updateLoadingSpeed(speed: number) {
-    this.loadingSpeed$.next(speed);
-  }
-  updateGridClass(gridClass: string) {
-    this.gridClass$.next(gridClass);
-  }
-  updateGridClassMobile(gridClassMobile: string) {
-    this.gridClassMobile$.next(gridClassMobile);
-  }
-  updateCardHoverClass(cardHoverClass: string) {
-    this.cardHoverClass$.next(cardHoverClass);
-  }
-  updateSpanState(spanState: boolean) {
-    this.spanState = spanState;
-    this.spanState$.next(spanState);
-  }
+  getOption(type: string): any
+  {
+    switch (type) {
+      case "grid":
+        return this.gridClass$.getValue()
+      case "loadingSpeed":
+        return this.loadingSpeed$.getValue()
+      case "hover":
+        return this.cardHoverClass$.getValue()
+      case "span":
+        return this.spanState$.getValue()
 
-  getLoadingSpeed() {
-    return this.loadingSpeed$.asObservable();
-  }
-  getGridClass() {
-    return this.gridClass$.asObservable();
-  }
-  getGridClassMobile() {
-    return this.gridClassMobile$.asObservable();
-  }
-  getCardHoverClass() {
-    return this.cardHoverClass$.asObservable();
-  }
-  getSpanState$() {
-    return this.spanState$.asObservable();
-  }
-  getSpanState() {
-    return this.spanState;
+      default:
+        console.warn("option to get not specified");
+        return
+
+    }
   }
 }

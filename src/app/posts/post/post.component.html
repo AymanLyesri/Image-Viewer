@@ -1,26 +1,34 @@
-<section>
-  <img
-    loading="lazy"
-    appImageRatio
-    [src]="image.thumb"
-    [alt]="imgAlt + image.name"
-  />
+<section appImageHover>
+  <span
+    [tooltip]="$any(imageInfo)"
+    contentType="template"
+    [showDelay]="750"
+    [hideDelayAfterClick]="2000"
+    maxWidth="1000"
+    ><img
+      appImageRatio
+      loading="lazy"
+      [src]="image.thumb"
+      [alt]="imgAlt + image.name"
+  /></span>
+  <ng-template #imageInfo>
+    <div id="imageInfo">
+      <p>{{ image.name }}</p>
+      <p>{{ image.createdAt }}</p>
+      <p>{{ image.size / 1000 }}kb</p>
+    </div></ng-template
+  >
+
   <div class="actions">
     <a class="fullSize" [href]="image.url" target="_blank">Full Size</a>
-    <!-- <a class="favorite" href="#fav" (click)="addFavorite(image._id)"
-      ><span></span
-    ></a> -->
+    <a class="favorite" (click)="addFavorite(image)"><span></span></a>
     <a
       class="sauce"
       [href]="'https://saucenao.com/search.php?url=' + image.url"
       target="_blank"
-      >Sauce?</a
+      >Sauce</a
     >
   </div>
-  <!-- <div>
-    <p>{{ image.name }}</p>
-    <p>{{ image.createdAt }}</p>
-    <p>{{ image.size / 1000 }}kb</p>
-  </div> -->
+
   <a *ngIf="isLoggedIn()" (click)="deleteImage(image._id)">Remove it</a>
 </section>

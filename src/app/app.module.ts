@@ -27,13 +27,16 @@ import { DonationComponent } from './donation/donation.component';
 import { FooterComponent } from './footer/footer.component';
 import { ParallaxImageDirective } from './directives/parallax-image/parallax-image.directive';
 import { OptionsComponent } from './options/options.component';
-import { FavoritesComponent } from './favorites/favorites.component';
+// import { FavoritesComponent } from './favorites/favorites.component';
 import { SauceComponent } from './sauce/sauce.component';
 
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { OptionComponent } from './options/option/option.component';
 import { PostComponent } from './posts/post/post.component';
+import { NavOptionsComponent } from './nav/nav-options/nav-options.component';
+import { ImageHoverDirective } from './directives/image-hover/image-hover.directive';
+import { ImageGridDirective } from './directives/image-grid/image-grid.directive';
 
 @NgModule({
   declarations: [
@@ -44,15 +47,15 @@ import { PostComponent } from './posts/post/post.component';
     HomeComponent,
     NavComponent,
     HiddenElementDirective,
-    ImageRatioDirective,
     SpinnerComponent,
     DonationComponent,
     FooterComponent,
     ParallaxImageDirective,
     OptionsComponent,
-    FavoritesComponent,
+    // FavoritesComponent,
     SauceComponent,
     StatisticsComponent,
+    ImageGridDirective,
   ],
   imports: [
     BrowserModule,
@@ -69,8 +72,9 @@ import { PostComponent } from './posts/post/post.component';
     NgxFileDropModule,
     OptionComponent,
     PostComponent,
+    NavOptionsComponent,
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

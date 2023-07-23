@@ -7,7 +7,8 @@ import { UploadComponent } from './upload/upload.component';
 import { AuthGuard } from './services/auth/auth.guard';
 
 import { DonationComponent } from './donation/donation.component';
-import { FavoritesComponent } from './favorites/favorites.component';
+import { PostsComponent } from './posts/posts.component';
+// import { FavoritesComponent } from './favorites/favorites.component';
 
 const Routes: Routes = [
   {
@@ -33,8 +34,8 @@ const Routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'favorites',
-    component: FavoritesComponent,
+    path: 'posts/:method',
+    component: PostsComponent,
   },
 ];
 
@@ -42,4 +43,4 @@ const Routes: Routes = [
   imports: [RouterModule.forRoot(Routes, { scrollPositionRestoration: 'top' })],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

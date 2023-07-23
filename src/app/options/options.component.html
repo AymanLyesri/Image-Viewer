@@ -1,14 +1,6 @@
-<div id="options"></div>
-
 <section class="options">
-  <app-option [options]="gridOptions"></app-option>
-  <app-option [options]="cardHoverOptions"></app-option>
-  <app-option [options]="loadingSpeedsOptions"></app-option>
-  <app-option [options]="spanOptions"></app-option>
-</section>
-
-<section class="mobileOptions">
-  <app-option [options]="mobileGridOptions"></app-option>
-  <app-option [options]="loadingSpeedsOptions"></app-option>
-  <app-option [options]="spanOptions"></app-option>
+  <app-option [option]="gridOptions"></app-option>
+  <app-option id="hoverOption" [option]="cardHoverOptions"></app-option>
+  <app-option [option]="loadingSpeedsOptions"></app-option>
+  <app-option [option]="spanOptions"></app-option>
 </section>

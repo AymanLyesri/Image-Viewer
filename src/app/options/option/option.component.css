@@ -1,11 +1,5 @@
-section {
-  width: 20vw;
-}
-section:hover * {
-  text-shadow: 10px 10px 10px black;
-}
-
 section:hover h3 {
+  text-shadow: 10px 10px 10px black;
   color: #666666;
 }
 
@@ -20,11 +14,16 @@ h3 {
   transition: all 0.5s;
 }
 
-div {
+strong {
+  transition: all 0.5s;
+}
+
+.buttons {
   gap: 1vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 button {
@@ -33,7 +32,6 @@ button {
   border-radius: 10px;
   color: rgb(255, 255, 255);
   background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px);
   transition: all 0.5s;
 }
 button:hover {
@@ -41,16 +39,7 @@ button:hover {
   color: rgb(255, 255, 0);
 }
 
-@media (max-width: 600px) {
-  section {
-    width: 100vw;
-  }
-
-  button {
-    border: 1px #ffbb00 solid;
-    color: yellow;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
+@media screen and (max-width: 600px) {
   strong {
     color: #ffbb00;
   }
