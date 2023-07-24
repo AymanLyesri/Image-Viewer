@@ -20,6 +20,6 @@ export class NavOptionsComponent implements OnInit
 
   scrollTo(element: any): void
   {
-    (document.getElementById(element) as HTMLElement).scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+    (document.getElementById(element) as HTMLElement).scrollIntoView({ behavior: "smooth", block: "center", inline: "nearest" });
   }
 }

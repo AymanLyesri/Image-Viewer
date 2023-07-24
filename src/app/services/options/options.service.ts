@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class OptionsService
 {
-  private loadingSpeed$ = new BehaviorSubject<number>(parseInt(localStorage.getItem('loadingSpeed')) || 1);
+  private loadingSpeed$ = new BehaviorSubject<number>(parseInt(localStorage.getItem('loadingSpeed')) || 2);
   public getLoadingSpeed$: Observable<number> = this.loadingSpeed$.asObservable();
 
   private gridClass$ = new BehaviorSubject<string>(localStorage.getItem('grid') || "mediumColumn");

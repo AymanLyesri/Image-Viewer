@@ -15,6 +15,7 @@ import { Subscription } from 'rxjs/internal/Subscription';
 import { environment } from 'src/environments/environment';
 import { OptionsService } from '../services/options/options.service';
 import { ActivatedRoute } from '@angular/router';
+import { map, takeWhile, timer } from 'rxjs';
 
 @Component({
   selector: 'app-posts',
@@ -47,6 +48,12 @@ export class PostsComponent implements OnInit, OnDestroy
   private loadingObserver;
 
   public imgAlt = environment.TITLE + ' ';
+
+  public secondsRemaining: number;
+  public secondsRemaining$ = timer(0, 1000).pipe(
+    map(n => 30 - n),
+    takeWhile(n => n >= 0),
+  );
 
   constructor(
     private imageService: ImageService,
@@ -85,6 +92,11 @@ export class PostsComponent implements OnInit, OnDestroy
       { rootMargin: '1000px' }
     );
 
+    this.secondsRemaining$.subscribe((second) =>
+    {
+      this.secondsRemaining = second
+    })
+
   }
 
   ngOnInit(): void
@@ -99,9 +111,6 @@ export class PostsComponent implements OnInit, OnDestroy
     });
 
     if (this.METHOD === "posts") {
-      console.log("done");
-
-
       this.imageSubscription = this.imageService
         .getImageStream()
         .subscribe((image: Image) =>

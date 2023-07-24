@@ -6,26 +6,31 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
-export class SizeService {
+export class SizeService
+{
   private URL: string = environment.URL + '/api/';
   private fullSize = new Subject<number>();
   private fullLength = new Subject<number>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getFull_Size_and_Length() {
+  getFull_Size_and_Length()
+  {
     this.http
       .get<{ fullSize: number; fullLength: number }>(this.URL + 'size')
-      .subscribe((result) => {
+      .subscribe((result) =>
+      {
         this.fullSize.next(result.fullSize);
         this.fullLength.next(result.fullLength);
       });
   }
 
-  getFullSize() {
+  getFullSize()
+  {
     return this.fullSize.asObservable();
   }
-  getFullLength() {
+  getFullLength()
+  {
     return this.fullLength.asObservable();
   }
 }

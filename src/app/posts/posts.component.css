@@ -87,16 +87,6 @@ hr {
   grid-row: span 2 / auto;
 }
 
-.zoom:hover {
-  transform: scale(1.2);
-}
-.zoomPlus:hover {
-  transform: scale(1.5);
-}
-.noZoom:hover {
-  transform: none;
-}
-
 .previous,
 .next {
   position: fixed;
@@ -156,6 +146,23 @@ hr {
   .next p {
     writing-mode: unset;
     text-orientation: unset;
+  }
+}
+
+.warning {
+  color: yellow;
+  animation: inOut 2s infinite;
+}
+
+@keyframes inOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
