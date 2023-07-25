@@ -1,6 +1,12 @@
 name: Delete Environment (default settings)
 
 on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
   delete:
     branches-ignore:
       - main
