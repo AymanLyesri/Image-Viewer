@@ -75,18 +75,6 @@ hr {
   }
 }
 
-.image-wide {
-  grid-column: span 2 / auto;
-}
-.image-tall {
-  grid-row: span 2 / auto;
-  /* height: 700px !important; */
-}
-.image-big {
-  grid-column: span 2 / auto;
-  grid-row: span 2 / auto;
-}
-
 .previous,
 .next {
   position: fixed;

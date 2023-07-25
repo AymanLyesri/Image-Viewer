@@ -52,3 +52,4 @@ src/assets/favicon.ico
 #firebase nonsense
 .firebaserc
 firebase-debug.log
+.vercel

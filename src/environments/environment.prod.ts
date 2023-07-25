@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  URL: 'https://image-viewer-api-prod.onrender.com',
+  URL: 'https://image-viewer-api.vercel.app',
   NAME: 'Image Viewer',
   FAVICON: '../assets/faviconbasic.ico',
   HELPICON: '../assets/gmail.png',

@@ -50,8 +50,6 @@ export class ImageService
         next: (image) =>
         {
           this.spinnerService.requestEnded();
-          console.log(image);
-
           this.image$.next(image);
         },
         error: (err: { error: { message: string } }) =>
@@ -113,9 +111,7 @@ export class ImageService
     if (this.containsObject(image, favorites)) return;
 
     favorites.push(image);
-    console.log(favorites);
     localStorage.setItem('favorites', JSON.stringify(favorites));
-    console.log("next");
 
     this.favorite$.next(image)
   }
