@@ -11,5 +11,5 @@ export const environment = {
     '',
   SITELINK: '',
   TITLE: '',
-  DONATIONINTRO: ""
+  DONATIONINTRO: ''
 };
