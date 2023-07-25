@@ -1,10 +1,7 @@
 <h4>Statistics (WIP)</h4>
-<div>
-  <p style="border-right: 1px solid rgb(130, 130, 130)">
-    {{ fullLength }} <br />
-    post(s)
-  </p>
-  <p style="border-left: 1px solid rgb(99, 99, 99)">
-    {{ (fullSize * 0.00001).toFixed(2) }} mb <br />compressed
-  </p>
-</div>
+<section>
+  <app-statistic
+    *ngFor="let statistic of statistics"
+    [statistic]="statistic"
+  ></app-statistic>
+</section>

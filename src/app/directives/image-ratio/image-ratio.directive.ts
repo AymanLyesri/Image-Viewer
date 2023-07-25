@@ -83,7 +83,7 @@ export class ImageRatioDirective implements AfterViewInit, OnDestroy
 
       this.render.addClass(
         this.gridSection,
-        ratio >= 0.5 ? 'image-wide-1' : ratio >= 0.3 ? 'image-wide-2' : ratio >= 0.1 ? 'image-wide-3' : 'image-wide-4'
+        ratio >= 0.4 ? 'image-wide-1' : ratio >= 0.3 ? 'image-wide-2' : ratio >= 0.2 ? 'image-wide-3' : 'image-wide-4'
       );
 
     }

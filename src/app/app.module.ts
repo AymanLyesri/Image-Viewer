@@ -35,8 +35,9 @@ import { StatisticsComponent } from './statistics/statistics.component';
 import { OptionComponent } from './options/option/option.component';
 import { PostComponent } from './posts/post/post.component';
 import { NavOptionsComponent } from './nav/nav-options/nav-options.component';
-import { ImageHoverDirective } from './directives/image-hover/image-hover.directive';
 import { ImageGridDirective } from './directives/image-grid/image-grid.directive';
+import { StatisticComponent } from './statistics/statistic/statistic/statistic.component';
+
 
 @NgModule({
   declarations: [
@@ -52,7 +53,6 @@ import { ImageGridDirective } from './directives/image-grid/image-grid.directive
     FooterComponent,
     ParallaxImageDirective,
     OptionsComponent,
-    // FavoritesComponent,
     SauceComponent,
     StatisticsComponent,
     ImageGridDirective,
@@ -73,6 +73,7 @@ import { ImageGridDirective } from './directives/image-grid/image-grid.directive
     OptionComponent,
     PostComponent,
     NavOptionsComponent,
+    StatisticComponent
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent],
