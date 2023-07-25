@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   URL: 'http://localhost:3000',
-  NAME: "",
+  NAME: '',
   FAVICON: '',
   HELPICON: '',
   HELPURL: '',
