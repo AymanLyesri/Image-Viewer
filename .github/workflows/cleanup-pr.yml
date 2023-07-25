@@ -1,6 +1,6 @@
 name: Delete Environment (default settings)
 
-on:
+"on":
   push:
     branches:
       - main
