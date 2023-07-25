@@ -1,6 +1,7 @@
 name: Delete Environment (default settings)
 
 on:
+  deployment:
   push:
   pull_request:
   delete:
