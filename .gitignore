@@ -47,6 +47,8 @@ src/environments/environment.finnal.ts
 src/environments/environment.final.ts
 # src/environments/environment.ts
 
+.env
+
 #angular icon
 src/assets/favicon.ico
 
