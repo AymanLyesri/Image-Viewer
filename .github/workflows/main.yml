@@ -8,7 +8,7 @@ on:
 jobs:
   delete:
     runs-on: ubuntu-latest
-    permissions: write-all
+    permissions: write
     steps:
       - uses: strumwolf/delete-deployment-environment@v2
         with:
