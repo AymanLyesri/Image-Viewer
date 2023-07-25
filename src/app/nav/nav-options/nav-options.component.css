@@ -29,6 +29,9 @@ section {
   p {
     display: none;
   }
+  span {
+    display: none;
+  }
 }
 
 a {

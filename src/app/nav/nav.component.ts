@@ -22,7 +22,7 @@ export class NavComponent implements OnInit
     {
       routerLink: '/posts/favorites',
       title: 'Favorites',
-      svgUrl: '../../assets/heart-992.svg',
+      svgUrl: '../../assets/heart.svg',
     },
     {
       externalLink: 'https://github.com/AymanLyesri/Image-Viewer',

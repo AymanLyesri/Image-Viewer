@@ -41,6 +41,19 @@ nav {
     backdrop-filter: none;
     border-radius: unset;
   }
+  .donation {
+    background: linear-gradient(
+      90deg,
+      rgba(9, 255, 0, 0.5),
+      rgb(255, 0, 0, 0.5),
+      rgb(0, 38, 255, 0.5),
+      rgb(255, 0, 212, 0.5)
+    );
+    background-size: 200% 200%;
+  }
+  .donation span {
+    display: none;
+  }
 }
 
 .donation {
