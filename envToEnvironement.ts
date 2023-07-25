@@ -8,7 +8,17 @@ require("dotenv").config();
 // `environment.ts` file structure
 const envConfigFile = `export const environment = {
   production: true,
-   URL: ${process.env["URL"]}
+  URL: "${process.env["URL"]}",
+  NAME: "${process.env["NAME"]}",
+  FAVICON: "${process.env["FAVICON"]}",
+  HELPICON: "${process.env["HELPICON"]}",
+  HELPURL: "${process.env["HELPURL"]}",
+  COUNTKEY: "${process.env["COUNTKEY"]}",
+  SITEDESCRIPTION: "${process.env["SITEDESCRIPTION"]}",
+  IMAGEPREVIEWLINK:"${process.env["IMAGEPREVIEWLINK"]}",
+  SITELINK: "${process.env["SITELINK"]}",
+  TITLE: "${process.env["TITLE"]}",
+  DONATIONINTRO: "${process.env["DONATIONINTRO"]}"
 };
 `;
 console.log(
