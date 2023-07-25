@@ -36,6 +36,7 @@ footer .bg {
 
 section {
   position: absolute;
+  width: 80vw;
   margin-top: 10vh;
   margin-inline: 10vw;
   animation: popUp 2s ease;

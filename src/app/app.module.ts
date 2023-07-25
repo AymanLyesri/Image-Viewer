@@ -27,9 +27,7 @@ import { DonationComponent } from './donation/donation.component';
 import { FooterComponent } from './footer/footer.component';
 import { ParallaxImageDirective } from './directives/parallax-image/parallax-image.directive';
 import { OptionsComponent } from './options/options.component';
-// import { FavoritesComponent } from './favorites/favorites.component';
 import { SauceComponent } from './sauce/sauce.component';
-
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { OptionComponent } from './options/option/option.component';

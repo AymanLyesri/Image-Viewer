@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 import { VisitesService } from '../services/visites/visites.service';
+import { get } from 'scriptjs';
 
 @Component({
   selector: 'app-home',
@@ -21,20 +22,21 @@ export class HomeComponent implements OnInit
 
   ngOnInit(): void
   {
-    this.globalTitle.setTitle(environment.TITLE);
+    this.title = environment.TITLE;
     this.meta.addTags([
       { name: 'title', content: environment.TITLE },
       { name: 'description', content: environment.SITEDESCRIPTION },
     ]);
 
-    this.setTitle();
+    get("https://counterapi.com/c.js?ns=" + environment.COUNTKEY, () =>
+    {
+      //Google Maps library has been loaded...
+    });
+
+
     // this.visitsService
     //   .getVisitors()
     //   .subscribe((visits) => (this.visitors = visits));
   }
 
-  setTitle()
-  {
-    this.title = environment.NAME;
-  }
 }
