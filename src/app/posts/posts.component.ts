@@ -136,6 +136,8 @@ export class PostsComponent implements OnInit, OnDestroy
         {
           this.images.push(image);
         });
+
+      this.imageService.deleteFavIndex$.subscribe((index) => this.images.splice(index, 1))
     }
   }
 

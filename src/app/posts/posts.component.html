@@ -10,13 +10,16 @@
 
   <div appImageGrid class="imageGrid">
     <div #posts *ngFor="let image of images">
-      <app-post [image]="image"></app-post>
+      <app-post [image]="image" [METHOD]="METHOD"></app-post>
     </div>
   </div>
 
-  <h1 *ngIf="images.length == 0" class="warning">
-    Server is starting... ({{ secondsRemaining }}s remaining)
-  </h1>
+  <div *ngIf="images.length == 0" class="warning">
+    <h1 *ngIf="METHOD == 'posts'">
+      Server is starting... ({{ secondsRemaining }}s remaining)
+    </h1>
+    <h1 *ngIf="METHOD == 'favorites'">No favorites BRUH ^^</h1>
+  </div>
 
   <button class="previous" *ngIf="showPrevious" (click)="Page(top, false)">
     <p>PREVIOUS</p>

@@ -94,5 +94,9 @@ p {
 }
 
 .favorite span {
-  background-image: url("../../../assets/heart-992.svg");
+  background-image: url("../../../assets/heart-add.svg");
+}
+
+.delete_favorite span {
+  background-image: url("../../../assets/heart-delete.svg");
 }

@@ -4,15 +4,16 @@ import
   ElementRef,
   Input,
   OnInit,
+  AfterViewInit,
   QueryList,
   ViewChildren,
+  Host,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { environment } from 'src/environments/environment';
 import { Image } from 'src/app/models/Image';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { RefreshFavoritesService } from 'src/app/services/refresh-favorites/refresh-favorites.service';
-import { PostsComponent } from '../posts.component';
 import { ImageRatioDirective } from 'src/app/directives/image-ratio/image-ratio.directive';
 import { ImageHoverDirective } from 'src/app/directives/image-hover/image-hover.directive';
 import { TooltipModule } from 'ng2-tooltip-directive';
@@ -29,7 +30,7 @@ export class PostComponent implements OnInit
 {
   @ViewChildren('card') cards: QueryList<ElementRef>;
   @Input() image: Image;
-  @Input() postsComponent: PostsComponent;
+  @Input() METHOD: string;
 
   public imgAlt = environment.TITLE + ' ';
   public favorites: Image[];
@@ -43,21 +44,32 @@ export class PostComponent implements OnInit
     private imageService: ImageService,
     private AuthService: AuthenticationService,
     private refreshService: RefreshFavoritesService,
-  ) { }
+  )
+  {
+  }
 
   ngOnInit(): void
   {
     this.isLoggedIn();
+
+
   }
+
+
 
   isLoggedIn()
   {
     return this.AuthService.isLoggedIn();
   }
 
-  deleteImage(id: string)
+  // deleteImage(id: string)
+  // {
+  //   this.postsComponent.deleteImage(id);
+  // }
+
+  deleteFavorite(image: Image)
   {
-    this.postsComponent.deleteImage(id);
+    this.imageService.deleteFavorite(image)
   }
 
   addFavorite(image: Image)

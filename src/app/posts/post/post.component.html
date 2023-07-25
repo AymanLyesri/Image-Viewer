@@ -21,7 +21,15 @@
 
   <div class="actions">
     <a class="fullSize" [href]="image.url" target="_blank">Full Size</a>
-    <a class="favorite" (click)="addFavorite(image)"><span></span></a>
+    <a *ngIf="METHOD == 'posts'" class="favorite" (click)="addFavorite(image)"
+      ><span></span
+    ></a>
+    <a
+      *ngIf="METHOD == 'favorites'"
+      class="delete_favorite"
+      (click)="deleteFavorite(image)"
+      ><span></span
+    ></a>
     <a
       class="sauce"
       [href]="'https://saucenao.com/search.php?url=' + image.url"
@@ -30,5 +38,5 @@
     >
   </div>
 
-  <a *ngIf="isLoggedIn()" (click)="deleteImage(image._id)">Remove it</a>
+  <!-- <a *ngIf="isLoggedIn()" (click)="deleteImage(image)">Remove it</a> -->
 </section>

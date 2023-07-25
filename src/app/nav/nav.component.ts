@@ -19,11 +19,11 @@ export class NavComponent implements OnInit
       title: 'Home',
       svgUrl: '../../assets/house-solid-light.svg',
     },
-    // {
-    //   routerLink: '/posts/favorites',
-    //   title: 'Favorites',
-    //   svgUrl: '../../assets/heart-992.svg',
-    // },
+    {
+      routerLink: '/posts/favorites',
+      title: 'Favorites',
+      svgUrl: '../../assets/heart-992.svg',
+    },
     {
       externalLink: 'https://github.com/AymanLyesri/Image-Viewer',
       title: 'Github',

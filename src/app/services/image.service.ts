@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 import { Image } from '../models/Image';
 import { SpinnerService } from './spinner/spinner.service';
 import { MOCK_IMAGES } from './constants/images.constant';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,11 @@ import { MOCK_IMAGES } from './constants/images.constant';
 export class ImageService
 {
   private image$ = new Subject<Image>(); //observable
+
   private favorite$ = new Subject<Image>();
+  private deleteFavIndex = new Subject<number>();
+  public deleteFavIndex$: Observable<number> = this.deleteFavIndex.asObservable();
+
   private newImage$ = new Subject<Image>(); //observable
   private error$ = new Subject<string>(); //observable
 
@@ -105,10 +110,10 @@ export class ImageService
       ? JSON.parse(localStorage.getItem('favorites'))
       : [];
 
-    console.log(this.containsObject(image, favorites));
+    console.log(this.containsObjectBool(image, favorites));
 
 
-    if (this.containsObject(image, favorites)) return;
+    if (this.containsObjectBool(image, favorites)) return;
 
     favorites.push(image);
     localStorage.setItem('favorites', JSON.stringify(favorites));
@@ -116,14 +121,35 @@ export class ImageService
     this.favorite$.next(image)
   }
 
-  containsObject(obj: Image, list: Image[])
+  containsObjectBool(obj: Image, list: Image[])
   {
-
     return list.some((elem: Image) =>
     {
       return elem._id === obj._id
     })
   }
+
+  containsObjectIndex(obj: Image, list: Image[])
+  {
+    let x = -1;
+    list.some((elem: Image) =>
+    {
+      x++;
+      return elem._id === obj._id;
+    })
+    return x
+  }
+
+  deleteFavorite(image: Image)
+  {
+    let favorites = JSON.parse(localStorage.getItem('favorites'));
+    console.log(this.containsObjectIndex(image, favorites));
+
+    favorites.splice(this.containsObjectIndex(image, favorites), 1);
+    this.deleteFavIndex.next(this.containsObjectIndex(image, favorites));
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }
+
 
   getErrorStream()
   {

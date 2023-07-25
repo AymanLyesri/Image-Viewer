@@ -35,6 +35,7 @@ import { PostComponent } from './posts/post/post.component';
 import { NavOptionsComponent } from './nav/nav-options/nav-options.component';
 import { ImageGridDirective } from './directives/image-grid/image-grid.directive';
 import { StatisticComponent } from './statistics/statistic/statistic/statistic.component';
+import { MousePositionDirective } from './directives/mouse-position/mouse-position.directive';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { StatisticComponent } from './statistics/statistic/statistic/statistic.c
     SauceComponent,
     StatisticsComponent,
     ImageGridDirective,
+    MousePositionDirective,
   ],
   imports: [
     BrowserModule,
