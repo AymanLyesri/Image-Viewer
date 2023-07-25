@@ -1,31 +1,16 @@
 :host {
-    width: 100%;
-    padding-top: 1vh;
-    background-color: #212121;
-}
-
-:host:hover h4,
-:host:hover p {
-    color: rgb(255, 183, 0);
-    text-shadow: 10px 10px 10px black;
-}
-
-h4,
-p {
-    transition: all 0.5s;
-    text-align: center;
+  width: 100%;
+  background-color: #212121;
 }
 
 h4 {
-    width: 100%;
-    color: rgb(119, 85, 0);
+  text-align: center;
+  color: #505050;
 }
 
-div {
-    display: flex;
-}
-
-p {
-    width: 50%;
-    color: rgb(129, 129, 0);
+section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: center;
 }
