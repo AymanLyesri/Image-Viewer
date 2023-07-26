@@ -34,7 +34,6 @@ export class ImageService
   {
 
     // this.image$.next(MOCK_IMAGES[Math.floor(Math.random() * 3)]);
-
     // return;
 
     this.spinnerService.requestStarted();
@@ -129,24 +128,12 @@ export class ImageService
     })
   }
 
-  containsObjectIndex(obj: Image, list: Image[])
-  {
-    let x = -1;
-    list.some((elem: Image) =>
-    {
-      x++;
-      return elem._id === obj._id;
-    })
-    return x
-  }
-
   deleteFavorite(image: Image)
   {
-    let favorites = JSON.parse(localStorage.getItem('favorites'));
-    console.log(this.containsObjectIndex(image, favorites));
-
-    favorites.splice(this.containsObjectIndex(image, favorites), 1);
-    this.deleteFavIndex.next(this.containsObjectIndex(image, favorites));
+    let favorites: Image[] = JSON.parse(localStorage.getItem('favorites'));
+    let index: number = favorites.findIndex(img => img._id === image._id);
+    favorites.splice(index, 1);
+    this.deleteFavIndex.next(index);
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }
 
