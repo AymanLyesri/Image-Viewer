@@ -13,6 +13,8 @@ export class ImageRatioDirective implements AfterViewInit, OnDestroy
   gridSection: Element;
   updateSpanState: Subscription;
 
+  spanClass: string[] = ["image-wide-1", "image-wide-2", "image-wide-3", "image-wide-4", "image-tall-1", "image-tall-3", "image-tall-2", "image-tall-4"]
+
   constructor(
     private element: ElementRef,
     private render: Renderer2,
@@ -41,19 +43,10 @@ export class ImageRatioDirective implements AfterViewInit, OnDestroy
 
   removeCLass()
   {
-
-    this.render.removeClass(
+    this.spanClass.forEach((elem) => this.render.removeClass(
       this.gridSection,
-      'image-wide'
-    );
-    this.render.removeClass(
-      this.gridSection,
-      'image-tall'
-    );
-    this.render.removeClass(
-      this.gridSection,
-      'image-big'
-    );
+      elem
+    ))
   }
 
   calculateRatio()
@@ -63,9 +56,6 @@ export class ImageRatioDirective implements AfterViewInit, OnDestroy
     var realHeight = this.element.nativeElement.naturalHeight;
 
     let ratio = realHeight / realWidth;
-
-    console.log(realHeight, realWidth, ratio);
-
 
     if (realHeight > (realWidth * 1.2)) {
 
@@ -77,10 +67,6 @@ export class ImageRatioDirective implements AfterViewInit, OnDestroy
 
     }
     else if (realWidth > (realHeight * 1.2)) {
-
-      console.log("wide");
-
-
       this.render.addClass(
         this.gridSection,
         ratio >= 0.4 ? 'image-wide-1' : ratio >= 0.3 ? 'image-wide-2' : ratio >= 0.2 ? 'image-wide-3' : 'image-wide-4'

@@ -64,7 +64,7 @@ export class PostsComponent implements OnInit, OnDestroy
   {
     this.METHOD = this.activatedRoute.snapshot.paramMap.get('method') || "posts"
 
-    console.log(this.activatedRoute.snapshot.paramMap.get('method'));
+    // console.log(this.activatedRoute.snapshot.paramMap.get('method'));
 
     this.loadingObserver = new IntersectionObserver(
       (entries) =>
@@ -79,7 +79,6 @@ export class PostsComponent implements OnInit, OnDestroy
             ) {
               this.offset++;
               this.imageService.getPost(this.offset);
-              console.log(this.offset, this.limit);
             }
             this.loadingObserver.unobserve(entry.target);
 
@@ -150,8 +149,6 @@ export class PostsComponent implements OnInit, OnDestroy
   {
     this.postsChanges = this.posts.changes.subscribe(() =>
     {
-      console.log(this.images.length);
-      console.log(this.posts.last.nativeElement);
 
       this.loadingObserver.observe(this.posts.last.nativeElement);
     });
@@ -185,7 +182,7 @@ export class PostsComponent implements OnInit, OnDestroy
     });
   }
 
-  Page(element: HTMLElement, to: boolean)
+  Page(element: HTMLElement, to: boolean) //to right/left
   {
     element.scrollIntoView(false);
 
@@ -201,7 +198,7 @@ export class PostsComponent implements OnInit, OnDestroy
   ngOnDestroy(): void
   {
     this.imageSubscription.unsubscribe();
-
+    this.postsChanges.unsubscribe();
     this.newImageSubscription.unsubscribe();
   }
 }
