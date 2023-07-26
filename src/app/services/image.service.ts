@@ -33,9 +33,9 @@ export class ImageService
   getPost(offset: number)
   {
 
-    // this.image$.next(MOCK_IMAGES[Math.floor(Math.random() * 3)]);
+    this.image$.next(MOCK_IMAGES[Math.floor(Math.random() * 3)]);
 
-    // return;
+    return;
 
     this.spinnerService.requestStarted();
     let params = new HttpParams().set('offset', offset);

@@ -19,12 +19,8 @@ header .bg-1 {
   background-size: cover;
 }
 
-section {
-  height: fit-content;
-}
-
 h1 {
-  margin-top: 20%;
+  margin-top: 10%;
   text-align: center;
   color: rgb(150, 150, 150);
 }
@@ -78,15 +74,18 @@ hr {
 .previous,
 .next {
   position: fixed;
-  top: 50%;
+  top: 50vh;
   transform: translate(0, -50%);
   background-color: rgba(0, 0, 0, 0.5);
   border: 1px rgb(0, 0, 0) solid;
   backdrop-filter: blur(5px);
   color: white;
   height: 30vh;
-  width: 2vw;
+  width: 4vw;
   transition: all 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .previous {
@@ -99,11 +98,21 @@ hr {
   border-radius: 30px 0px 0px 30px;
 }
 
-.previous p,
-.next p {
-  margin: auto;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
+.next span {
+  background-image: url("../../assets/next-white.svg");
+}
+
+.previous span {
+  background-image: url("../../assets/previous-white.svg");
+}
+
+.previous span,
+.next span {
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 2em;
+  height: 2em;
+  display: block;
 }
 
 .previous:hover,
@@ -112,6 +121,14 @@ hr {
   width: 5vw;
   color: rgb(255, 255, 0);
   border: 1px rgb(255, 255, 0) solid;
+}
+
+.next:hover span {
+  background-image: url("../../assets/next-yellow.svg");
+}
+
+.previous:hover span {
+  background-image: url("../../assets/previous-yellow.svg");
 }
 
 @media screen and (max-width: 600px) {
@@ -129,11 +146,6 @@ hr {
   .next:hover {
     height: 5vh;
     width: 50vw;
-  }
-  .previous p,
-  .next p {
-    writing-mode: unset;
-    text-orientation: unset;
   }
 }
 
