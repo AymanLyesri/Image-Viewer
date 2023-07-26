@@ -62,9 +62,7 @@ export class PostsComponent implements OnInit, OnDestroy
     private optionsService: OptionsService
   )
   {
-    this.METHOD = this.activatedRoute.snapshot.paramMap.get('method') || "posts"
-
-    // console.log(this.activatedRoute.snapshot.paramMap.get('method'));
+    this.METHOD = this.activatedRoute.snapshot.firstChild?.paramMap.get('method') || "posts"
 
     this.loadingObserver = new IntersectionObserver(
       (entries) =>
@@ -101,7 +99,7 @@ export class PostsComponent implements OnInit, OnDestroy
   ngOnInit(): void
   {
 
-
+    // console.log(this.activatedRoute.snapshot.firstChild.paramMap.get('method'));
     this.isLoggedIn();
 
     this.optionsService.getLoadingSpeed$.subscribe((speed) =>
@@ -199,6 +197,6 @@ export class PostsComponent implements OnInit, OnDestroy
   {
     this.imageSubscription.unsubscribe();
     this.postsChanges.unsubscribe();
-    this.newImageSubscription.unsubscribe();
+    this.newImageSubscription?.unsubscribe();
   }
 }
