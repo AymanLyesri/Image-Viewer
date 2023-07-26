@@ -34,8 +34,12 @@ const Routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'posts/:method',
+    path: 'posts',
     component: PostsComponent,
+    children: [{
+      path: ':method',
+      component: PostsComponent,
+    },]
   },
 ];
 

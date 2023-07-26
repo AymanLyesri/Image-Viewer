@@ -75,7 +75,7 @@ import { MousePositionDirective } from './directives/mouse-position/mouse-positi
     NavOptionsComponent,
     StatisticComponent
   ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
