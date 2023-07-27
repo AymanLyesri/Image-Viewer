@@ -15,9 +15,11 @@ section {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  height: 100%;
   width: 100%;
   transition: all 0.2s;
   animation: popUp 0.5s ease;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 section:hover {
@@ -27,6 +29,8 @@ section:hover {
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
 }
+
+/* my cat said : mù^cvvvpo  ZR° backdro  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  	pmp*/
 
 @media (min-width: 600px) {
   .zoom:hover {
@@ -39,28 +43,18 @@ section:hover {
     transform: none;
   }
 }
+.tooltip {
+  height: 100%;
+  width: 100%;
+}
 img {
   width: 100%;
   height: 100%;
+  object-fit: contain;
   border-radius: 10px;
-  background-color: #ff7676;
+  background-color: #00000050;
   transition: all 1s;
   transition-delay: 0.2s;
-}
-a {
-  font-size: 75%;
-  padding-inline: auto;
-  padding-block: 0.5%;
-  text-decoration: none;
-  text-align: center;
-  color: #858585;
-  border-radius: 5px;
-  transition: all 0.2s;
-  border: 1px #97979700 solid;
-}
-
-a:hover {
-  border: 1px #979797 solid;
 }
 
 p {
@@ -76,13 +70,38 @@ p {
 }
 
 .actions {
+  font-size: small;
+  position: absolute;
+  display: none;
   width: 100%;
   min-height: 10px;
-  display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   gap: 5%;
+  transition: all 1s;
+}
+section:hover .actions {
+  display: flex;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+.actions a {
+  font-size: 75%;
+  padding-inline: auto;
+  padding-block: 0.5%;
+  text-decoration: none;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 5px;
+  transition: all 0.2s;
+  border: 1px #97979700 solid;
+}
+
+.actions a:hover {
+  border: 1px #979797 solid;
 }
 
 .actions a span {

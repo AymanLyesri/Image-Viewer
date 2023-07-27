@@ -57,19 +57,19 @@ export class ImageRatioDirective implements AfterViewInit, OnDestroy
 
     let ratio = realHeight / realWidth;
 
-    if (realHeight > (realWidth * 1.4)) {
+    if (realHeight >= (realWidth * 1.2)) {
 
       this.render.addClass(
         this.gridSection,
-        ratio <= 2.5 ? 'image-tall-1' : ratio <= 3.5 ? 'image-tall-2' : ratio <= 4.5 ? 'image-tall-3' : 'image-tall-4'
+        ratio <= 2.2 ? 'image-tall-1' : ratio <= 3.5 ? 'image-tall-2' : ratio <= 4.5 ? 'image-tall-3' : 'image-tall-4'
 
       );
 
     }
-    else if (realWidth > (realHeight * 1.4)) {
+    else if (realWidth >= (realHeight * 1.2)) {
       this.render.addClass(
         this.gridSection,
-        ratio >= 0.4 ? 'image-wide-1' : ratio >= 0.3 ? 'image-wide-2' : ratio >= 0.2 ? 'image-wide-3' : 'image-wide-4'
+        ratio >= 0.5 ? 'image-wide-1' : ratio >= 0.25 ? 'image-wide-2' : ratio >= 0.125 ? 'image-wide-3' : 'image-wide-4'
       );
 
     }

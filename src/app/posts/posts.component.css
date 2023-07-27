@@ -39,14 +39,22 @@ hr {
   grid-auto-flow: row dense;
 }
 
+.imageGrid * {
+  width: 100%;
+  height: 100%;
+}
+
 .xlColumn {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: 20vw;
 }
 .largeColumn {
   grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-auto-rows: 16vw;
 }
 .mediumColumn {
   grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-auto-rows: 12.5vw;
 }
 .autoColumn {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
