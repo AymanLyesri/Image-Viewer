@@ -61,7 +61,7 @@ export class ImageRatioDirective implements AfterViewInit, OnDestroy
 
       this.render.addClass(
         this.gridSection,
-        ratio <= 2.5 ? 'image-tall-1' : ratio <= 5 ? 'image-tall-2' : ratio <= 7.5 ? 'image-tall-3' : 'image-tall-4'
+        ratio <= 3 ? 'image-tall-1' : ratio <= 6 ? 'image-tall-2' : ratio <= 9 ? 'image-tall-3' : 'image-tall-4'
 
       );
 
@@ -75,15 +75,10 @@ export class ImageRatioDirective implements AfterViewInit, OnDestroy
     }
 
 
-    // this.render.addClass(
-    //   this.gridSection,
-    //   realHeight / realWidth >= 1.25 ? 'image-tall' : realWidth / realHeight >= 1.25 ? 'image-wide' : 'image-big'
-    // );
-
-
   }
   ngOnDestroy(): void
   {
+
     this.updateSpanState.unsubscribe();
   }
 
