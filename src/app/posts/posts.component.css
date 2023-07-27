@@ -67,15 +67,19 @@ hr {
   }
   .xlColumn {
     grid-template-columns: 100vw !important;
+    grid-auto-rows: unset;
   }
   .largeColumn {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    grid-auto-rows: unset;
   }
   .mediumColumn {
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-auto-rows: unset;
   }
   .autoColumn {
     grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    grid-auto-rows: unset;
   }
 }
 
