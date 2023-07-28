@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit
       { name: 'description', content: environment.SITEDESCRIPTION },
     ]);
 
-    get("https://counterapi.com/c.js?ns=" + environment.COUNTKEY, () =>
+    get("https://counterapi.com/c.js", () =>
     {
       //Google Maps library has been loaded...
     });
