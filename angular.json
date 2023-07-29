@@ -75,8 +75,7 @@
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.final.ts"
                 }
-              ],
-              "outputHashing": "all"
+              ]
             },
             "development": {
               "buildOptimizer": false,

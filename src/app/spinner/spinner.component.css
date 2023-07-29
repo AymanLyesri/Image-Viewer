@@ -1,27 +1,28 @@
 .spinner {
-    margin: 0;
-    padding: 0;
-    bottom: 0;
-    width: 2em;
-    height: 2em;
-    position: fixed;
-    z-index: 1010;
-    background-size: cover;
-    background-color: rgb(0, 0, 0);
-    border-radius: 50%;
-    animation: lds-circle 10s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  margin: 0;
+  padding: 0;
+  bottom: 0;
+  width: 3em;
+  height: 3em;
+  position: fixed;
+  z-index: 1010;
+  background-size: contain;
+  background-color: rgb(0, 0, 0);
+  border-radius: 40%;
+  animation: lds-circle 10s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 }
 
 @keyframes lds-circle {
-    0%,
-    100% {}
-    0% {
-        transform: rotateY(0deg);
-    }
-    50% {
-        transform: rotateY(180deg);
-    }
-    100% {
-        transform: rotateY(360deg);
-    }
+  0%,
+  100% {
+  }
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
 }
