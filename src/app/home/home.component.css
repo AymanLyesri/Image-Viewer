@@ -1,129 +1,129 @@
 :host {
-    width: 100%;
-    height: 100vh;
-    background-color: rgb(11, 11, 11);
-    z-index: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url("../../assets/home-background.svg");
+  z-index: 0;
 }
 
 footer {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
 }
 
 footer .bg {
-    position: absolute;
-    background-image: url("../../assets/layered-waves-haikei.svg");
-    width: 100%;
-    height: auto;
-    bottom: 0;
-    aspect-ratio: 900/600;
-    background-repeat: no-repeat;
-    background-size: cover;
+  position: absolute;
+  background-image: url("../../assets/layered-waves-haikei.svg");
+  width: 100%;
+  height: auto;
+  bottom: 0;
+  aspect-ratio: 900/600;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 @keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 section {
-    position: absolute;
-    height: 100vh;
-    perspective: 10px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: absolute;
+  height: 100vh;
+  perspective: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @keyframes popUp {
-    0% {
-        opacity: 0;
-        transform: blur(5px);
-    }
-    100% {
-        opacity: 100%;
-        transform: blur(0);
-    }
+  0% {
+    opacity: 0;
+    transform: blur(5px);
+  }
+  100% {
+    opacity: 100%;
+    transform: blur(0);
+  }
 }
 
 .title {
-    animation: popUp 3s;
-    width: 50vw;
-    height: 200px;
-    color: rgb(255, 96, 96);
-    text-shadow: 10px 10px 10px black;
-    transition: all 1s;
+  animation: popUp 3s;
+  width: 50vw;
+  height: 200px;
+  color: rgb(255, 255, 255);
+  text-shadow: 10px 10px 10px black;
+  transition: all 1s;
 }
 
 h1 {
-    font-size: xx-large;
+  font-size: xx-large;
 }
 
 .title h1,
 h3,
 h6 {
-    text-align: center;
+  text-align: center;
 }
 
 .title h3 strong {
-    color: yellow;
+  color: yellow;
 }
 
 .icons {
-    position: absolute;
-    top: 75%;
-    left: 50%;
+  position: absolute;
+  top: 75%;
+  left: 50%;
 }
 
 .arrow1 {
-    background-image: url('../../assets/down-arrow-svgrepo-com.svg');
-    background-size: cover;
-    width: 20px;
-    height: 20px;
-    display: block;
-    position: absolute;
-    animation: arrow1 2s ease infinite;
-    animation-delay: 1.5s;
-    transform: translateX(-50%);
+  background-image: url("../../assets/down-arrow-svgrepo-com.svg");
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+  display: block;
+  position: absolute;
+  animation: arrow1 2s ease infinite;
+  animation-delay: 1.5s;
+  transform: translateX(-50%);
 }
 
 .arrow2 {
-    background-image: url('../../assets/down-arrow-svgrepo-com.svg');
-    background-size: cover;
-    width: 20px;
-    height: 20px;
-    display: block;
-    position: absolute;
-    animation: arrow1 2s ease infinite;
-    animation-delay: 0.5s;
-    transform: translateX(-50%);
+  background-image: url("../../assets/down-arrow-svgrepo-com.svg");
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+  display: block;
+  position: absolute;
+  animation: arrow1 2s ease infinite;
+  animation-delay: 0.5s;
+  transform: translateX(-50%);
 }
 
 @keyframes arrow1 {
-    0% {
-        margin-top: 0;
-        opacity: 0;
-    }
-    33% {
-        margin-top: 40px;
-        opacity: 1;
-    }
-    66% {
-        margin-top: 40px;
-        opacity: 1;
-    }
-    100% {
-        margin-top: 80px;
-        opacity: 0;
-    }
+  0% {
+    margin-top: 0;
+    opacity: 0;
+  }
+  33% {
+    margin-top: 40px;
+    opacity: 1;
+  }
+  66% {
+    margin-top: 40px;
+    opacity: 1;
+  }
+  100% {
+    margin-top: 80px;
+    opacity: 0;
+  }
 }
