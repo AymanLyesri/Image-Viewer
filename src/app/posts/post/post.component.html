@@ -1,42 +1,25 @@
 <section appImageHover>
-  <span
-    class="tooltip"
-    [tooltip]="$any(imageInfo)"
-    contentType="template"
-    [showDelay]="750"
-    [hideDelayAfterClick]="2000"
-    maxWidth="1000"
-    ><img
-      appImageRatio
-      loading="lazy"
-      [src]="image.thumb"
-      [alt]="imgAlt + image.name"
-  /></span>
+  <span class="tooltip" [tooltip]="$any(imageInfo)" contentType="template" [showDelay]="750" [hideDelayAfterClick]="2000" maxWidth="1000"><img appImageRatio loading="lazy" [src]="image.thumb" [alt]="imgAlt + image.name" /></span>
   <ng-template #imageInfo>
     <div id="imageInfo">
-      <p>{{ image.name }}</p>
-      <p>{{ image.createdAt }}</p>
-      <p>{{ image.size / 1000 }}kb</p>
-    </div></ng-template
-  >
+      <p>
+        {{ image.name }}
+      </p>
+      <p>
+        {{ image.createdAt }}
+      </p>
+      <p>
+        {{ image.size / 1000 }}kb
+      </p>
+    </div>
+  </ng-template>
 
   <div class="actions">
-    <a class="fullSize" [href]="image.url" target="_blank">Full Size</a>
-    <a *ngIf="METHOD == 'posts'" class="favorite" (click)="addFavorite(image)"
-      ><span></span
-    ></a>
-    <a
-      *ngIf="METHOD == 'favorites'"
-      class="delete_favorite"
-      (click)="deleteFavorite(image)"
-      ><span></span
-    ></a>
-    <a
-      class="sauce"
-      [href]="'https://saucenao.com/search.php?url=' + image.url"
-      target="_blank"
-      >Sauce</a
-    >
+    <a class="fullSize" [href]="image.url" target="_blank"><span></span></a>
+    <a *ngIf="METHOD == 'posts'" class="favorite" (click)="addFavorite(image)"><span></span></a>
+    <a class="download" (click)="downloadImage()"><span></span></a>
+    <a *ngIf="METHOD == 'favorites'" class="delete_favorite" (click)="deleteFavorite(image)"><span></span></a>
+    <a class="search" [href]="'https://saucenao.com/search.php?url=' + image.url" target="_blank"><span></span></a>
   </div>
 
   <!-- <a *ngIf="isLoggedIn()" (click)="deleteImage(image)">Remove it</a> -->
