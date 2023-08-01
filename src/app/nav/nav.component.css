@@ -84,7 +84,7 @@ nav:hover .donation {
 }
 
 .donation span {
-  background-image: url("../../assets/icons8-cup-96.png");
+  background-image: url("../../assets/donate.svg");
   background-size: cover;
   width: 2em;
   height: 2em;

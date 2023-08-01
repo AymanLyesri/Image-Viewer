@@ -60,7 +60,7 @@ section {
   animation: popUp 3s;
   width: 50vw;
   height: 200px;
-  color: rgb(255, 255, 255);
+  color: rgb(255, 118, 118);
   text-shadow: 10px 10px 10px black;
   transition: all 1s;
 }

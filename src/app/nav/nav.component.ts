@@ -9,30 +9,30 @@ import { NavOption } from '../models/NavOption';
 export class NavComponent implements OnInit
 {
   navOptions: NavOption[] = [
-    {
-      routerLink: '/login',
-      title: 'Login',
-      svgUrl: '../../assets/user-solid-light.svg',
-    },
+    // {
+    //   routerLink: '/login',
+    //   title: 'Login',
+    //   svgUrl: '../../assets/user.svg',
+    // },
     {
       routerLink: '/home',
       title: 'Home',
-      svgUrl: '../../assets/house-solid-light.svg',
+      svgUrl: '../../assets/home.svg',
     },
     {
       routerLink: '/posts/favorites',
       title: 'Favorites',
-      svgUrl: '../../assets/heart.svg',
+      svgUrl: '../../assets/heart-white.svg',
     },
     {
       externalLink: 'https://github.com/AymanLyesri/Image-Viewer',
       title: 'Github',
-      svgUrl: '../../assets/icons8-github.svg',
+      svgUrl: '../../assets/github.svg',
     },
     {
       idLink: 'options',
       title: 'Options',
-      svgUrl: '../../assets/icons8-settings.svg',
+      svgUrl: '../../assets/settings.svg',
     },
   ];
 

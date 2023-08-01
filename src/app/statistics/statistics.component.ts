@@ -16,10 +16,10 @@ export class StatisticsComponent implements OnInit
 
   public statistics: Statistic[] = [
     {
-      title: "Whole size in Mb", // value is to be get by service
+      title: "Total size", // value is to be get by service
       value: null
     }, {
-      title: "Whole image number", // value is to be get by service
+      title: "Total image number", // value is to be get by service
       value: null
     }]
 
@@ -31,7 +31,7 @@ export class StatisticsComponent implements OnInit
     this.sizeService.getFull_Size_and_Length();
     this.sizeService
       .getFullSize()
-      .subscribe((fullSize) => (this.statistics[0].value = (fullSize * 0.00001).toFixed(2))); //from b to mb
+      .subscribe((fullSize) => (this.statistics[0].value = (fullSize * 0.00001).toFixed(2) + " mb ")); //from b to mb
 
     this.sizeService
       .getFullLength()

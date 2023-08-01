@@ -143,7 +143,7 @@ section:hover .actions {
 }
 
 .favorite span {
-  background-image: url("../../../assets/heart-add.svg");
+  background-image: url("../../../assets/heart-white.svg");
 }
 
 .delete_favorite span {
