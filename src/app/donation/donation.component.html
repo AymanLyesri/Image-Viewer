@@ -2,12 +2,14 @@
   <p class="intro">
     {{ intro }}
   </p>
-  <div class="paypal">
-    <a href="https://paypal.me/LyesriAyman" target="_blank">Paypal</a>
-    <p>-first donation from <strong>Matouš</strong></p>
-    <p>-second donation from <strong>Roman</strong></p>
-    <h1>Thank u ALL 😊</h1>
+  <div class="buttons">
+    <a class="paypal" href="https://paypal.me/LyesriAyman" target="_blank">Paypal</a>
+    <a *ngIf="patreonLink" class="patreon" [href]="patreonLink" target="_blank">Patreon</a>
   </div>
+  <p>-first donation from <strong>Matouš</strong></p>
+  <p>-second donation from <strong>Roman</strong></p>
+  <h1>Thank u ALL 😊</h1>
+
 </section>
 <footer>
   <div class="bg"></div>

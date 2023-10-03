@@ -12,4 +12,5 @@ export const environment = {
   SITELINK: 'https://image-viewer.web.app',
   TITLE: 'Image Viewer',
   DONATIONINTRO: '',
+  PATREONLINK: ''
 };

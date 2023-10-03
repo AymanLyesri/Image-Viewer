@@ -6,10 +6,12 @@ import { environment } from 'src/environments/environment';
   templateUrl: './donation.component.html',
   styleUrls: ['./donation.component.css'],
 })
-export class DonationComponent implements OnInit {
-  public intro = environment.DONATIONINTRO;
+export class DonationComponent implements OnInit
+{
+  public intro = environment.DONATIONINTRO
+  public patreonLink = environment.PATREONLINK
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

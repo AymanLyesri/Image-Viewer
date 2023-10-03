@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { PostsComponent } from './posts/posts.component';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UploadComponent } from './upload/upload.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
@@ -36,6 +36,7 @@ import { NavOptionsComponent } from './nav/nav-options/nav-options.component';
 import { ImageGridDirective } from './directives/image-grid/image-grid.directive';
 import { StatisticComponent } from './statistics/statistic/statistic/statistic.component';
 import { MousePositionDirective } from './directives/mouse-position/mouse-position.directive';
+import { InterceptorService } from './services/interceptor/interceptor.service';
 
 
 @NgModule({
@@ -75,7 +76,7 @@ import { MousePositionDirective } from './directives/mouse-position/mouse-positi
     NavOptionsComponent,
     StatisticComponent
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

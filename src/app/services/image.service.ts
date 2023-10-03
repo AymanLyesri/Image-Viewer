@@ -1,12 +1,10 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
-
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Image } from '../models/Image';
 import { SpinnerService } from './spinner/spinner.service';
-import { MOCK_IMAGES } from './constants/images.constant';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -33,9 +31,6 @@ export class ImageService
   getPost(offset: number)
   {
 
-    // this.image$.next(MOCK_IMAGES[Math.floor(Math.random() * 3)]);
-    // return;
-
     this.spinnerService.requestStarted();
     let params = new HttpParams().set('offset', offset);
     this.http
@@ -54,6 +49,8 @@ export class ImageService
         next: (image) =>
         {
           this.spinnerService.requestEnded();
+          console.log(image);
+
           this.image$.next(image);
         },
         error: (err: { error: { message: string } }) =>

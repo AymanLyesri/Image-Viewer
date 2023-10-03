@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {
+import
+{
   ActivatedRouteSnapshot,
   CanActivate,
   RouterStateSnapshot,
@@ -12,8 +13,9 @@ import { AuthenticationService } from '../authentication.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
-  constructor(private AuthService: AuthenticationService) {}
+export class AuthGuard implements CanActivate
+{
+  constructor(private AuthService: AuthenticationService) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -22,15 +24,11 @@ export class AuthGuard implements CanActivate {
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree>
     | boolean
-    | UrlTree {
-    //is logged in return true
+    | UrlTree
+  {
+    console.log(this.AuthService.isLoggedIn());
 
-    console.log('auth ', this.AuthService.isLoggedIn());
+    return this.AuthService.isLoggedIn()
 
-    if (this.AuthService.isLoggedIn()) {
-      return true;
-    } else {
-      return false;
-    }
   }
 }
