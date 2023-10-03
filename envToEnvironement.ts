@@ -18,7 +18,7 @@ const envConfigFile = `export const environment = {
   IMAGEPREVIEWLINK:"${process.env["IMAGEPREVIEWLINK"]}",
   SITELINK: "${process.env["SITELINK"]}",
   TITLE: "${process.env["TITLE"]}",
-  DONATIONINTRO: "${process.env["DONATIONINTRO"]}"
+  DONATIONINTRO: "${process.env["DONATIONINTRO"]}",
   PATREONLINK: "${process.env["PATREONLINK"]}"
 };
 `;
